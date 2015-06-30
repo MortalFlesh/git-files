@@ -20,7 +20,10 @@ alias ehttpd='sublime /etc/apache2/httpd.conf'
 alias ephp='sublime /usr/local/etc/php/5.6/php.ini'
 alias evhosts='sublime /etc/apache2/extra/httpd-vhosts.conf'
 
-alias apache='sudo apachectl restart'
+alias apache_check_sytnax='sudo /usr/sbin/httpd -t'
+alias apache_restart='sudo apachectl restart'
+alias apache_dump_vhosts='/usr/sbin/httpd -t -D DUMP_VHOSTS'
+alias apache='apache_restart && apache_check_sytnax'
 
 alias cd..="cd .."
 alias cd.="cd ~"
@@ -34,6 +37,16 @@ alias c='clear'
 alias e='exit'
 alias t='tail -f'
 alias te='t /var/log/apache2/error_log'
+alias ta='t /var/log/apache2/access_log'
+
+#
+# symfony
+#
+
+#symfony_clear_cache prod
+function symfony_clear_cache() {
+	app/console cache:clear --env=$1
+}
 
 #
 # git
@@ -98,6 +111,14 @@ function release() {
  git push -u origin HEAD:release/rc/$1/rc1
 }
 
+# create release issue release/rc/___XYZ___/rc___X___
+# example: `release 14.11.40 2` creates `origin/release/rc/14.11.40/rc2`
+function release_rc() {
+ mgp
+ git checkout -b release/rc/$1/rc$2
+ git push -u origin HEAD:release/rc/$1/rc$2
+}
+
 function releaseNotFromMaster() {
  gp
  git checkout -b release/rc/$1/rc1
@@ -153,6 +174,9 @@ alias phpunitTestGroupSrc='php ./vendor/bin/phpunit -c src/ --group $1'
 alias bcc='bower cache clean'
 alias bi='bower install'
 alias bjsAll='bi && npm run build && grunt'
+
+# npm
+alias nrb='npm run build'
 
 #
 # QA
