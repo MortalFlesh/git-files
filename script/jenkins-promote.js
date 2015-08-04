@@ -1,6 +1,10 @@
+console.log('jenkins-promote');
 (function ($) {
     $(document).ready(function () {
+
         if ($('#buildHistory').length > 0) {
+            console.log('jenkins-promote-ready');
+
             window.custom_jqUiLoaded = false;
 
             function promotionDialog(baseUrl, response) {
