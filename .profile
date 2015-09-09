@@ -79,18 +79,21 @@ function branch() {
  gp
  git checkout -b $1
  git push -u origin $1:$1
+ g
 }
 # create issue XYZ
 function issue_withoutmaster() {
  gp
  git checkout -b $1
  git push -u origin $1:feature/$1
+ g
 }
 # checkout master first
 function issue() {
  mgp
  git checkout -b $1
  git push -u origin $1:feature/$1
+ g
 }
 # git squash commits: squash 5 (squashes 5 commits)
 function squash() {
@@ -99,7 +102,7 @@ function squash() {
 
 # gitTag 1.0.0
 function gitTag() {
- git tag -a v$1 -m "v$1"
+ git tag -a $1 -m "$1"
  gu --tags
 }
 
@@ -109,6 +112,7 @@ function release() {
  mgp
  git checkout -b release/rc/$1/rc1
  git push -u origin HEAD:release/rc/$1/rc1
+ g
 }
 
 # create release issue release/rc/___XYZ___/rc___X___
@@ -117,12 +121,30 @@ function release_rc() {
  mgp
  git checkout -b release/rc/$1/rc$2
  git push -u origin HEAD:release/rc/$1/rc$2
+ g
 }
 
 function releaseNotFromMaster() {
  gp
  git checkout -b release/rc/$1/rc1
  git push -u origin HEAD:release/rc/$1/rc1
+ g
+}
+
+# example: `integration 07-31` creates `origin/integration/2015-07-31`
+function integration() {
+	mgp
+	git checkout -b integration/2015-$1
+	git push -u origin HEAD:integration/2015-$1
+	g
+}
+
+# checkout sprint branch and pull
+# write `s 08-09` - it will checkout `integration/2015-08-09` and pull changes
+function i() {
+ git checkout integration/2015-$1
+ gp
+ g
 }
 
 # example: `sprint 10` creates `origin/sprint/15.10`
@@ -130,12 +152,14 @@ function sprint() {
  gp
  git checkout -b sprint/15.$1
  git push -u origin HEAD:sprint/15.$1
+ g
 }
 
 # checkout sprint branch and pull
 # write `s 21` - it will checkout `sprint/15.21` and pull changes
 function s() {
  git checkout sprint/15.$1 && gp
+ g
 }
 
 #
@@ -177,12 +201,13 @@ alias bjsAll='bi && npm run build && grunt'
 
 # npm
 alias nrb='npm run build'
+alias npmPublish='npm publish ./'
 
 #
 # QA
 #
 alias seleniumInstall='php ./vendor/bin/steward.php install'
-alias seleniumServer='java -jar ./vendor/bin/selenium-server-standalone-2.45.0.jar'
+alias seleniumServer='java -jar ./vendor/bin/selenium-server-standalone-2.47.1.jar'
 
 #example: seleniumRunTest ENV FILE
 function seleniumRunTest() {
