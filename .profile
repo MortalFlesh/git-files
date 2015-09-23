@@ -45,14 +45,19 @@ alias ta='t /var/log/apache2/access_log'
 
 #symfony_clear_cache prod
 function symfony_clear_cache() {
-	app/console cache:clear --env=$1
+	php app/console cache:clear --env=$1
 }
 
 #
 # git
 #
 
-#git-config (git up = pull ff-only)
+#git-fixups - https://filip-prochazka.com/blog/git-fixup
+#if [ -f ~/git-log-vgrep-most-recent-commit ]; then
+	chmod +x ~/git-log-vgrep-most-recent-commit
+#fi
+
+#git-config (git aliases - git up = pull ff-only, git cif = fixup commit)
 . ~/.git-config.bash
 
 #git-autocomplete
@@ -100,6 +105,11 @@ function squash() {
  git rebase -i HEAD~$1
 }
 
+# git autosquash fixup commits in branch (use: autosquash master)
+function autosquash() {
+	git rebase -i --autosquash $1
+}
+
 # gitTag 1.0.0
 function gitTag() {
  git tag -a $1 -m "$1"
@@ -142,6 +152,7 @@ function integration() {
 # checkout sprint branch and pull
 # write `s 08-09` - it will checkout `integration/2015-08-09` and pull changes
 function i() {
+ git fetch
  git checkout integration/2015-$1
  gp
  g
@@ -208,6 +219,9 @@ alias npmPublish='npm publish ./'
 #
 alias seleniumInstall='php ./vendor/bin/steward.php install'
 alias seleniumServer='java -jar ./vendor/bin/selenium-server-standalone-2.47.1.jar'
+
+alias seleniumServerHub='java -jar ./vendor/bin/selenium-server-standalone-2.47.1.jar -role hub -port 4444'
+alias seleniumServerNode='java -jar ./vendor/bin/selenium-server-standalone-2.47.1.jar -role node -hub http://127.0.0.1:4444 -port 5555'
 
 #example: seleniumRunTest ENV FILE
 function seleniumRunTest() {
