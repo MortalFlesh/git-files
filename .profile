@@ -53,9 +53,7 @@ function symfony_clear_cache() {
 #
 
 #git-fixups - https://filip-prochazka.com/blog/git-fixup
-#if [ -f ~/git-log-vgrep-most-recent-commit ]; then
-	chmod +x ~/git-log-vgrep-most-recent-commit
-#fi
+chmod +x ~/git-log-vgrep-most-recent-commit
 
 #git-config (git aliases - git up = pull ff-only, git cif = fixup commit)
 . ~/.git-config.bash
