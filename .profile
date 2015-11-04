@@ -43,17 +43,24 @@ alias ta='t /var/log/apache2/access_log'
 # symfony
 #
 
+alias dev='app/console --env=dev'
+alias prod='app/console --env=prod'
+
 #symfony_clear_cache prod
 function symfony_clear_cache() {
-	php app/console cache:clear --env=$1
+	app/console cache:clear --env=$1
 }
+
+# doctrine
+
+alias doctrineUpdate='app/console doctrine:schema:update --dump-sql'
 
 #
 # git
 #
 
 #git-fixups - https://filip-prochazka.com/blog/git-fixup
-chmod +x ~/git-log-vgrep-most-recent-commit
+chmod +x /bin/git-log-vgrep-most-recent-commit
 
 #git-config (git aliases - git up = pull ff-only, git cif = fixup commit)
 . ~/.git-config.bash
@@ -118,24 +125,15 @@ function gitTag() {
 # example: `release 14.11.40` creates `origin/release/rc/14.11.40/rc1`
 function release() {
  mgp
- git checkout -b release/rc/$1/rc1
- git push -u origin HEAD:release/rc/$1/rc1
- g
-}
-
-# create release issue release/rc/___XYZ___/rc___X___
-# example: `release 14.11.40 2` creates `origin/release/rc/14.11.40/rc2`
-function release_rc() {
- mgp
- git checkout -b release/rc/$1/rc$2
- git push -u origin HEAD:release/rc/$1/rc$2
+ git checkout -b release/$1
+ git push -u origin HEAD:release/$1
  g
 }
 
 function releaseNotFromMaster() {
  gp
- git checkout -b release/rc/$1/rc1
- git push -u origin HEAD:release/rc/$1/rc1
+ git checkout -b release/$1
+ git push -u origin HEAD:release/$1
  g
 }
 
@@ -147,7 +145,7 @@ function integration() {
 	g
 }
 
-# checkout sprint branch and pull
+# checkout integration branch and pull
 # write `s 08-09` - it will checkout `integration/2015-08-09` and pull changes
 function i() {
  git fetch
@@ -158,7 +156,7 @@ function i() {
 
 # example: `sprint 10` creates `origin/sprint/15.10`
 function sprint() {
- gp
+ mgp
  git checkout -b sprint/15.$1
  git push -u origin HEAD:sprint/15.$1
  g
@@ -185,7 +183,8 @@ alias phpsymfonyrun='php app/console server:run'
 alias ser='w && cd ../vagrant/'
 alias vu='ser && vagrant up'
 alias vs='ser && vagrant ssh'
-alias vhalt='ser && vagrant halt && vu && vs'
+alias vstop='ser && vagrant halt'
+alias vhalt='vstop && vu && vs'
 
 #phpunit
 alias phpunitTest='cd app && ../bin/phpunit && cd ..'
@@ -216,24 +215,28 @@ alias npmPublish='npm publish ./'
 # QA
 #
 alias seleniumInstall='php ./vendor/bin/steward.php install'
-alias seleniumServer='java -jar ./vendor/bin/selenium-server-standalone-2.47.1.jar'
+alias seleniumServer='java -jar ./vendor/bin/selenium-server-standalone-2.48.2.jar'
 
-alias seleniumServerHub='java -jar ./vendor/bin/selenium-server-standalone-2.47.1.jar -role hub -port 4444'
-alias seleniumServerNode='java -jar ./vendor/bin/selenium-server-standalone-2.47.1.jar -role node -hub http://127.0.0.1:4444 -port 5555'
+alias seleniumServerHub='java -jar ./vendor/bin/selenium-server-standalone-2.48.2.jar -role hub -port 4444'
+alias seleniumServerNode='java -jar ./vendor/bin/selenium-server-standalone-2.48.2.jar -role node -hub http://127.0.0.1:4444 -port 5555'
 
 #example: seleniumRunTest ENV FILE
 function seleniumRunTest() {
-	./vendor/bin/steward.php run-tests $1 firefox --pattern "$2.php"
+	c
+	./vendor/bin/steward run-tests $1 firefox --pattern "$2.php"
 }
 #seleniumRunTestLocal FILE
 function seleniumRunTestLocal() {
-	./vendor/bin/steward.php run-tests --no-proxy local firefox --pattern "$1.php"
+	c
+	./vendor/bin/steward run-tests --no-proxy local firefox --pattern "$1.php"
 }
 #example: seleniumRunGroup GROUP ENV
 function seleniumRunGroup() {
-	./vendor/bin/steward.php run-tests --group=$1 $2 firefox $3
+	c
+	./vendor/bin/steward run-tests --group=$1 $2 firefox $3
 }
 #example: seleniumRunGroupLocal GROUP
 function seleniumRunGroupLocal() {
-	./vendor/bin/steward.php run-tests --no-proxy --group=$1 local firefox
+	c
+	./vendor/bin/steward run-tests --no-proxy --group=$1 local firefox
 }
