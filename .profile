@@ -62,7 +62,7 @@ alias doctrineUpdate='app/console doctrine:schema:update --dump-sql'
 #git-fixups - https://filip-prochazka.com/blog/git-fixup
 chmod +x /bin/git-log-vgrep-most-recent-commit
 
-#git-config (git aliases - git up = pull ff-only, git cif = fixup commit)
+#git-config (git aliases - git up = pull ff-only)
 . ~/.git-config.bash
 
 #git-autocomplete
@@ -73,6 +73,7 @@ fi
 alias ga='git add'
 alias g='git status'
 alias gc='git commit -am'
+alias gcfixup='git commit -a --fixup=HEAD'
 alias mgp='m && gp && g'
 alias m='git checkout master'
 alias gst='git stash'
@@ -107,12 +108,7 @@ function issue() {
 }
 # git squash commits: squash 5 (squashes 5 commits)
 function squash() {
- git rebase -i HEAD~$1
-}
-
-# git autosquash fixup commits in branch (use: autosquash master)
-function autosquash() {
-	git rebase -i --autosquash $1
+ git rebase --autosquash -i HEAD~$1
 }
 
 # gitTag 1.0.0
