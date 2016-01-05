@@ -60,7 +60,7 @@ alias doctrineUpdate='app/console doctrine:schema:update --dump-sql'
 #
 
 #git-fixups - https://filip-prochazka.com/blog/git-fixup
-chmod +x /bin/git-log-vgrep-most-recent-commit
+#chmod +x /bin/git-log-vgrep-most-recent-commit
 
 #git-config (git aliases - git up = pull ff-only)
 . ~/.git-config.bash
@@ -133,19 +133,30 @@ function releaseNotFromMaster() {
  g
 }
 
-# example: `integration 07-31` creates `origin/integration/2015-07-31`
+# example: `integration 07-31` creates `origin/integration/2016-07-31`
 function integration() {
 	mgp
-	git checkout -b integration/2015-$1
-	git push -u origin HEAD:integration/2015-$1
+	git checkout -b integration/2016-$1
+	git push -u origin HEAD:integration/2016-$1
 	g
+}
+
+function integrationNew() {
+	mgp
+	git checkout -b integration/$(date "+%Y-%m-%d%n")
+	git push -u origin integration/$(date "+%Y-%m-%d%n")
+	g
+}
+
+function int() {
+	i $(date "+%Y-%m-%d%n")
 }
 
 # checkout integration branch and pull
 # write `s 08-09` - it will checkout `integration/2015-08-09` and pull changes
 function i() {
  git fetch
- git checkout integration/2015-$1
+ git checkout integration/$1
  gp
  g
 }
@@ -153,15 +164,15 @@ function i() {
 # example: `sprint 10` creates `origin/sprint/15.10`
 function sprint() {
  mgp
- git checkout -b sprint/15.$1
- git push -u origin HEAD:sprint/15.$1
+ git checkout -b sprint/16.$1
+ git push -u origin HEAD:sprint/16.$1
  g
 }
 
 # checkout sprint branch and pull
 # write `s 21` - it will checkout `sprint/15.21` and pull changes
 function s() {
- git checkout sprint/15.$1 && gp
+ git checkout sprint/16.$1 && gp
  g
 }
 
