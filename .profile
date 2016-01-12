@@ -1,4 +1,4 @@
-export PATH="$HOME/.node/bin:$PATH"
+export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:/Users/chromecp/bin"
 
 
 # When using sudo, use alias expansion (otherwise sudo ignores your aliases)
@@ -17,8 +17,12 @@ alias reprofile='. ~/.profile'
 alias eprofile='sublime ~/.profile'
 alias ehosts='sublime /etc/hosts'
 alias ehttpd='sublime /etc/apache2/httpd.conf'
-alias ephp='sublime /usr/local/etc/php/5.6/php.ini'
 alias evhosts='sublime /etc/apache2/extra/httpd-vhosts.conf'
+alias elmcenvxml='sublime /etc/lmcenv.xml'
+# php - https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions
+alias ephp56='sublime /usr/local/etc/php/5.6/php.ini'	# LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
+alias ephp70='sublime /usr/local/etc/php/7.0/php.ini'	# LoadModule php7_module /usr/local/opt/php70/libexec/apache2/libphp7.so
+# sphp 56 | sphp 70
 
 alias apache_check_sytnax='sudo /usr/sbin/httpd -t'
 alias apache_restart='sudo apachectl restart'
