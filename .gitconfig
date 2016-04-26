@@ -1,19 +1,19 @@
 [user]
-	useconfigonly = true
+  useconfigonly = true
 [push]
-	default = tracking
+  default = tracking
 [core]
-	excludesfile = /Users/chromecp/.gitignore_global
-	editor = sublime -n -w
+  excludesfile = /Users/chromecp/.gitignore_global
+  editor = sublime -n -w
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 [alias]
-	up = "!git remote update -p; git merge --ff-only @{u}"
-	cif = =
+  up = "!git remote update -p; git merge --ff-only @{u}"
+  cif = =
 [color]
   ui = auto
 [color "branch"]
@@ -24,7 +24,8 @@
   meta = yellow bold
   frag = magenta bold
   old = red bold
-  new = cyan bold
+  new = green bold
+  context = normal dim
 [color "status"]
   branch = yellow bold
   added = green
