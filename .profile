@@ -3,6 +3,7 @@ export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin
 
 # When using sudo, use alias expansion (otherwise sudo ignores your aliases)
 alias sudo='sudo '
+alias switchBash='exec bash --login'
 
 
 # This helps me edit files that my user isn't the owner of in Sublime
@@ -43,9 +44,13 @@ alias t='tail -f'
 alias te='t /var/log/apache2/error_log'
 alias ta='t /var/log/apache2/access_log'
 
+alias today='date "+%Y-%m-%d%n"'
+
 #
 # symfony
 #
+
+alias csFixer='./bin/php-cs-fixer fix'
 
 alias dev='app/console --env=dev'
 alias prod='app/console --env=prod'
@@ -63,6 +68,60 @@ alias doctrineUpdate='app/console doctrine:schema:update --dump-sql'
 # git
 #
 
+###############################################################
+# Training
+# http://pcottle.github.io/learnGitBranching/
+##############
+
+alias egit="git config --global --edit"
+
+# editor pro git
+# git config --global core.editor "sublime -n -w"
+
+# vlastni user config pro kazdy repo
+# git config --global user.useconfigonly true
+
+function gitMortalek() {
+	git config user.name "Petr Chromec"
+	git config user.email "mortal_flesh@seznam.cz"
+}
+
+# cloning locally git
+# git clone --bare project project.git
+#
+# git remote add shared project.git
+ 
+# git log history
+alias gl='git log --oneline'
+alias ghist='git log --color --graph --pretty=format:"%C(auto)%h %ad | %C(white)%s%Creset%C(auto)%d%Creset %C(dim cyan)<%an>%Creset" --date=short'
+#alias lg='git log --color --graph --pretty=format:"%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold cyan)<%an>%Creset" --abbrev-commit --'
+
+# log akci v repu
+# git reflog
+
+# hooky
+# https://github.com/kvz/ochtra
+# git config --global init.templatedir '~/.gittemplate'
+# 	|- hooks
+# 		|- pre-commit
+# 		|- pre-push
+
+# zmena historie
+#git filter-branch --env-filter '
+#if [ "$GIT_AUTHOR_EMAIL" = "..." ];
+#	...
+#'
+
+# patch
+# git diff 123...456 --patch > diff.patch
+# git apply diff.patch
+
+# colors: normal, black, red, green, yellow, blue, magenta, cyan, white
+# modif: bold, dim (tmave), ul (podtrzeni), blink, reverse (podbarveni)
+
+#
+###############################################################
+
 #git-fixups - https://filip-prochazka.com/blog/git-fixup
 #chmod +x /bin/git-log-vgrep-most-recent-commit
 
@@ -76,6 +135,7 @@ fi
 
 alias ga='git add'
 alias g='git status'
+alias cg='c && g'
 alias gc='git commit -am'
 alias gcfixup='git commit -a --fixup=HEAD'
 alias mgp='m && gp && g'
@@ -88,6 +148,7 @@ alias gp='git up'	#git pull ff-only atd (alias in .git-config)
 alias gu='git push'
 alias gd='git diff'
 alias gres='git reset HEAD --hard'
+alias gclean='git clean'
 
 # create branch XYZ
 function branch() {
