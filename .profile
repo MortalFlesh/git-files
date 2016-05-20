@@ -24,6 +24,7 @@ alias elmcenvxml='sublime /etc/lmcenv.xml'
 alias ephp56='sublime /usr/local/etc/php/5.6/php.ini'	# LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
 alias ephp70='sublime /usr/local/etc/php/7.0/php.ini'	# LoadModule php7_module /usr/local/opt/php70/libexec/apache2/libphp7.so
 # sphp 56 | sphp 70
+alias exdebug='sublime ext-xdebug.ini'
 
 alias apache_check_sytnax='sudo /usr/sbin/httpd -t'
 alias apache_restart='sudo apachectl restart'
@@ -171,6 +172,11 @@ function issue() {
  git push -u origin $1:feature/$1
  g
 }
+
+function gcountcommits() {
+	ghist -100 | grep $1 | wc -l
+}
+
 # git squash commits: squash 5 (squashes 5 commits)
 function squash() {
  git rebase --autosquash -i HEAD~$1
@@ -295,20 +301,39 @@ alias seleniumServerNode='java -jar ./vendor/bin/selenium-server-standalone-2.48
 #example: seleniumRunTest ENV FILE
 function seleniumRunTest() {
 	c
-	./vendor/bin/steward run-tests $1 firefox --pattern "$2.php"
+	./vendor/bin/steward run -v $1 firefox --pattern "$2.php"
 }
+function seleniumRunTestVV() {
+	c
+	./vendor/bin/steward run -vv $1 firefox --pattern "$2.php"
+}
+
 #seleniumRunTestLocal FILE
 function seleniumRunTestLocal() {
 	c
-	./vendor/bin/steward run-tests --no-proxy local firefox --pattern "$1.php"
+	./vendor/bin/steward run -v --no-proxy local firefox --pattern "$1.php"
 }
+function seleniumRunTestLocalVV() {
+	c
+	./vendor/bin/steward run -vv --no-proxy local firefox --pattern "$1.php"
+}
+
 #example: seleniumRunGroup GROUP ENV
 function seleniumRunGroup() {
 	c
-	./vendor/bin/steward run-tests --group=$1 $2 firefox $3
+	./vendor/bin/steward run -v --group=$1 $2 firefox $3
 }
+function seleniumRunGroupVV() {
+	c
+	./vendor/bin/steward run -vv --group=$1 $2 firefox $3
+}
+
 #example: seleniumRunGroupLocal GROUP
 function seleniumRunGroupLocal() {
 	c
-	./vendor/bin/steward run-tests --no-proxy --group=$1 local firefox
+	./vendor/bin/steward run -v --no-proxy --group=$1 local firefox
+}
+function seleniumRunGroupLocalVV() {
+	c
+	./vendor/bin/steward run -vv --no-proxy --group=$1 local firefox
 }
