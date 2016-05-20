@@ -51,6 +51,9 @@ alias today='date "+%Y-%m-%d%n"'
 # symfony
 #
 
+# composer global require bamarni/symfony-console-autocomplete
+#eval "$(symfony-autocomplete)"
+
 alias csFixer='./bin/php-cs-fixer fix'
 
 alias dev='app/console --env=dev'
@@ -337,3 +340,10 @@ function seleniumRunGroupLocalVV() {
 	c
 	./vendor/bin/steward run -vv --no-proxy --group=$1 local firefox
 }
+
+#
+# include private profile
+#
+if [ -f ~/.private_profile ]; then
+  . ~/.private_profile
+fi
