@@ -1,6 +1,5 @@
 export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:/Users/chromecp/bin"
 
-
 # When using sudo, use alias expansion (otherwise sudo ignores your aliases)
 alias sudo='sudo '
 alias switchBash='exec bash --login'
@@ -44,6 +43,11 @@ alias e='exit'
 alias t='tail -f'
 alias te='t /var/log/apache2/error_log'
 alias ta='t /var/log/apache2/access_log'
+
+# http://stackoverflow.com/questions/16956810/finding-all-files-containing-a-text-string-on-linux
+function findString() {
+	grep -rnw . -e '$1'
+}
 
 alias today='date "+%Y-%m-%d%n"'
 
@@ -261,11 +265,11 @@ alias www='cd ~/www/'
 alias phptest='www && sublime test.php'
 alias phpsymfonyrun='php app/console server:run'
 
-alias ser='w && cd ../vagrant/'
+alias ser='w && cd ../vagrant-lmc/'
 alias vu='ser && vagrant up'
 alias vs='ser && vagrant ssh'
 alias vstop='ser && vagrant halt'
-alias vhalt='vstop && vu && vs'
+alias vrestart='vstop && vu && vs'
 
 #phpunit
 alias phpunitTest='cd app && ../bin/phpunit && cd ..'
@@ -291,6 +295,22 @@ alias bjsAll='bi && npm run build && grunt'
 # npm
 alias nrb='npm run build'
 alias npmPublish='npm publish ./'
+
+#
+# node brew - for using different versions of node
+# http://www.tech-step.net/876/
+#
+# curl -L git.io/nodebrew | perl - setup
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+function nodeUse() {
+	nodebrew install-binary v$1
+	nodebrew use v$1
+	node -v
+}
+
+alias nodeUseNormal='nodeUse 4.4.4'
+alias nodeUseUI='nodeUse 0.12.7'
 
 #
 # QA
