@@ -23,7 +23,7 @@ alias elmcenvxml='sublime /etc/lmcenv.xml'
 alias ephp56='sublime /usr/local/etc/php/5.6/php.ini'	# LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
 alias ephp70='sublime /usr/local/etc/php/7.0/php.ini'	# LoadModule php7_module /usr/local/opt/php70/libexec/apache2/libphp7.so
 # sphp 56 | sphp 70
-alias exdebug='sublime ext-xdebug.ini'
+alias exdebug='sublime /usr/local/etc/php/5.6/conf.d/ext-xdebug.ini'
 
 alias apache_check_sytnax='sudo /usr/sbin/httpd -t'
 alias apache_restart='sudo apachectl restart'
@@ -71,6 +71,7 @@ function symfony_clear_cache() {
 # doctrine
 
 alias doctrineUpdate='app/console doctrine:schema:update --dump-sql'
+alias doctrineUpdateBin='bin/console doctrine:schema:update --dump-sql'
 
 #
 # git
@@ -154,9 +155,40 @@ alias gstp='git stash pop'
 alias gwippop='gstp'
 alias gp='git up'	#git pull ff-only atd (alias in .git-config)
 alias gu='git push'
-alias gd='git diff'
 alias gres='git reset HEAD --hard'
 alias gclean='git clean'
+
+# diff
+alias gd='git diff'
+alias gdFiles='gd --name-status'
+# will show only added files in diff - usage: gda master
+function gda() {
+	gdFiles $1 | grep ^A
+}
+function gdaClass() {
+	gda $1 | grep --color "/[A-Za-z ]*.php"
+}
+# will show only modified files in diff - usage: gdm master
+function gdm() {
+	gdFiles $1 | grep ^M
+}
+function gdmClass() {
+	gdm $1 | grep --color "/[A-Za-z ]*.php"
+}
+
+# removes local branches listed in `branches.txt`
+function removeLocalBranches() {
+	cat branches.txt | while read branch;
+	do git branch -d $branch
+	done
+}
+
+# removes origin branches listed in `branches.txt`
+function removeOriginBranches() {
+	cat branches.txt | while read branch;
+	do git push origin --delete $branch
+	done
+}
 
 # create branch XYZ
 function branch() {
