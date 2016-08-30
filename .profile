@@ -394,6 +394,29 @@ function seleniumRunGroupLocalVV() {
 }
 
 #
+# Database
+#
+
+# importDB DBNAME DBFILE
+function importDB() {
+	# echo "SET FOREIGN_KEY_CHECKS=0" | mysql [user/pass/database] 
+	mysql -u root -p $1 < $2.sql
+	# { echo "SET FOREIGN_KEY_CHECKS=1;" ; } | mysql
+}
+
+#
+# Docker
+#
+alias cdDocker='cd. && cd docker'
+
+# dockerRun appName
+function dockerRun() {
+	# it - interactive terminal
+	# rm - remove after exit
+	docker run -it --rm --name $1 $1
+}
+
+#
 # include private profile
 #
 if [ -f ~/.private_profile ]; then
