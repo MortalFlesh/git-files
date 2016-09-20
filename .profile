@@ -58,7 +58,9 @@ alias today='date "+%Y-%m-%d%n"'
 # composer global require bamarni/symfony-console-autocomplete
 #eval "$(symfony-autocomplete)"
 
-alias csFixer='./bin/php-cs-fixer fix'
+alias fixCsFixer='./bin/php-cs-fixer fix'
+alias fixCodeSniffer='./bin/phpcbf --standard=ruleset.xml .'
+alias fixAll='fixCsFixer && fixCodeSniffer'
 
 alias dev='app/console --env=dev'
 alias prod='app/console --env=prod'
@@ -146,7 +148,6 @@ alias ga='git add'
 alias g='git status'
 alias cg='c && g'
 alias gc='git commit -am'
-alias gcfixup='git commit -a --fixup=HEAD'
 alias mgp='m && gp && g'
 alias m='git checkout master'
 alias gst='git stash'
@@ -157,6 +158,11 @@ alias gp='git up'	#git pull ff-only atd (alias in .git-config)
 alias gu='git push'
 alias gres='git reset HEAD --hard'
 alias gclean='git clean'
+
+alias gcfixup='git commit -a --fixup=HEAD'
+function gcfixupCommit() {
+	git commit -a --fixup=$1
+}
 
 # diff
 alias gd='git diff'
