@@ -163,6 +163,9 @@ alias gcfixup='git commit -a --fixup=HEAD'
 function gcfixupCommit() {
 	git commit -a --fixup=$1
 }
+function gcfixupCommitNoAdd() {
+	git commit --fixup=$1
+}
 
 # diff
 alias gd='git diff'
