@@ -16,7 +16,8 @@ alias reprofile='. ~/.profile'
 #
 alias eprofile='sublime ~/.profile'
 alias ehosts='sublime /etc/hosts'
-alias ehttpd='sublime /etc/apache2/httpd.conf'
+alias ehttpd='sublime /Users/chromecp/www/git-files/apache/httpd.conf'
+alias ehttpdApache='sublime /etc/apache2/httpd.conf'
 alias evhosts='sublime /etc/apache2/extra/httpd-vhosts.conf'
 alias elmcenvxml='sublime /etc/lmcenv.xml'
 # php - https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions
