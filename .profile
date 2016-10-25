@@ -4,6 +4,10 @@ export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin
 alias sudo='sudo '
 alias switchBash='exec bash --login'
 
+#
+# brew
+# https://github.com/Homebrew/legacy-homebrew/issues/49895
+#
 
 # This helps me edit files that my user isn't the owner of in Sublime
 #alias edit='SUDO_EDITOR="open -FWna /Applications/Sublime\ Text\ 2.app" sudo -e'
@@ -417,6 +421,11 @@ function importDB() {
 #
 # Docker
 #
+
+# docker - completion
+# http://stackoverflow.com/questions/26132451/how-to-add-bash-command-completion-for-docker-on-mac-os-x
+# curl -XGET https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > `brew --prefix`/etc/bash_completion.d/docker
+
 alias cdDocker='cd. && cd docker'
 
 # dockerRun appName
@@ -425,6 +434,20 @@ function dockerRun() {
 	# rm - remove after exit
 	docker run -it --rm --name $1 $1
 }
+
+# docker ps 	# running processes
+alias dps='docker ps -a'
+# docker run -it --rm --name NAME IMAGE -p EXTERN_PORT:IMAGE_PORT
+# docker run -||- -d 	# -d pusti se na pozadi
+
+
+#
+# include bash-completion
+# http://superuser.com/questions/819221/how-to-install-the-debian-bash-completion-using-homebrew
+#
+if [ -f `brew --prefix`/etc/bash_completion ]; then 
+    . `brew --prefix`/etc/bash_completion 
+fi
 
 #
 # include private profile
