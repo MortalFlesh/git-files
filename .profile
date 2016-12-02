@@ -285,6 +285,11 @@ function i() {
  g
 }
 
+function integrationList() {
+	git fetch
+	git branch | grep integration | grep 2016
+}
+
 # example: `sprint 10` creates `origin/sprint/15.10`
 function sprint() {
  mgp
@@ -437,8 +442,10 @@ function dockerRun() {
 
 # docker ps 	# running processes
 alias dps='docker ps -a'
+
 # docker run -it --rm --name NAME IMAGE -p EXTERN_PORT:IMAGE_PORT
 # docker run -||- -d 	# -d pusti se na pozadi
+# docker exec -it hello-app bash 	# pripojeni se na bash beziciho dockeru "hello-app"
 
 
 #
