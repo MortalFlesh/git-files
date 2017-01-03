@@ -366,11 +366,11 @@ alias nodeUseUI='nodeUse 0.12.7'
 #
 # QA
 #
-alias seleniumInstall='php ./vendor/bin/steward.php install'
-alias seleniumServer='java -jar ./vendor/bin/selenium-server-standalone-2.48.2.jar'
+alias seleniumInstall='php ./vendor/bin/steward.php install 2.53.1'
+alias seleniumServer='java -jar ./vendor/bin/selenium-server-standalone-2.53.1.jar'
 
-alias seleniumServerHub='java -jar ./vendor/bin/selenium-server-standalone-2.48.2.jar -role hub -port 4444'
-alias seleniumServerNode='java -jar ./vendor/bin/selenium-server-standalone-2.48.2.jar -role node -hub http://127.0.0.1:4444 -port 5555'
+alias seleniumServerHub='java -jar ./vendor/bin/selenium-server-standalone-2.53.1.jar -role hub -port 4444'
+alias seleniumServerNode='java -jar ./vendor/bin/selenium-server-standalone-2.53.1.jar -role node -hub http://127.0.0.1:4444 -port 5555'
 
 #example: seleniumRunTest ENV FILE
 function seleniumRunTest() {
@@ -446,6 +446,13 @@ alias dps='docker ps -a'
 # docker run -it --rm --name NAME IMAGE -p EXTERN_PORT:IMAGE_PORT
 # docker run -||- -d 	# -d pusti se na pozadi
 # docker exec -it hello-app bash 	# pripojeni se na bash beziciho dockeru "hello-app"
+
+#
+# FTP
+#
+
+alias ftpStart='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
+alias ftpStop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist'
 
 
 #
