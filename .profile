@@ -1,4 +1,4 @@
-export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:/Users/chromecp/bin"
+export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:$HOME/bin"
 
 # When using sudo, use alias expansion (otherwise sudo ignores your aliases)
 alias sudo='sudo '
@@ -20,7 +20,7 @@ alias reprofile='. ~/.profile'
 #
 alias eprofile='sublime ~/.profile'
 alias ehosts='sublime /etc/hosts'
-alias ehttpd='sublime /Users/chromecp/www/git-files/apache/httpd.conf'
+alias ehttpd='sublime ~chromecp/www/git-files/apache/httpd.conf'
 alias ehttpdApache='sublime /etc/apache2/httpd.conf'
 alias evhosts='sublime /etc/apache2/extra/httpd-vhosts.conf'
 alias elmcenvxml='sublime /etc/lmcenv.xml'
