@@ -4,4 +4,4 @@ git config --global alias.up '!git remote update -p; git merge --ff-only @{u}'
 
 # git cif - command to fixup commit
 # git config --global alias.cif = "!git commit --fixup=HEAD"
-git config --global alias.cif = "!git commit --fixup=$(~/git-log-vgrep-most-recent-commit 'fixup!')"
+# git config --global alias.cif = "!git commit --fixup=$(~/git-log-vgrep-most-recent-commit 'fixup!')"
