@@ -3,7 +3,7 @@
 [push]
   default = tracking
 [core]
-  excludesfile = /Users/chromecp/.gitignore_global
+  excludesfile = ~/.gitignore_global
   editor = sublime -n -w
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -32,4 +32,4 @@
   changed = cyan
   untracked = red
 [credential]
-	helper = cache --timeout=86400
+  helper = cache --timeout=86400
