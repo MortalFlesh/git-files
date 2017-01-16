@@ -20,7 +20,7 @@ alias reprofile='. ~/.profile'
 #
 alias eprofile='sublime ~/.profile'
 alias ehosts='sublime /etc/hosts'
-alias ehttpd='sublime ~chromecp/www/git-files/apache/httpd.conf'
+alias ehttpd='sublime ~/www/git-files/apache/httpd.conf'
 alias ehttpdApache='sublime /etc/apache2/httpd.conf'
 alias evhosts='sublime /etc/apache2/extra/httpd-vhosts.conf'
 alias elmcenvxml='sublime /etc/lmcenv.xml'
@@ -193,7 +193,7 @@ function gdmClass() {
 # removes local branches listed in `branches.txt`
 function removeLocalBranches() {
 	cat branches.txt | while read branch;
-	do git branch -d $branch
+	do git branch -D $branch
 	done
 }
 
