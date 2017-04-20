@@ -22,11 +22,13 @@ alias eprofile='sublime ~/.profile'
 alias ehosts='sublime /etc/hosts'
 alias ehttpd='sublime ~/www/git-files/apache/httpd.conf'
 alias ehttpdApache='sublime /etc/apache2/httpd.conf'
+alias ehttpdApache24='sublime /usr/local/etc/apache2/2.4/httpd.conf'
 alias evhosts='sublime /etc/apache2/extra/httpd-vhosts.conf'
 alias elmcenvxml='sublime /etc/lmcenv.xml'
 # php - https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions
 alias ephp56='sublime /usr/local/etc/php/5.6/php.ini'	# LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
 alias ephp70='sublime /usr/local/etc/php/7.0/php.ini'	# LoadModule php7_module /usr/local/opt/php70/libexec/apache2/libphp7.so
+alias ephp71='sublime /usr/local/etc/php/7.1/php.ini'	# LoadModule php7_module /usr/local/opt/php71/libexec/apache2/libphp71.so
 # sphp 56 | sphp 70
 alias exdebug='sublime /usr/local/etc/php/5.6/conf.d/ext-xdebug.ini'
 
@@ -56,6 +58,16 @@ function findString() {
 
 alias today='date "+%Y-%m-%d%n"'
 
+# jenkins-console -> edu-jenkins
+alias syncJenkinsMgmtToEdu='cp -R ~/www/php/jenkins-console/jobs/jenkins.mgmt.lmc.cz/	~/www/edu-jenkins/jobs/jenkins/'
+alias syncJenkins3ToEdu='cp -R 	  ~/www/php/jenkins-console/jobs/jenkins3.lh.lmc.lan/	~/www/edu-jenkins/jobs/jenkins/'
+# edu-jenkins -> jenkins-console
+alias syncEduToJenkinsMgmt='cp -R	~/www/edu-jenkins/jobs/jenkins/	~/www/php/jenkins-console/jobs/jenkins.mgmt.lmc.cz/'
+alias syncEduToJenkins3='cp -R		~/www/edu-jenkins/jobs/jenkins/	~/www/php/jenkins-console/jobs/jenkins3.lh.lmc.lan/'
+
+alias syncJenkinsQAToEduQa='cp -R 	~/www/php/jenkins-console/jobs/jenkinsqa.dev5.lmc.cz/	~/www/jenkinsqa-jobs/jobs/'
+alias syncEduQaToJenkinsQa='cp -R 	~/www/jenkinsqa-jobs/jobs/ ~/www/php/jenkins-console/jobs/jenkinsqa.dev5.lmc.cz/'
+
 #
 # symfony
 #
@@ -77,8 +89,8 @@ function symfony_clear_cache() {
 
 # doctrine
 
-alias doctrineUpdate='app/console doctrine:schema:update --dump-sql'
-alias doctrineUpdateBin='bin/console doctrine:schema:update --dump-sql'
+alias doctrineUpdate='bin/console doctrine:schema:update --dump-sql'
+alias doctrineUpdateApp='app/console doctrine:schema:update --dump-sql'
 
 #
 # git
@@ -190,6 +202,15 @@ function gdmClass() {
 	gdm $1 | grep --color "/[A-Za-z ]*.php"
 }
 
+function gitListMergedBranches() {
+	git branch -r --merged | grep origin | grep -v master | xargs -L1 | cut -d"/" -f 2-10 > branches.txt
+	sublime branches.txt
+}
+function gitListIntegrationBranches() {
+	git branch -r | grep origin | grep -v master | grep integration | xargs -L1 | cut -d"/" -f 2-10 > branches.txt
+	sublime branches.txt
+}
+
 # removes local branches listed in `branches.txt`
 function removeLocalBranches() {
 	cat branches.txt | while read branch;
@@ -202,6 +223,19 @@ function removeOriginBranches() {
 	cat branches.txt | while read branch;
 	do git push origin --delete $branch
 	done
+}
+
+function deleteBranch() {
+	deleteLocalBranch $1
+	deleteRemoteBranch $1
+}
+
+function deleteLocalBranch() {
+	git branch -D $1
+}
+
+function deleteRemoteBranch() {
+	git push origin --delete $1
 }
 
 # create branch XYZ
@@ -372,44 +406,61 @@ alias seleniumServer='java -jar ./vendor/bin/selenium-server-standalone-2.53.1.j
 alias seleniumServerHub='java -jar ./vendor/bin/selenium-server-standalone-2.53.1.jar -role hub -port 4444'
 alias seleniumServerNode='java -jar ./vendor/bin/selenium-server-standalone-2.53.1.jar -role node -hub http://127.0.0.1:4444 -port 5555'
 
+#
+# Docker grid console: http://localhost:4444/grid/console
+#
+# will start 4 chromes in docker
+function seleniumDockerStart() {
+	docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml up -d chrome
+	docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml scale chrome=4
+}
+# example: seleniumDockerDebug (will start 1 chrome in docker and allows debug mode - vnc server etc.)
+function seleniumDockerDebug() {
+	docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml up -d chrome-debug
+}
+function seleniumDockerStop() {
+	docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml stop
+	docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml rm -f
+}
+
 #example: seleniumRunTest ENV FILE
 function seleniumRunTest() {
 	c
-	./vendor/bin/steward run -v $1 firefox --pattern "$2.php"
+	./vendor/bin/steward run -v $1 chrome --pattern "$2.php"
 }
 function seleniumRunTestVV() {
 	c
-	./vendor/bin/steward run -vv $1 firefox --pattern "$2.php"
+	./vendor/bin/steward run -vv $1 chrome --pattern "$2.php"
 }
 
 #seleniumRunTestLocal FILE
 function seleniumRunTestLocal() {
 	c
-	./vendor/bin/steward run -v --no-proxy local firefox --pattern "$1.php"
+	./vendor/bin/steward run -v --no-proxy local chrome --pattern "$1.php"
 }
 function seleniumRunTestLocalVV() {
 	c
-	./vendor/bin/steward run -vv --no-proxy local firefox --pattern "$1.php"
+	./vendor/bin/steward run -vv --no-proxy local chrome --pattern "$1.php"
 }
 
 #example: seleniumRunGroup GROUP ENV
 function seleniumRunGroup() {
 	c
-	./vendor/bin/steward run -v --group=$1 $2 firefox $3
+	./vendor/bin/steward run -v --group=$1 $2 chrome $3
 }
 function seleniumRunGroupVV() {
 	c
-	./vendor/bin/steward run -vv --group=$1 $2 firefox $3
+	./vendor/bin/steward run -vv --group=$1 $2 chrome $3
 }
 
 #example: seleniumRunGroupLocal GROUP
 function seleniumRunGroupLocal() {
 	c
-	./vendor/bin/steward run -v --no-proxy --group=$1 local firefox
+	./vendor/bin/steward run -v --no-proxy --group=$1 local chrome
 }
 function seleniumRunGroupLocalVV() {
 	c
-	./vendor/bin/steward run -vv --no-proxy --group=$1 local firefox
+	./vendor/bin/steward run -vv --no-proxy --group=$1 local chrome
 }
 
 #
