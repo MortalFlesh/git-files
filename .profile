@@ -1,5 +1,10 @@
 export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:$HOME/bin"
 
+# include functions
+. ./functions.sh
+
+title "Profile initialization ..."
+
 # When using sudo, use alias expansion (otherwise sudo ignores your aliases)
 alias sudo='sudo '
 alias switchBash='exec bash --login'
