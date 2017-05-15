@@ -7,6 +7,8 @@ ln -s -f ~/www/git-files/.git-completion.bash ~/.git-completion.bash
 ln -s -f ~/www/git-files/.git-config.bash ~/.git-config.bash
 ln -s -f ~/www/git-files/.gitignore_global ~/.gitignore_global
 
+ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
+
 ln -s -f ~/www/git-files/.profile ~/.profile
 
 . ~/.profile
