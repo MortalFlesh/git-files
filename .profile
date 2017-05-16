@@ -1,7 +1,7 @@
 export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:$HOME/bin"
 
 # include functions
-. ./functions.sh
+. ~/www/git-files/functions.sh
 
 title "Profile initialization ..."
 
@@ -34,7 +34,7 @@ alias elmcenvxml='sublime /etc/lmcenv.xml'
 alias ephp56='sublime /usr/local/etc/php/5.6/php.ini'	# LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
 alias ephp70='sublime /usr/local/etc/php/7.0/php.ini'	# LoadModule php7_module /usr/local/opt/php70/libexec/apache2/libphp7.so
 alias ephp71='sublime /usr/local/etc/php/7.1/php.ini'	# LoadModule php7_module /usr/local/opt/php71/libexec/apache2/libphp71.so
-# sphp 56 | sphp 70
+# sphp 56 | sphp 70 | sphp 71
 alias exdebug='sublime /usr/local/etc/php/5.6/conf.d/ext-xdebug.ini'
 
 alias apache_check_sytnax='sudo /usr/sbin/httpd -t'
@@ -84,12 +84,12 @@ alias fixCsFixer='./bin/php-cs-fixer fix'
 alias fixCodeSniffer='./bin/phpcbf --standard=ruleset.xml .'
 alias fixAll='fixCsFixer && fixCodeSniffer'
 
-alias dev='app/console --env=dev'
-alias prod='app/console --env=prod'
+alias dev='bin/console --env=dev'
+alias prod='bin/console --env=prod'
 
 #symfony_clear_cache prod
 function symfony_clear_cache() {
-	app/console cache:clear --env=$1
+	bin/console cache:clear --env=$1
 }
 
 # doctrine
@@ -316,7 +316,7 @@ function int() {
 }
 
 # checkout integration branch and pull
-# write `s 08-09` - it will checkout `integration/2015-08-09` and pull changes
+# write `i 2017-08-09` - it will checkout `integration/2017-08-09` and pull changes
 function i() {
  git fetch
  git checkout integration/$1
@@ -327,21 +327,6 @@ function i() {
 function integrationList() {
 	git fetch
 	git branch | grep integration | grep 2017
-}
-
-# example: `sprint 10` creates `origin/sprint/15.10`
-function sprint() {
- mgp
- git checkout -b sprint/17.$1
- git push -u origin HEAD:sprint/17.$1
- g
-}
-
-# checkout sprint branch and pull
-# write `s 21` - it will checkout `sprint/15.21` and pull changes
-function s() {
- git checkout sprint/17.$1 && gp
- g
 }
 
 #
