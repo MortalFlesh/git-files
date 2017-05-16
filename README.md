@@ -13,6 +13,6 @@ mkdir -p www
 cd www
 git clone https://github.com/MortalFlesh/git-files.git
 cd git-files
-./symlink.shc
+./install.sh
 ```
 
