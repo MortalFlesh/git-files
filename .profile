@@ -377,7 +377,7 @@ alias bi='bower install'
 alias bjsAll='bi && npm run build && grunt'
 
 # npm
-alias nrb='yarn build'
+alias nrb='npm run build'
 alias npmPublish='npm publish ./'
 
 #
