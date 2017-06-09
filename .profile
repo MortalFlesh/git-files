@@ -42,6 +42,15 @@ alias apache_restart='sudo apachectl restart'
 alias apache_dump_vhosts='/usr/sbin/httpd -t -D DUMP_VHOSTS'
 alias apache='apache_restart && apache_check_sytnax'
 
+# nginx
+alias phpStart='sudo brew services start homebrew/php/php71'
+alias phpStop='sudo brew services stop homebrew/php/php71'
+alias phpShowFPM='lsof -Pni4 | grep LISTEN | grep php'
+
+alias ngStart='phpStart && sudo brew services start nginx'
+alias ngStop='sudo brew services stop nginx'
+alias ngRestart='phpStart && sudo brew services restart nginx'
+
 alias cd..="cd .."
 alias cd.="cd ~"
 
@@ -370,22 +379,6 @@ alias bjsAll='bi && npm run build && grunt'
 # npm
 alias nrb='npm run build'
 alias npmPublish='npm publish ./'
-
-#
-# node brew - for using different versions of node
-# http://www.tech-step.net/876/
-#
-# curl -L git.io/nodebrew | perl - setup
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
-function nodeUse() {
-	nodebrew install-binary v$1
-	nodebrew use v$1
-	node -v
-}
-
-alias nodeUseNormal='nodeUse 4.4.4'
-alias nodeUseUI='nodeUse 0.12.7'
 
 #
 # QA

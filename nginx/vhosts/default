@@ -1,0 +1,20 @@
+server {
+    listen       80;
+    server_name  localhost;
+    root       /Users/chromecp/www;
+
+    index index.html index.php;
+
+    location / {
+        include  /usr/local/etc/nginx/conf.d/php-fpm;
+    }
+
+    location = /info {
+        allow   127.0.0.1;
+        deny    all;
+        rewrite (.*) /index.php;
+    }
+
+    error_page  404     /404.html;
+    error_page  403     /403.html;
+}
