@@ -45,6 +45,7 @@ alias apache='apache_restart && apache_check_sytnax'
 # nginx
 alias phpStart='sudo brew services start homebrew/php/php71'
 alias phpStop='sudo brew services stop homebrew/php/php71'
+alias phpRestart='phpStop && phpStart'
 alias phpShowFPM='lsof -Pni4 | grep LISTEN | grep php'
 
 alias ngStart='phpStart && sudo brew services start nginx'
@@ -287,6 +288,11 @@ function squash() {
 function gitTag() {
  git tag -a $1 -m "$1"
  gu --tags
+}
+
+function gitRemoveTag() {
+	git tag -d $1
+	git push origin :refs/tags/$1
 }
 
 # create release issue release/rc/___XYZ___/rc1
