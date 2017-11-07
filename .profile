@@ -14,8 +14,15 @@ alias switchBash='exec bash --login'
 # https://github.com/Homebrew/legacy-homebrew/issues/49895
 #
 
+### Sublime
+#
 # This helps me edit files that my user isn't the owner of in Sublime
 #alias edit='SUDO_EDITOR="open -FWna /Applications/Sublime\ Text\ 2.app" sudo -e'
+
+### Visual studio code
+#
+# This allows run visual studio code in terminal by `code`
+# @see https://code.visualstudio.com/docs/setup/mac#_command-line
 
 # This alias reloads this file
 alias reprofile='. ~/.profile'
