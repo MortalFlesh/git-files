@@ -428,6 +428,10 @@ function seleniumRunTestVV() {
 	c
 	./vendor/bin/steward run -vv $1 chrome --pattern "$2.php"
 }
+function seleniumRunTestDebug() {
+	c
+	./vendor/bin/steward run -vvv $1 chrome --pattern "$2.php"
+}
 
 #seleniumRunTestLocal FILE
 function seleniumRunTestLocal() {
@@ -437,6 +441,10 @@ function seleniumRunTestLocal() {
 function seleniumRunTestLocalVV() {
 	c
 	./vendor/bin/steward run -vv --no-proxy local chrome --pattern "$1.php"
+}
+function seleniumRunTestLocalDebug() {
+	c
+	./vendor/bin/steward run -vvv --no-proxy local chrome --pattern "$1.php"
 }
 
 #example: seleniumRunGroup GROUP ENV
