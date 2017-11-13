@@ -1,1 +1,0 @@
-/Users/chromecp/Library/Preferences/PhpStorm2017.2/fileTemplates/includes/PHP Class Doc Comment.php

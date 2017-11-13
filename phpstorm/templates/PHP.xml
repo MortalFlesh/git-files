@@ -1,1 +1,83 @@
-/Users/chromecp/Library/Preferences/PhpStorm2017.2/templates/PHP.xml
+<templateSet group="PHP">
+  <template name="setget" value="/** @param $type$ $colnameCC$ */&#10;public function set$colnamePC$($colnameCC$);&#10;&#10;/** @return $type$ */&#10;public function get$colnamePC$();" description="create setter and getter" toReformat="false" toShortenFQNames="true">
+    <variable name="type" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="colnameCC" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="colnamePC" expression="capitalize($colnameCC$)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="get" value="/** @return $type$ */&#10;public function get$colnamePC$();" description="getter" toReformat="false" toShortenFQNames="true">
+    <variable name="type" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="colnamePC" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="setup" value="/** @var $class$ */&#10;private $property$;&#10;&#10;public function setUp()&#10;{&#10;    $this-&gt;$property$ = new $class$();&#10;}" description="setUp for PHPUnit" toReformat="true" toShortenFQNames="true" deactivated="true">
+    <variable name="class" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="property" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="notImplementedYet" value="throw new \Exception(sprintf('Method %s is not implemented yet.', __METHOD__));" description="NotImplementedYet exception throw" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="mock" value="$this-&gt;createMock($class$::class);&#10;" description="PHPUnit mock generator" toReformat="false" toShortenFQNames="true">
+    <variable name="class" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="expects" value="-&gt;expects($this-&gt;once())&#10;    -&gt;method('$method$')&#10;    -&gt;willReturn($return$);" description="PHP unit mock expect method" toReformat="false" toShortenFQNames="true">
+    <variable name="method" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="return" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="provider" value="public function $method$Provider()&#10;{&#10;    return [&#10;        '$case$' =&gt; [                &#10;        ],&#10;    ];&#10;}" description="PHPUnit Provider" toReformat="false" toShortenFQNames="true">
+    <variable name="method" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="case" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="if" value="if ($condition$) {&#10;    $body$&#10;}" description="if statement" toReformat="false" toShortenFQNames="true">
+    <variable name="condition" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="body" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JS_STATEMENT" value="true" />
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="doctrineTable" value="@ORM\Table(name=&quot;$table$&quot;,indexes={&#10;*     @ORM\Index(name=&quot;$index$_idx&quot;, columns={&quot;$column$&quot;}),&#10;* })" description="table annotation for doctrine entity" toReformat="false" toShortenFQNames="true">
+    <variable name="table" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="index" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="column" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP Comment" value="true" />
+    </context>
+  </template>
+  <template name="col" value="@ORM\Column(type=&quot;$type$&quot;)" description="doctrine column annotation" toReformat="false" toShortenFQNames="true">
+    <variable name="type" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP Comment" value="true" />
+    </context>
+  </template>
+  <template name="skip" value="$this-&gt;markTestSkipped('$message$');" description="Test - mark test skipped" toReformat="false" toShortenFQNames="true">
+    <variable name="message" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="fun" value="function ($PARAMETERS$) {&#10;    $END$&#10;}" description="Lambda function" toReformat="false" toShortenFQNames="true">
+    <variable name="PARAMETERS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+</templateSet>

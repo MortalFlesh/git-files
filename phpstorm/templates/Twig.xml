@@ -1,1 +1,9 @@
-/Users/chromecp/Library/Preferences/PhpStorm2017.2/templates/Twig.xml
+<templateSet group="Twig">
+  <template name="set" value="{% set $var$ = $value$ %}" description="Set twig variable" toReformat="false" toShortenFQNames="true">
+    <variable name="var" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="Twig" value="true" />
+    </context>
+  </template>
+</templateSet>
