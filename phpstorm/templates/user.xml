@@ -1,0 +1,7 @@
+<templateSet group="user">
+  <template name="&lt;abbreviation&gt;" value="import * as actions from './actions';&#10;import {chapterCursor} from './../app/state';&#10;import dispatcher from './../lib/dispatcher';&#10;&#10;export const dispatchToken = dispatcher.register(({action, data}) =&gt; {&#10;    switch(action) {&#10;        case actions.setBookmark:&#10;            const chapter = (data !== null &amp;&amp; data.hasOwnProperty('chapter')) ? data.chapter : 0;&#10;            const paragraph = (data !== null &amp;&amp; data.hasOwnProperty('paragraph')) ? data.paragraph : 0;&#10;&#10;            setToCursor('bookmark', {&#10;                chapter,&#10;                paragraph,&#10;            });&#10;            break;&#10;    }&#10;});&#10;&#10;function setToCursor(key, value) {&#10;    chapterCursor((chapter) =&gt; chapter.set(key, value));&#10;}&#10;&#10;export function getBookmark() {&#10;    return chapterCursor().get('bookmark');&#10;}&#10;" description="" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JS_STATEMENT" value="true" />
+    </context>
+  </template>
+</templateSet>

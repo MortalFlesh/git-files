@@ -1,0 +1,10 @@
+<templateSet group="Zen CSS">
+  <template name="markup" value="markup.hbs" description="markup file" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+</templateSet>
