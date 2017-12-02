@@ -26,7 +26,7 @@ sudo brew services start homebrew/php/php71
 
 
 title "Nginx - installs"
-brew installs nginx
+brew install nginx
 
 title "Nginx - PHP FPM"
 ln -s -f ~/www/git-files/nginx/php-fpm /usr/local/etc/nginx/conf.d/php-fpm

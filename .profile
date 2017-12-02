@@ -208,7 +208,11 @@ function gcfixupCommitNoAdd() {
 
 # diff
 alias gd='git diff'
+alias gdLast='gd HEAD~1'
+
 alias gdFiles='gd --name-status'
+alias gdLastFiles='gdFiles HEAD~1'
+
 # will show only added files in diff - usage: gda master
 function gda() {
 	gdFiles $1 | grep ^A
@@ -508,7 +512,6 @@ alias dps='docker ps -a'
 
 alias ftpStart='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
 alias ftpStop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist'
-
 
 #
 # include bash-completion
