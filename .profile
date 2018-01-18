@@ -322,11 +322,11 @@ function releaseNotFromMaster() {
  g
 }
 
-# example: `integration 07-31` creates `origin/integration/2017-07-31`
+# example: `integration 07-31` creates `origin/integration/2018-07-31`
 function integration() {
 	mgp
-	git checkout -b integration/2017-$1
-	git push -u origin HEAD:integration/2017-$1
+	git checkout -b integration/2018-$1
+	git push -u origin HEAD:integration/2018-$1
 	g
 }
 
@@ -342,7 +342,7 @@ function int() {
 }
 
 # checkout integration branch and pull
-# write `i 2017-08-09` - it will checkout `integration/2017-08-09` and pull changes
+# write `i 2018-08-09` - it will checkout `integration/2018-08-09` and pull changes
 function i() {
  git fetch
  git checkout integration/$1
@@ -352,7 +352,7 @@ function i() {
 
 function integrationList() {
 	git fetch
-	git branch | grep integration | grep 2017
+	git branch | grep integration | grep 2018
 }
 
 #
