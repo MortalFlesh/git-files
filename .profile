@@ -460,6 +460,10 @@ function seleniumRunGroupVV() {
 	c
 	./vendor/bin/steward run -vv --group=$1 $2 chrome $3
 }
+function seleniumRunGroupDebug() {
+	c
+	./vendor/bin/steward run -vvv --group=$1 $2 chrome $3
+}
 
 #example: seleniumRunGroupLocal GROUP
 function seleniumRunGroupLocal() {
@@ -469,6 +473,10 @@ function seleniumRunGroupLocal() {
 function seleniumRunGroupLocalVV() {
 	c
 	./vendor/bin/steward run -vv --no-proxy --group=$1 local chrome
+}
+function seleniumRunGroupLocalDebug() {
+	c
+	./vendor/bin/steward run -vvv --no-proxy --group=$1 local chrome
 }
 
 #
