@@ -426,15 +426,15 @@ function seleniumDockerStop() {
 #example: seleniumRunTest ENV FILE
 function seleniumRunTest() {
 	c
-	./vendor/bin/steward run -v $1 chrome --pattern "$2.php"
+	./vendor/bin/steward run -v $1 chrome --pattern "$2.php" --exclude-group=integration
 }
 function seleniumRunTestVV() {
 	c
-	./vendor/bin/steward run -vv $1 chrome --pattern "$2.php"
+	./vendor/bin/steward run -vv $1 chrome --pattern "$2.php" --exclude-group=integration
 }
 function seleniumRunTestDebug() {
 	c
-	./vendor/bin/steward run -vvv $1 chrome --pattern "$2.php"
+	./vendor/bin/steward run -vvv $1 chrome --pattern "$2.php" --exclude-group=integration
 }
 
 #seleniumRunTestLocal FILE
