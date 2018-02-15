@@ -10,8 +10,8 @@ ln -s -f ~/www/git-files/.git-completion.bash ~/.git-completion.bash
 ln -s -f ~/www/git-files/.git-config.bash ~/.git-config.bash
 ln -s -f ~/www/git-files/.gitignore_global ~/.gitignore_global
 
-title "Sublime:"
-ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
+title "Sublime 3:"
+ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/sublime
 
 title "NVM and Node:"
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
