@@ -1,5 +1,5 @@
 location ~ \.php$ {
-    fastcgi_pass   127.0.0.1:9071;  # last two numbers in port determines PHP version (56, 70, 71)
+    fastcgi_pass   127.0.0.1:9072;  # last two numbers in port determines PHP version (56, 70, 71)
     fastcgi_split_path_info ^(.+\.php)(/.*)$;
     fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
     include        fastcgi_params;

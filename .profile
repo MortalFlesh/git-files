@@ -50,8 +50,8 @@ alias apache_dump_vhosts='/usr/sbin/httpd -t -D DUMP_VHOSTS'
 alias apache='apache_restart && apache_check_sytnax'
 
 # nginx
-alias phpStart='sudo brew services start homebrew/php/php71'
-alias phpStop='sudo brew services stop homebrew/php/php71'
+alias phpStart='sudo brew services start homebrew/php/php72'
+alias phpStop='sudo brew services stop homebrew/php/php72'
 alias phpRestart='phpStop && phpStart'
 alias phpShowFPM='lsof -Pni4 | grep LISTEN | grep php'
 
