@@ -3,6 +3,11 @@
 # include functions
 . ./functions.sh
 
+title "Dependencies":
+brew install wget
+
+mkdir -p ~/bin
+
 title "Symlinks:"
 # - use ln -s -f ... will override files in your home
 ln -s -f ~/www/git-files/.gitconfig ~/.gitconfig
