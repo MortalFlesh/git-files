@@ -4,6 +4,12 @@
 # include functions
 . ./functions.sh
 
+title "Disable local mac apache"
+# https://tosbourn.com/turn-off-the-built-in-apache-on-osx/
+sudo apachectl stop
+sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+
+
 title "PHP 7.2 - installs"
 # https://gist.github.com/vukanac/e32c71d0d7c1444a1ac61469181ccaa6
 brew tap homebrew/homebrew-php
@@ -54,6 +60,12 @@ fi
 title "Nginx - autostart"
 sudo cp /usr/local/opt/nginx/*.plist /Library/LaunchDaemons/
 sudo chown root:wheel /Library/LaunchDaemons/homebrew.mxcl.nginx.plist
+
+
+title "Nginx - check"
+brew services list
+sudo nginx -t
+sudo lsof -n -i:80
 
 
 title "Done!"
