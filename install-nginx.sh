@@ -49,8 +49,8 @@ title "Nginx - Symlink conf"
 ln -s -f ~/www/git-files/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf
 
 title "Nginx - vhosts - default"
-ln -s -f ~/www/git-files/nginx/vhosts/default /usr/local/etc/nginx/sites-available/default
-ln -s -f ~/www/git-files/nginx/vhosts/default /usr/local/etc/nginx/sites-enabled/default
+ln -s -f ~/www/git-files/nginx/vhosts/default /usr/local/etc/nginx/sites-available/00-default
+ln -s -f ~/www/git-files/nginx/vhosts/default /usr/local/etc/nginx/sites-enabled/00-default
 
 if [ -f ~/www/nginx-vhosts/link.sh ]; then
     title "Nginx - vhosts - private"

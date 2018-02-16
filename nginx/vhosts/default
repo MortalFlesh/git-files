@@ -1,12 +1,12 @@
 server {
     listen       80;
     server_name  localhost;
-    root       /Users/chromecp/www;
-
-    index index.html index.php;
 
     location / {
         include  /usr/local/etc/nginx/conf.d/php-fpm;
+
+        root       /Users/chromecp/www;
+        index index.html index.php;
     }
 
     location = /info {
