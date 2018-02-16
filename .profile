@@ -41,6 +41,7 @@ alias elmcenvxml='sublime /etc/lmcenv.xml'
 alias ephp56='sublime /usr/local/etc/php/5.6/php.ini'	# LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
 alias ephp70='sublime /usr/local/etc/php/7.0/php.ini'	# LoadModule php7_module /usr/local/opt/php70/libexec/apache2/libphp7.so
 alias ephp71='sublime /usr/local/etc/php/7.1/php.ini'	# LoadModule php7_module /usr/local/opt/php71/libexec/apache2/libphp71.so
+alias ephp72='sublime /usr/local/etc/php/7.2/php.ini'	# LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp72.so
 # sphp 56 | sphp 70 | sphp 71
 alias exdebug='sublime /usr/local/etc/php/5.6/conf.d/ext-xdebug.ini'
 
