@@ -196,6 +196,7 @@ alias gstp='git stash pop'
 alias gwippop='gstp'
 alias gp='git up'	#git pull ff-only atd (alias in .git-config)
 alias gu='git push'
+alias guForce='gu --force-with-lease'
 alias gres='git reset HEAD --hard'
 alias gclean='git clean'
 
@@ -378,6 +379,7 @@ function integrationList() {
 #workspaces
 #
 alias www='cd ~/www/'
+alias fs='cd ~/fsharp/'
 
 #
 #php
