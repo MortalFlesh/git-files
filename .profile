@@ -272,6 +272,7 @@ function branch() {
  git push -u origin $1:$1
  g
 }
+
 # create issue XYZ
 function issue_withoutmaster() {
  gp
@@ -279,11 +280,28 @@ function issue_withoutmaster() {
  git push -u origin $1:feature/$1
  g
 }
+
 # checkout master first
 function issue() {
  mgp
  git checkout -b $1
  git push -u origin $1:feature/$1
+ g
+}
+
+# create bugfix XYZ
+function bugfix_withoutmaster() {
+ gp
+ git checkout -b $1
+ git push -u origin $1:bugfix/$1
+ g
+}
+
+# checkout master first
+function bugfix() {
+ mgp
+ git checkout -b $1
+ git push -u origin $1:bugfix/$1
  g
 }
 
