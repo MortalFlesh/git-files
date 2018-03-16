@@ -5,7 +5,7 @@ A pack of files, configs and aliases to help with git
 
 ## Installation
 
-- install Sublime 2 Text editor
+- install Sublime 3 Text editor
 
 ```
 cd ~
