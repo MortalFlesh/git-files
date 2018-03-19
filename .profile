@@ -79,6 +79,11 @@ function findString() {
 	grep -rnw . -e '$1'
 }
 
+# findFile /etc/ hosts
+function findFile() {
+	find $1 -type f -name "$2"
+}
+
 alias today='date "+%Y-%m-%d%n"'
 
 # jenkins-console -> edu-jenkins
