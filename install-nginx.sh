@@ -10,6 +10,7 @@ sudo apachectl stop
 sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 
 
+# ---- same as install-php.sh -------------
 title "PHP 7.2 - installs"
 # https://gist.github.com/vukanac/e32c71d0d7c1444a1ac61469181ccaa6
 brew tap homebrew/homebrew-php
@@ -30,7 +31,8 @@ ln -s -f ~/www/git-files/php72/www.conf /usr/local/etc/php/7.2/php-fpm.d/www.con
 ls -FGlh /usr/local/etc/php/7.2/php-fpm.d/www.conf
 
 title "PHP 7.2 - Run FPM"
-sudo brew services start homebrew/php/php72
+sudo brew services start php
+# --------------------------------------------
 
 
 title "Nginx - installs"

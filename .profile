@@ -51,8 +51,8 @@ alias apache_dump_vhosts='/usr/sbin/httpd -t -D DUMP_VHOSTS'
 alias apache='apache_restart && apache_check_sytnax'
 
 # nginx
-alias phpStart='sudo brew services start homebrew/php/php72'
-alias phpStop='sudo brew services stop homebrew/php/php72'
+alias phpStart='sudo brew services start php'
+alias phpStop='sudo brew services stop php'
 alias phpRestart='phpStop && phpStart'
 alias phpShowFPM='lsof -Pni4 | grep LISTEN | grep php'
 
@@ -535,6 +535,7 @@ function dockerRun() {
 
 # docker ps 	# running processes
 alias dps='docker ps -a'
+alias dkillAll='docker stop $(docker ps -q)'
 
 # docker run -it --rm --name NAME IMAGE -p EXTERN_PORT:IMAGE_PORT
 # docker run -||- -d 	# -d pusti se na pozadi
