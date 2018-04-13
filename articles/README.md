@@ -1,6 +1,6 @@
 # Interesting articles, videos and stuff
 
-My favourite articles - partialy based on [awsome developer](https://github.com/lmc-eu/awesome-developer)
+My favourite articles - partialy based on [LMC - awsome developer](https://github.com/lmc-eu/awesome-developer)
 
 ## Table of Contents
 - [Development](#development)
