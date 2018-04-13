@@ -4,6 +4,8 @@ My favourite articles - partialy based on [awsome developer](https://github.com/
 
 ## Table of Contents
 - [Development](#development)
+- [PHP](#php)
+- [(Functional) programming](#functional-programming)
 - [Code review](#code-review)
 - [Q&A](#qa)
 - [Git](#git)
