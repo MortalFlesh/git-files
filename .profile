@@ -542,6 +542,16 @@ alias dkillAll='docker stop $(docker ps -q)'
 # docker exec -it hello-app bash 	# pripojeni se na bash beziciho dockeru "hello-app"
 
 #
+# F#
+#
+alias fsNewConsole='dotnet new console -lang f# --no-restore'
+alias fsRun='dotnet run'
+function fsRequire() {
+	dotnet add package $1
+}
+
+
+#
 # FTP
 #
 
