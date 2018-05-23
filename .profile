@@ -193,6 +193,7 @@ alias ga='git add'
 alias g='git status'
 alias cg='c && g'
 alias gc='git commit -am'
+alias gcEmpty='git commit --allow-empty -m'
 alias mgp='m && gp && g'
 alias m='git checkout master'
 alias gst='git stash'
@@ -393,10 +394,9 @@ alias phptest='www && sublime test.php'
 alias phpsymfonyrun='php app/console server:run'
 
 alias ser='w && cd ../vagrant-lmc/'
-alias vu='ser && vagrant up'
-alias vs='ser && vagrant ssh'
-alias vstop='ser && vagrant halt'
-alias vrestart='vstop && vu && vs'
+alias vu='vagrant up'
+alias vs='vagrant ssh'
+alias vhalt='vagrant halt'
 
 #phpunit
 alias phpunitTest='cd app && ../bin/phpunit && cd ..'
@@ -452,15 +452,15 @@ function seleniumDockerStop() {
 #example: seleniumRunTest ENV FILE
 function seleniumRunTest() {
 	c
-	./vendor/bin/steward run -v $1 chrome --pattern "$2.php" --exclude-group=integration
+	./vendor/bin/steward run -v $1 chrome --pattern "$2.php"
 }
 function seleniumRunTestVV() {
 	c
-	./vendor/bin/steward run -vv $1 chrome --pattern "$2.php" --exclude-group=integration
+	./vendor/bin/steward run -vv $1 chrome --pattern "$2.php"
 }
 function seleniumRunTestDebug() {
 	c
-	./vendor/bin/steward run -vvv $1 chrome --pattern "$2.php" --exclude-group=integration
+	./vendor/bin/steward run -vvv $1 chrome --pattern "$2.php"g
 }
 
 #seleniumRunTestLocal FILE
