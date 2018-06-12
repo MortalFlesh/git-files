@@ -3,3 +3,9 @@
 .idea
 
 buildinfo.xml
+
+*/http-client.env.json
+
+# TMP
+etc/narwhal
+etc/solr/academy*

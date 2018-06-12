@@ -1,4 +1,4 @@
-export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:$HOME/bin"
+export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:$HOME/bin:$HOME/phive/tools"
 
 # include functions
 . ~/www/git-files/functions.sh

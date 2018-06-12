@@ -18,6 +18,10 @@ ln -s -f ~/www/git-files/.gitignore_global ~/.gitignore_global
 title "Sublime 3:"
 ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/sublime
 
+title "Phive tools:"
+mkdir -p ~/phive
+ln -s -f ~/www/git-files/phive/phive.xml ~/phive/phive.xml
+
 title "NVM and Node:"
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 command -v nvm
