@@ -48,7 +48,8 @@ alias exdebug='sublime /usr/local/etc/php/5.6/conf.d/ext-xdebug.ini'
 alias apache_check_sytnax='sudo /usr/sbin/httpd -t'
 alias apache_restart='sudo apachectl restart'
 alias apache_dump_vhosts='/usr/sbin/httpd -t -D DUMP_VHOSTS'
-alias apache='apache_restart && apache_check_sytnax'
+alias apache='echo use nginx!'
+#alias apache='apache_restart && apache_check_sytnax'
 
 # nginx
 alias phpStart='sudo brew services start php'
@@ -460,7 +461,7 @@ function seleniumRunTestVV() {
 }
 function seleniumRunTestDebug() {
 	c
-	./vendor/bin/steward run -vvv $1 chrome --pattern "$2.php"g
+	./vendor/bin/steward run -vvv $1 chrome --pattern "$2.php"
 }
 
 #seleniumRunTestLocal FILE
@@ -549,6 +550,21 @@ alias fsRun='dotnet run'
 function fsRequire() {
 	dotnet add package $1
 }
+
+#
+# 7Zip
+#
+# zipFile output source
+function zipFile() {
+	7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p -- $1.7z $2
+}
+alias zipExtract='7z x '
+alias zipList='7z l '
+
+#
+# Kafka
+#
+alias kafRead='kafkacat -C -b kfall-1.dev1.services.lmc:9092 -t lmc-test1 -o -5'
 
 
 #
