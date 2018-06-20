@@ -29,7 +29,13 @@ A simple list with examples on `how to` I have trouble with.
         extension={extension}.so
         ```
     - link ini file to php `conf.d`
-        ```
-        cd /etc/php/7.1/cli/conf.d/
-        sudo ln -s /etc/php/7.1/mods-available/{extension}.ini 20-{extension}.ini
-        ```
+        - **cli**
+            ```
+            cd /etc/php/7.1/cli/conf.d/
+            sudo ln -s /etc/php/7.1/mods-available/{extension}.ini 20-{extension}.ini
+            ```
+        - **apache**
+            ```
+            cd /etc/php/7.1/apache2/conf.d/
+            sudo ln -s /etc/php/7.1/mods-available/{extension}.ini 20-{extension}.ini
+            ```
