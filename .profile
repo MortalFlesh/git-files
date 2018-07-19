@@ -51,6 +51,10 @@ alias apache_dump_vhosts='/usr/sbin/httpd -t -D DUMP_VHOSTS'
 alias apache='echo use nginx!'
 #alias apache='apache_restart && apache_check_sytnax'
 
+function whatListenOn() {
+	sudo lsof -nP -i:$1 | grep LISTEN
+}
+
 # nginx
 alias phpStart='sudo brew services start php'
 alias phpStop='sudo brew services stop php'
@@ -546,6 +550,7 @@ alias dkillAll='docker stop $(docker ps -q)'
 # F#
 #
 alias fsNewConsole='dotnet new console -lang f# --no-restore'
+alias fsNewSAFE='dotnet new SAFE -lang f#'
 alias fsRun='dotnet run'
 function fsRequire() {
 	dotnet add package $1
@@ -566,6 +571,20 @@ alias zipList='7z l '
 #
 alias kafRead='kafkacat -C -b kfall-1.dev1.services.lmc:9092 -t lmc-test1 -o -5'
 
+#
+# Black-fire
+#
+alias bfRestart='launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.blackfire-agent.plist && launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.blackfire-agent.plist'
+alias bfTailLog='tail -f /usr/local/var/log/blackfire/agent.log'
+
+#
+# Postgresql
+#
+# https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e
+
+alias pgStart='pg_ctl -D /usr/local/var/postgres start'
+alias pgStop='pg_ctl -D /usr/local/var/postgres stop'
+# brew services start postgresql # lauch at startup
 
 #
 # FTP
