@@ -537,14 +537,35 @@ function dockerRun() {
 	# rm - remove after exit
 	docker run -it --rm --name $1 $1
 }
+alias drit='docker run -it '
+alias dritrm='docker run -it --rm '
 
 # docker ps 	# running processes
-alias dps='docker ps -a'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
 alias dkillAll='docker stop $(docker ps -q)'
 
 # docker run -it --rm --name NAME IMAGE -p EXTERN_PORT:IMAGE_PORT
 # docker run -||- -d 	# -d pusti se na pozadi
 # docker exec -it hello-app bash 	# pripojeni se na bash beziciho dockeru "hello-app"
+
+#
+# push repository to docker hub
+# 
+# $ docker build -t {username}/{image-name} . 						# builds a docker image in cwd
+# $ docker images 							  						# shows all builded images (find a container id there)
+# $ docker tag {container-id} {username}/{image-name}:{tag-version}	# add tag to container
+# $ docker images 							  						# there should be tagged version of image with same container-id
+# $ docker login --username={username}								# login to dockerhub acc
+# $ docker push {username}/{image-name}:{tag-version}				# pushes the container to docker hub
+
+#
+# cleanup space - https://lebkowski.name/docker-volumes/
+# docker system df
+#
+# docker image ls | grep '<none>' | awk '{ print $3 }' | xargs docker rmi
+# docker ps --filter status=dead --filter status=exited -aq | xargs docker rm -v
+
 
 #
 # F#
