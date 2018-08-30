@@ -535,15 +535,15 @@ alias cdDocker='cd. && cd docker'
 function dockerRun() {
 	# it - interactive terminal
 	# rm - remove after exit
-	docker run -it --rm --name $1 $1
+	docker conainer run -it --rm --name $1 $1
 }
-alias drit='docker run -it '
-alias dritrm='docker run -it --rm '
+alias drit='docker container run -it '
+alias dritrm='docker container run -it --rm '
 
 # docker ps 	# running processes
-alias dps='docker ps'
-alias dpsa='docker ps -a'
-alias dkillAll='docker stop $(docker ps -q)'
+alias dps='docker container ls'
+alias dpsa='dps -a'
+alias dkillAll='docker stop $(dps -q)'
 
 # docker run -it --rm --name NAME IMAGE -p EXTERN_PORT:IMAGE_PORT
 # docker run -||- -d 	# -d pusti se na pozadi
@@ -568,6 +568,11 @@ alias dkillAll='docker stop $(docker ps -q)'
 
 
 #
+# Scala
+#
+alias scala='sbt console'
+
+#
 # F#
 #
 alias fsNewConsole='dotnet new console -lang f# --no-restore'
@@ -586,11 +591,6 @@ function zipFile() {
 }
 alias zipExtract='7z x '
 alias zipList='7z l '
-
-#
-# Kafka
-#
-alias kafRead='kafkacat -C -b kfall-1.dev1.services.lmc:9092 -t lmc-test1 -o -5'
 
 #
 # Black-fire
