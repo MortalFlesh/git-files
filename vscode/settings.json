@@ -1,0 +1,11 @@
+{
+    "workbench.iconTheme": "vscode-icons",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "extensions.ignoreRecommendations": false,
+    "window.zoomLevel": 0,
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx"
+    },
+    "jenkins.pipeline.linter.connector.url": "http://jenkins-arch-php.lmc/"
+}
