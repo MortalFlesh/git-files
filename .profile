@@ -577,17 +577,24 @@ alias scala='sbt console'
 #
 alias fsNewConsole='dotnet new console -lang f# --no-restore'
 alias fsNewSAFE='dotnet new SAFE -lang f#'
+alias fsNewTests='dotnet new expecto -n tests -o tests/'
+
 alias fsRun='dotnet run'
 function fsRequire() {
 	dotnet add package $1
+	dotnet restore
 }
 
 #
 # 7Zip
 #
+# zipFileWithPassword output source
+function zipFileWithPassword() {
+	7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p -- $1.7z $2
+}
 # zipFile output source
 function zipFile() {
-	7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p -- $1.7z $2
+	7z a -t7z -- $1.7z $2
 }
 alias zipExtract='7z x '
 alias zipList='7z l '
