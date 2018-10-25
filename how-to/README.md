@@ -39,3 +39,39 @@ A simple list with examples on `how to` I have trouble with.
             cd /etc/php/7.1/apache2/conf.d/
             sudo ln -s /etc/php/7.1/mods-available/{extension}.ini 20-{extension}.ini
             ```
+
+### Provide truth table in PHPUnit
+- inspired here: https://stackoverflow.com/questions/9291987/outputting-a-truth-table-in-php
+
+```php
+/**
+ * @dataProvider providePossibility
+ */
+public function testShouldCheckPossibility(bool $a, bool $b, bool $c, bool $d): void {
+    echo implode(' | ', [
+        $a ? 'Y' : 'N',
+        $b ? 'Y' : 'N',
+        $c ? 'Y' : 'N',
+        $d ? 'Y' : 'N',
+    ]);
+
+    // perform test ...
+}
+
+public function providePossibility(): iterable
+{
+    $options = ['a', 'b', 'c', 'd'];
+
+    $nbBooleans = count($options);
+
+    $nbIterations = pow(2, $nbBooleans);
+    for ($i = 0; $i < $nbIterations; $i++) {
+        $case = [];
+        for ($iBit = 0; $iBit < $nbBooleans; $iBit++) {
+            $case[] = ($i & pow(2, $iBit)) !== 0 ? true : false;
+        }
+
+        yield $case;
+    }
+}
+```
