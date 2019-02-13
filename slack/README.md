@@ -66,7 +66,8 @@ document.addEventListener("DOMContentLoaded", function() {
    span.c-message__body,
    a.c-message__sender_link,
    span.c-message_attachment__media_trigger.c-message_attachment__media_trigger--caption,
-   div.p-message_pane__foreword__description span
+   div.p-message_pane__foreword__description span,
+   span.c-message_kit__text
    {
        color: #afafaf !important;
    }
