@@ -43,7 +43,7 @@ alias ephp70='sublime /usr/local/etc/php/7.0/php.ini'	# LoadModule php7_module /
 alias ephp71='sublime /usr/local/etc/php/7.1/php.ini'	# LoadModule php7_module /usr/local/opt/php71/libexec/apache2/libphp71.so
 alias ephp72='sublime /usr/local/etc/php/7.2/php.ini'	# LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp72.so
 # sphp 56 | sphp 70 | sphp 71
-alias exdebug='sublime /usr/local/etc/php/5.6/conf.d/ext-xdebug.ini'
+alias exdebug='sublime /usr/local/etc/php/7.2/conf.d/ext-xdebug.ini'
 
 alias apache_check_sytnax='sudo /usr/sbin/httpd -t'
 alias apache_restart='sudo apachectl restart'
@@ -71,7 +71,7 @@ alias cd.="cd ~"
 alias ls='ls -FG'
 alias lsa='ls -FGa'
 alias ll='ls -lh'
-alias lla='ls -lha'
+alias lla='ll -a'
 
 alias c='clear'
 alias e='exit'
@@ -81,6 +81,7 @@ alias ta='t /var/log/apache2/access_log'
 
 # http://stackoverflow.com/questions/16956810/finding-all-files-containing-a-text-string-on-linux
 function findString() {
+	# or: grep -lr "/.*Suave.*/" ./
 	grep -rnw . -e '$1'
 }
 
@@ -198,6 +199,7 @@ alias ga='git add'
 alias g='git status'
 alias cg='c && g'
 alias gc='git commit -am'
+alias gcNoAdd='git commit -m'
 alias gcEmpty='git commit --allow-empty -m'
 alias mgp='m && gp && g'
 alias m='git checkout master'
@@ -223,8 +225,10 @@ function gcfixupCommitNoAdd() {
 alias gd='git diff'
 alias gdLast='gd HEAD~1'
 
+alias gdCount='gd --stat'
 alias gdFiles='gd --name-status'
 alias gdLastFiles='gdFiles HEAD~1'
+alias gdLastCount='gdLast --stat'
 
 # will show only added files in diff - usage: gda master
 function gda() {
@@ -243,6 +247,10 @@ function gdmClass() {
 
 function gitListMergedBranches() {
 	git branch -r --merged | grep origin | grep -v master | xargs -L1 | cut -d"/" -f 2-10 > branches.txt
+	sublime branches.txt
+}
+function gitListBranches() {
+	git branch -r | grep origin | grep -v master | xargs -L1 | cut -d"/" -f 2-10 > branches.txt
 	sublime branches.txt
 }
 function gitListIntegrationBranches() {
@@ -575,9 +583,13 @@ alias scala='sbt console'
 #
 # F#
 #
+alias f='fake build target '	# use: fake run OR fake build ...
+
 alias fsNewConsole='dotnet new console -lang f# --no-restore'
 alias fsNewSAFE='dotnet new SAFE -lang f#'
 alias fsNewTests='dotnet new expecto -n tests -o tests/'
+alias fsNewFake='dotnet new fake'
+alias fsNewLib='dotnet new classlib -lang F#'
 
 alias fsRun='dotnet run'
 function fsRequire() {
@@ -585,16 +597,31 @@ function fsRequire() {
 	dotnet restore
 }
 
+alias fsRelease='dotnet publish -c Release -o ' # provide where to put the output
+
+#
+# Profile
+#
+# profile PID ($1) for 30s to the sample.txt - example: `profileProcess 1234`
+function profileProcess() {
+	sample $1 30 -file ./sample.txt
+}
+
+# profile container by ID - example: `profileDocker CONTAINER_ID`
+function profileDocker() {
+	docker stats $0
+}
+
 #
 # 7Zip
 #
-# zipFileWithPassword output source
+# zipFileWithPassword source
 function zipFileWithPassword() {
-	7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p -- $1.7z $2
+	7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p -- $1.7z $1
 }
-# zipFile output source
+# zipFile source
 function zipFile() {
-	7z a -t7z -- $1.7z $2
+	7z a -t7z -- $1.7z $1
 }
 alias zipExtract='7z x '
 alias zipList='7z l '
@@ -618,6 +645,7 @@ alias pgStop='pg_ctl -D /usr/local/var/postgres stop'
 # FTP
 #
 
+# http://osxdaily.com/2011/09/29/start-an-ftp-or-sftp-server-in-mac-os-x-lion/
 alias ftpStart='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
 alias ftpStop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist'
 
