@@ -55,7 +55,7 @@ console.log('Narwhal scripts');
                     $item
                         .html()
                         .split(' ')
-                        .map((word) => word.startsWith('http') ? `<a href="${word}" target="_blank">${word}</a>` : word)
+                        .map((word) => word.startsWith('http') ? `<a href='${word}' target="_blank">${word}</a>` : word)
                         .join(' ')
                 $item.html(content)
             })
