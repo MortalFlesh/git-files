@@ -39,15 +39,17 @@ console.log('Narwhal scripts');
         //
 
         // edit on `E` keyup
-        $('body').on('keyup', ({ key }) => {
-            if (key === 'e') {
+        $(document).on('keyup', ({ target: { tagName }, key }) => {
+            const tag = tagName.toLocaleLowerCase()
+
+            if (tag !== 'input' && tag !== 'textarea' && key === 'e') {
                 ifExistsDo($(selector.editButton.selector), ($edit) => {
                     window.location.href = $edit.first().attr('href')
                 })
             }
         })
 
-        // make links in description clickable
+        // make links in clickable class clickable
         ifExistsDo($(selector.clickable.selector), ($clickable) => {
             $clickable.each((_, item) => {
                 const $item = $(item)
