@@ -43,6 +43,7 @@ My favourite articles - partialy based on [LMC - awsome developer](https://githu
 ## Q&A
 - [Funkční systémové testování: když unit-testy nestačí - @OndraM](http://prvnivcesku.cz/systemove-testovani/)
 - [PHPUnit - best practices](https://thephp.cc/news/2016/02/questioning-phpunit-best-practices) (_old_)
+- [TDD where it all go wrong](https://www.youtube.com/watch?v=EZ05e7EMOLM)
 
 ## Git
 - [Jak a proč fixupovat](https://filip-prochazka.com/blog/git-fixup)
