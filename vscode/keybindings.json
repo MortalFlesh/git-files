@@ -169,5 +169,79 @@
     {
         "key": "alt+f1",
         "command": "workbench.files.action.showActiveFileInExplorer"
+    },
+    {
+        "key": "cmd+enter",
+        "command": "fsi.SendSelection",
+        "when": "editorFocus && !findWidgetVisible && editorLangId == 'fsharp'"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-fsi.SendSelection",
+        "when": "editorFocus && !findWidgetVisible && editorLangId == 'fsharp'"
+    },
+    {
+        "key": "alt+enter",
+        "command": "editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+[Period]",
+        "command": "-editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+f7",
+        "command": "editor.action.referenceSearch.trigger",
+        "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+        "key": "shift+f12",
+        "command": "-editor.action.referenceSearch.trigger",
+        "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.navigateLast"
+    },
+    {
+        "key": "shift+cmd+s",
+        "command": "editor.action.trimTrailingWhitespace",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+k cmd+x",
+        "command": "-editor.action.trimTrailingWhitespace",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+space",
+        "command": "editor.action.peekDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+        "key": "alt+f12",
+        "command": "-editor.action.peekDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+        "key": "shift+alt+[Period]",
+        "command": "fsharp.updateInfoPanel",
+        "when": "editorFocus && editorLangId == 'fsharp'"
+    },
+    {
+        "key": "alt+[Period]",
+        "command": "-fsharp.updateInfoPanel",
+        "when": "editorFocus && editorLangId == 'fsharp'"
+    },
+    {
+        "key": "shift+alt+[Comma]",
+        "command": "fsharp.openInfoPanel",
+        "when": "editorFocus && editorLangId == 'fsharp'"
+    },
+    {
+        "key": "alt+[Comma]",
+        "command": "-fsharp.openInfoPanel",
+        "when": "editorFocus && editorLangId == 'fsharp'"
     }
 ]

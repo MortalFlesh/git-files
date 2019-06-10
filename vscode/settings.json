@@ -1,5 +1,4 @@
 {
-    "workbench.iconTheme": "vscode-icons",
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "extensions.ignoreRecommendations": false,
@@ -7,5 +6,13 @@
     "emmet.syntaxProfiles": {
         "javascript": "jsx"
     },
-    "jenkins.pipeline.linter.connector.url": "http://jenkins-arch-php.lmc/"
+    "jenkins.pipeline.linter.connector.url": "http://jenkins-arch-php.lmc/",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "FSharp.fsacRuntime": "netcore",
+    "editor.minimap.enabled": false,
+    "cSpell.userWords": [
+        "Graylog",
+        "printfn"
+    ],
+    "workbench.iconTheme": "vscode-icons"
 }
