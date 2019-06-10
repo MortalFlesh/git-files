@@ -1,0 +1,5 @@
+<ItemGroup>
+    <ProjectReference Include="../app/App.fsproj">
+        <Name>App.fsproj</Name>
+    </ProjectReference>
+</ItemGroup>
