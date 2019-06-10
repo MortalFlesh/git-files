@@ -1,4 +1,4 @@
-export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:$HOME/bin:$HOME/phive/tools"
+export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:$HOME/bin:$HOME/phive/tools:$HOME/.local/bin:$HOME/.cabal/bin:$HOME/.ghcup/bin"
 
 # include functions
 . ~/www/git-files/functions.sh
@@ -42,6 +42,7 @@ alias ephp56='sublime /usr/local/etc/php/5.6/php.ini'	# LoadModule php5_module /
 alias ephp70='sublime /usr/local/etc/php/7.0/php.ini'	# LoadModule php7_module /usr/local/opt/php70/libexec/apache2/libphp7.so
 alias ephp71='sublime /usr/local/etc/php/7.1/php.ini'	# LoadModule php7_module /usr/local/opt/php71/libexec/apache2/libphp71.so
 alias ephp72='sublime /usr/local/etc/php/7.2/php.ini'	# LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp72.so
+alias ephp73='sublime /usr/local/etc/php/7.3/php.ini'	# LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp73.so
 # sphp 56 | sphp 70 | sphp 71
 alias exdebug='sublime /usr/local/etc/php/7.2/conf.d/ext-xdebug.ini'
 
@@ -403,6 +404,8 @@ alias fs='cd ~/fsharp/'
 #
 #php
 #
+alias phpUnlimitedMemory='php -d memory_limit=-1 '
+alias phpUnlimitedMemoryComposer='php -d memory_limit=-1 /usr/local/bin/composer '
 alias phptest='www && sublime test.php'
 alias phpsymfonyrun='php app/console server:run'
 
@@ -599,6 +602,15 @@ function fsRequire() {
 
 alias fsRelease='dotnet publish -c Release -o ' # provide where to put the output
 
+# tag current commit, push tags and release to the current nuget
+function fsReleaseTag() {
+	f build 28231 &&
+	gc "Version $1" &&
+	gu &&
+	gitTag $1 &&
+	f release 28231
+}
+
 #
 # Profile
 #
@@ -668,3 +680,16 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 nvm use node
+
+#
+# haskell
+#
+# Config file path source is default config file.
+# Config file /Users/chromecp/.cabal/config not found.
+# Writing default configuration to /Users/chromecp/.cabal/config
+
+# ~/.ghcup/env
+
+# http://geekocephale.com/blog/2018/09/28/Haskell-setup
+alias haskellGhcid='ghcid "--command=ghci"'
+alias haskellGhciRepl='ghci'
