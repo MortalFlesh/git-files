@@ -3,6 +3,13 @@ How to
 
 A simple list with examples on `how to` I have trouble with.
 
+## Brew
+```sh
+`brew update`                   # `fetch` current packages from github
+`brew outdated`                 # show what is available to upgrade
+`brew upgrade pcgk_1 pckg_2`    # upgrade packages
+```
+
 ## PHP
 
 ### Install and Register PHP extension on ubuntu
