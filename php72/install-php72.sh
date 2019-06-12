@@ -4,6 +4,8 @@
 . ./functions.sh
 
 title "PHP 7.2 - installs"
+echo "following installation has deprecations.."
+exit 1
 # https://gist.github.com/vukanac/e32c71d0d7c1444a1ac61469181ccaa6
 brew tap homebrew/homebrew-php
 # brew install php56 --without-ldap --without-legacy-mysql --with-httpd24   # apache version

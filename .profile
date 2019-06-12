@@ -44,7 +44,7 @@ alias ephp71='sublime /usr/local/etc/php/7.1/php.ini'	# LoadModule php7_module /
 alias ephp72='sublime /usr/local/etc/php/7.2/php.ini'	# LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp72.so
 alias ephp73='sublime /usr/local/etc/php/7.3/php.ini'	# LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp73.so
 # sphp 56 | sphp 70 | sphp 71
-alias exdebug='sublime /usr/local/etc/php/7.2/conf.d/ext-xdebug.ini'
+alias exdebug='sublime /usr/local/etc/php/7.3/conf.d/ext-xdebug.ini'
 
 alias apache_check_sytnax='sudo /usr/sbin/httpd -t'
 alias apache_restart='sudo apachectl restart'
