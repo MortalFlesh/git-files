@@ -128,6 +128,14 @@ alias doctrineUpdate='bin/console doctrine:schema:update --dump-sql'
 alias doctrineUpdateApp='app/console doctrine:schema:update --dump-sql'
 
 #
+# GPG key
+#
+# https://help.github.com/en/articles/generating-a-new-gpg-key
+
+alias gpgList='gpg --list-secret-keys --keyid-format LONG'
+alias gpgExport='gpg --armor --export ' # key from gpgList
+
+#
 # git
 #
 
@@ -147,6 +155,7 @@ alias egit="git config --global --edit"
 function gitMortalek() {
 	git config user.name "Petr Chromec"
 	git config user.email "mortal_flesh@seznam.cz"
+	git config user.signingkey 2ABA543C079E370A
 }
 
 # cloning locally git
