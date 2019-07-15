@@ -604,11 +604,11 @@ alias fsRelease='dotnet publish -c Release -o ' # provide where to put the outpu
 
 # tag current commit, push tags and release to the current nuget
 function fsReleaseTag() {
-	f build 28231 &&
+	f lint &&
 	gc "Version $1" &&
 	gu &&
 	gitTag $1 &&
-	f release 28231
+	f release
 }
 
 #
