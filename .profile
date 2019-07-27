@@ -346,8 +346,9 @@ function squash() {
 
 # gitTag 1.0.0
 function gitTag() {
- git tag -a $1 -m "$1"
- gu --tags
+	gu
+	git tag -a $1 -m "$1"
+	gu --tags
 }
 
 function gitRemoveTag() {
