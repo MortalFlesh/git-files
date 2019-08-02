@@ -131,6 +131,7 @@ alias doctrineUpdateApp='app/console doctrine:schema:update --dump-sql'
 # GPG key
 #
 # https://help.github.com/en/articles/generating-a-new-gpg-key
+# https://stackoverflow.com/questions/39494631/gpg-failed-to-sign-the-data-fatal-failed-to-write-commit-object-git-2-10-0
 
 alias gpgList='gpg --list-secret-keys --keyid-format LONG'
 alias gpgExport='gpg --armor --export ' # key from gpgList
