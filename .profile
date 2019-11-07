@@ -352,7 +352,7 @@ function gitTag() {
 	gu --tags
 }
 
-function gitRemoveTag() {
+function deleteTag() {
 	git tag -d $1
 	git push origin :refs/tags/$1
 }
@@ -611,15 +611,32 @@ function fsRequire() {
 	dotnet restore
 }
 
+alias dotnetTests='dotnet run -p tests/tests.fsproj'
+
 alias fsRelease='dotnet publish -c Release -o ' # provide where to put the output
 
 # tag current commit, push tags and release to the current nuget
 function fsReleaseTag() {
+	version=$1
+	library=$2
+
+	if [ -z "${version}" ]; then echo "Version is unset"; return 1; fi
+	if [ -z "${library}" ]; then echo "Library is unset"; return 1; fi
+
+	echo "Building '$library:$version' ..."
+
 	f tests &&
 	gc "Version $1" &&
 	gu &&
 	gitTag $1 &&
-	f release
+	f release &&
+
+	fs &&
+	cd nuget-server &&
+	f copyAll &&
+	ga . &&
+	gc "Add $2 in version $1" &&
+	ghist -1
 }
 
 #
