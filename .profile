@@ -241,6 +241,8 @@ alias gdFiles='gd --name-status'
 alias gdLastFiles='gdFiles HEAD~1'
 alias gdLastCount='gdLast --stat'
 
+alias gdLock='gd *.lock | grep '
+
 # will show only added files in diff - usage: gda master
 function gda() {
 	gdFiles $1 | grep ^A
