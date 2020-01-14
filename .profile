@@ -1,3 +1,5 @@
+#!/bin/bash
+
 export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:$HOME/bin:$HOME/phive/tools:$HOME/.local/bin:$HOME/.cabal/bin:$HOME/.ghcup/bin"
 
 # include functions
@@ -38,11 +40,11 @@ alias ehttpdApache24='sublime /usr/local/etc/apache2/2.4/httpd.conf'
 alias evhosts='sublime /etc/apache2/extra/httpd-vhosts.conf'
 alias elmcenvxml='sublime /etc/lmcenv.xml'
 # php - https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions
-alias ephp56='sublime /usr/local/etc/php/5.6/php.ini'	# LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
-alias ephp70='sublime /usr/local/etc/php/7.0/php.ini'	# LoadModule php7_module /usr/local/opt/php70/libexec/apache2/libphp7.so
-alias ephp71='sublime /usr/local/etc/php/7.1/php.ini'	# LoadModule php7_module /usr/local/opt/php71/libexec/apache2/libphp71.so
-alias ephp72='sublime /usr/local/etc/php/7.2/php.ini'	# LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp72.so
-alias ephp73='sublime /usr/local/etc/php/7.3/php.ini'	# LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp73.so
+alias ephp56='sublime /usr/local/etc/php/5.6/php.ini'    # LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
+alias ephp70='sublime /usr/local/etc/php/7.0/php.ini'    # LoadModule php7_module /usr/local/opt/php70/libexec/apache2/libphp7.so
+alias ephp71='sublime /usr/local/etc/php/7.1/php.ini'    # LoadModule php7_module /usr/local/opt/php71/libexec/apache2/libphp71.so
+alias ephp72='sublime /usr/local/etc/php/7.2/php.ini'    # LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp72.so
+alias ephp73='sublime /usr/local/etc/php/7.3/php.ini'    # LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp73.so
 # sphp 56 | sphp 70 | sphp 71
 alias exdebug='sublime /usr/local/etc/php/7.3/conf.d/ext-xdebug.ini'
 
@@ -53,7 +55,7 @@ alias apache='echo use nginx!'
 #alias apache='apache_restart && apache_check_sytnax'
 
 function whatListenOn() {
-	sudo lsof -nP -i:$1 | grep LISTEN
+    sudo lsof -nP -i:"$1" | grep LISTEN
 }
 
 # nginx
@@ -70,7 +72,7 @@ alias cd..="cd .."
 alias cd.="cd ~"
 
 alias ls='ls -FG'
-alias lsa='ls -FGa'
+alias lsa='ls -a'
 alias ll='ls -lh'
 alias lla='ll -a'
 
@@ -82,26 +84,16 @@ alias ta='t /var/log/apache2/access_log'
 
 # http://stackoverflow.com/questions/16956810/finding-all-files-containing-a-text-string-on-linux
 function findString() {
-	# or: grep -lr "/.*Suave.*/" ./
-	grep -rnw . -e '$1'
+    # or: grep -lr "/.*Suave.*/" ./
+    grep -rnw . -e "$1"
 }
 
 # findFile /etc/ hosts
 function findFile() {
-	find $1 -type f -name "$2"
+    find "$1" -type f -name "$2"
 }
 
 alias today='date "+%Y-%m-%d%n"'
-
-# jenkins-console -> edu-jenkins
-alias syncJenkinsMgmtToEdu='cp -R ~/www/php/jenkins-console/jobs/jenkins.mgmt.lmc.cz/	~/www/edu-jenkins/jobs/jenkins/'
-alias syncJenkins3ToEdu='cp -R 	  ~/www/php/jenkins-console/jobs/jenkins3.lh.lmc.lan/	~/www/edu-jenkins/jobs/jenkins/'
-# edu-jenkins -> jenkins-console
-alias syncEduToJenkinsMgmt='cp -R	~/www/edu-jenkins/jobs/jenkins/	~/www/php/jenkins-console/jobs/jenkins.mgmt.lmc.cz/'
-alias syncEduToJenkins3='cp -R		~/www/edu-jenkins/jobs/jenkins/	~/www/php/jenkins-console/jobs/jenkins3.lh.lmc.lan/'
-
-alias syncJenkinsQAToEduQa='cp -R 	~/www/php/jenkins-console/jobs/jenkinsqa.dev5.lmc.cz/	~/www/jenkinsqa-jobs/jobs/'
-alias syncEduQaToJenkinsQa='cp -R 	~/www/jenkinsqa-jobs/jobs/ ~/www/php/jenkins-console/jobs/jenkinsqa.dev5.lmc.cz/'
 
 #
 # symfony
@@ -110,22 +102,9 @@ alias syncEduQaToJenkinsQa='cp -R 	~/www/jenkinsqa-jobs/jobs/ ~/www/php/jenkins-
 # composer global require bamarni/symfony-console-autocomplete
 #eval "$(symfony-autocomplete)"
 
-alias fixCsFixer='./bin/php-cs-fixer fix'
-alias fixCodeSniffer='./bin/phpcbf --standard=ruleset.xml .'
-alias fixAll='fixCsFixer && fixCodeSniffer'
-
-alias dev='bin/console --env=dev'
-alias prod='bin/console --env=prod'
-
-#symfony_clear_cache prod
-function symfony_clear_cache() {
-	bin/console cache:clear --env=$1
-}
-
 # doctrine
 
 alias doctrineUpdate='bin/console doctrine:schema:update --dump-sql'
-alias doctrineUpdateApp='app/console doctrine:schema:update --dump-sql'
 
 #
 # GPG key
@@ -154,16 +133,16 @@ alias egit="git config --global --edit"
 # git config --global user.useconfigonly true
 
 function gitMortalek() {
-	git config user.name "Petr Chromec"
-	git config user.email "mortal_flesh@seznam.cz"
-	git config user.signingkey 2ABA543C079E370A
+    git config user.name "Petr Chromec"
+    git config user.email "mortal_flesh@seznam.cz"
+    git config user.signingkey 2ABA543C079E370A
 }
 
 # cloning locally git
 # git clone --bare project project.git
 #
 # git remote add shared project.git
- 
+
 # git log history
 alias gl='git log --oneline'
 alias ghist='git log --color --graph --pretty=format:"%C(auto)%h %ad | %C(white)%s%Creset%C(auto)%d%Creset %C(dim cyan)<%an>%Creset" --date=short'
@@ -175,14 +154,14 @@ alias ghist='git log --color --graph --pretty=format:"%C(auto)%h %ad | %C(white)
 # hooky
 # https://github.com/kvz/ochtra
 # git config --global init.templatedir '~/.gittemplate'
-# 	|- hooks
-# 		|- pre-commit
-# 		|- pre-push
+#     |- hooks
+#         |- pre-commit
+#         |- pre-push
 
 # zmena historie
 #git filter-branch --env-filter '
 #if [ "$GIT_AUTHOR_EMAIL" = "..." ];
-#	...
+#    ...
 #'
 
 # patch
@@ -203,7 +182,7 @@ alias ghist='git log --color --graph --pretty=format:"%C(auto)%h %ad | %C(white)
 
 #git-autocomplete
 if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
+    . ~/.git-completion.bash
 fi
 
 alias ga='git add'
@@ -218,7 +197,7 @@ alias gst='git stash'
 alias gwip='gst'
 alias gstp='git stash pop'
 alias gwippop='gstp'
-alias gp='git up'	#git pull ff-only atd (alias in .git-config)
+alias gp='git up'    #git pull ff-only atd (alias in .git-config)
 alias gu='git push'
 alias guForce='gu --force-with-lease'
 alias gres='git reset HEAD --hard'
@@ -226,10 +205,10 @@ alias gclean='git clean'
 
 alias gcfixup='git commit -a --fixup=HEAD'
 function gcfixupCommit() {
-	git commit -a --fixup=$1
+    git commit -a --fixup="$1"
 }
 function gcfixupCommitNoAdd() {
-	git commit --fixup=$1
+    git commit --fixup="$1"
 }
 
 # diff
@@ -245,177 +224,177 @@ alias gdLock='gd *.lock | grep '
 
 # will show only added files in diff - usage: gda master
 function gda() {
-	gdFiles $1 | grep ^A
+    gdFiles "$1" | grep ^A
 }
 function gdaClass() {
-	gda $1 | grep --color "/[A-Za-z ]*.php"
+    gda "$1" | grep --color "/[A-Za-z ]*.php"
 }
 # will show only modified files in diff - usage: gdm master
 function gdm() {
-	gdFiles $1 | grep ^M
+    gdFiles "$1" | grep ^M
 }
 function gdmClass() {
-	gdm $1 | grep --color "/[A-Za-z ]*.php"
+    gdm "$1" | grep --color "/[A-Za-z ]*.php"
 }
 
 function gitListMergedBranches() {
-	git branch -r --merged | grep origin | grep -v master | xargs -L1 | cut -d"/" -f 2-10 > branches.txt
-	sublime branches.txt
+    git branch -r --merged | grep origin | grep -v master | xargs -L1 | cut -d"/" -f 2-10 > branches.txt
+    sublime branches.txt
 }
 function gitListBranches() {
-	git branch -r | grep origin | grep -v master | xargs -L1 | cut -d"/" -f 2-10 > branches.txt
-	sublime branches.txt
+    git branch -r | grep origin | grep -v master | xargs -L1 | cut -d"/" -f 2-10 > branches.txt
+    sublime branches.txt
 }
 function gitListIntegrationBranches() {
-	git branch -r | grep origin | grep -v master | grep integration | xargs -L1 | cut -d"/" -f 2-10 > branches.txt
-	sublime branches.txt
+    git branch -r | grep origin | grep -v master | grep integration | xargs -L1 | cut -d"/" -f 2-10 > branches.txt
+    sublime branches.txt
 }
 
 # removes local branches listed in `branches.txt`
 function removeLocalBranches() {
-	cat branches.txt | while read branch;
-	do git branch -D $branch
-	done
+    cat < branches.txt | while read -r branch;
+    do git branch -D "$branch"
+    done
 }
 
 # removes origin branches listed in `branches.txt`
 function removeOriginBranches() {
-	cat branches.txt | while read branch;
-	do git push origin --delete $branch
-	done
+    cat < branches.txt | while read -r branch;
+    do git push origin --delete "$branch"
+    done
 }
 
 function deleteBranch() {
-	deleteLocalBranch $1
-	deleteRemoteBranch $1
+    deleteLocalBranch "$1"
+    deleteRemoteBranch "$1"
 }
 
 function deleteLocalBranch() {
-	git branch -D $1
+    git branch -D "$1"
 }
 
 function deleteRemoteBranch() {
-	git push origin --delete $1
+    git push origin --delete "$1"
 }
 
 # create branch XYZ
 function branch() {
- gp
- git checkout -b $1
- git push -u origin $1:$1
- g
+    gp
+    git checkout -b "$1"
+    git push -u origin "$1:$1"
+    g
 }
 
 # create issue XYZ
 function issue_withoutmaster() {
- gp
- git checkout -b $1
- git push -u origin $1:feature/$1
- g
+    gp
+    git checkout -b "$1"
+    git push -u origin "$1:feature/$1"
+    g
 }
 
 # checkout master first
 function issue() {
- mgp
- git checkout -b $1
- git push -u origin $1:feature/$1
- g
+    mgp
+    git checkout -b "$1"
+    git push -u origin "$1:feature/$1"
+    g
 }
 
 # create bugfix XYZ
 function bugfix_withoutmaster() {
- gp
- git checkout -b $1
- git push -u origin $1:bugfix/$1
- g
+    gp
+    git checkout -b "$1"
+    git push -u origin "$1:bugfix/$1"
+    g
 }
 
 # checkout master first
 function bugfix() {
- mgp
- git checkout -b $1
- git push -u origin $1:bugfix/$1
- g
+    mgp
+    git checkout -b "$1"
+    git push -u origin "$1:bugfix/$1"
+    g
 }
 
 function gcountcommits() {
-	ghist -100 | grep $1 | wc -l
+    ghist -100 | grep -c "$1"
 }
 
 # git squash commits: squash 5 (squashes 5 commits)
 function squash() {
- git rebase --autosquash -i HEAD~$1
+    git rebase --autosquash -i HEAD~"$1"
 }
 
 # gitTag 1.0.0
 function gitTag() {
-	gu
-	git tag -a $1 -m "$1"
-	gu --tags
+    gu
+    git tag -a "$1" -m "$1"
+    gu --tags
 }
 
 function deleteTag() {
-	git tag -d $1
-	git push origin :refs/tags/$1
+    git tag -d "$1"
+    git push origin :refs/tags/"$1"
 }
 
 # create release issue release/rc/___XYZ___/rc1
 # example: `release 14.11.40` creates `origin/release/rc/14.11.40/rc1`
 function release() {
- mgp
- git checkout -b release/$1
- git push -u origin HEAD:release/$1
- g
+    mgp
+    git checkout -b release/"$1"
+    git push -u origin HEAD:release/"$1"
+    g
 }
 
 function releaseNotFromMaster() {
- gp
- git checkout -b release/$1
- git push -u origin HEAD:release/$1
- g
+    gp
+    git checkout -b release/"$1"
+    git push -u origin HEAD:release/"$1"
+    g
 }
 
 # example: `integration 07-31` creates `origin/integration/2018-07-31`
 function integration() {
-	mgp
-	git checkout -b integration/2018-$1
-	git push -u origin HEAD:integration/2018-$1
-	g
+    mgp
+    git checkout -b integration/"$(date "+%Y")-$1"
+    git push -u origin HEAD:integration/"$(date "+%Y")-$1"
+    g
 }
 
 function integrationNew() {
-	mgp
-	git checkout -b integration/$(date "+%Y-%m-%d%n")
-	git push -u origin integration/$(date "+%Y-%m-%d%n")
-	g
+    mgp
+    git checkout -b integration/"$(date "+%Y-%m-%d%n")"
+    git push -u origin integration/"$(date "+%Y-%m-%d%n")"
+    g
 }
 
 function int() {
-	i $(date "+%Y-%m-%d%n")
+    i "$(date "+%Y-%m-%d%n")"
 }
 
 # checkout integration branch and pull
 # write `i 2018-08-09` - it will checkout `integration/2018-08-09` and pull changes
 function i() {
- git fetch
- git checkout integration/$1
- gp
- g
+    git fetch
+    git checkout integration/"$1"
+    gp
+    g
 }
 
 function integrationList() {
-	git fetch
-	git branch | grep integration | grep 2018
+    git fetch
+    git branch | grep integration | grep 2018
 }
 
 #
-#workspaces
+# Workspaces
 #
 alias www='cd ~/www/'
 alias fs='cd ~/fsharp/'
 
 #
-#php
+# php
 #
 alias phpUnlimitedMemory='php -d memory_limit=-1 '
 alias phpUnlimitedMemoryComposer='php -d memory_limit=-1 /usr/local/bin/composer '
@@ -427,26 +406,9 @@ alias vu='vagrant up'
 alias vs='vagrant ssh'
 alias vhalt='vagrant halt'
 
-#phpunit
-alias phpunitTest='cd app && ../bin/phpunit && cd ..'
-#alias phpunitTest='php ./vendor/phpunit/phpunit/phpunit'
-alias phpunitTestUnit='php ./vendor/phpunit/phpunit/phpunit --group unit'
-alias phpunitTestGroup='php ./vendor/phpunit/phpunit/phpunit -c app/ --group $1'
-
-alias phpunit2Test='php ./vendor/bin/phpunit'
-alias phpunit2TestUnit='php ./vendor/bin/phpunit --group unit'
-alias phpunit2TestGroup='php ./bin/phpunit -c app/ --group $1'
-
-alias phpunitTestGroupSrc='php ./vendor/bin/phpunit -c src/ --group $1'
-
 #
 # js and css builds
 #
-
-# bower
-alias bcc='bower cache clean'
-alias bi='bower install'
-alias bjsAll='bi && npm run build && grunt'
 
 # npm
 alias nrb='npm run build'
@@ -466,72 +428,72 @@ alias seleniumServerNode='java -jar ./vendor/bin/selenium-server-standalone-2.53
 #
 # will start 4 chromes in docker
 function seleniumDockerStart() {
-	docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml up -d chrome
-	docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml scale chrome=4
+    docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml up -d chrome
+    docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml scale chrome=4
 }
 # example: seleniumDockerDebug (will start 1 chrome in docker and allows debug mode - vnc server etc.)
 function seleniumDockerDebug() {
-	docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml up -d chrome-debug
+    docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml up -d chrome-debug
 }
 function seleniumDockerStop() {
-	docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml stop
-	docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml rm -f
+    docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml stop
+    docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml rm -f
 }
 
 #example: seleniumRunTest ENV FILE
 function seleniumRunTest() {
-	c
-	./vendor/bin/steward run -v $1 chrome --pattern "$2.php"
+    c
+    ./vendor/bin/steward run -v "$1" chrome --pattern "$2.php"
 }
 function seleniumRunTestVV() {
-	c
-	./vendor/bin/steward run -vv $1 chrome --pattern "$2.php"
+    c
+    ./vendor/bin/steward run -vv "$1" chrome --pattern "$2.php"
 }
 function seleniumRunTestDebug() {
-	c
-	./vendor/bin/steward run -vvv $1 chrome --pattern "$2.php"
+    c
+    ./vendor/bin/steward run -vvv "$1" chrome --pattern "$2.php"
 }
 
 #seleniumRunTestLocal FILE
 function seleniumRunTestLocal() {
-	c
-	./vendor/bin/steward run -v --no-proxy local chrome --pattern "$1.php"
+    c
+    ./vendor/bin/steward run -v --no-proxy local chrome --pattern "$1.php"
 }
 function seleniumRunTestLocalVV() {
-	c
-	./vendor/bin/steward run -vv --no-proxy local chrome --pattern "$1.php"
+    c
+    ./vendor/bin/steward run -vv --no-proxy local chrome --pattern "$1.php"
 }
 function seleniumRunTestLocalDebug() {
-	c
-	./vendor/bin/steward run -vvv --no-proxy local chrome --pattern "$1.php"
+    c
+    ./vendor/bin/steward run -vvv --no-proxy local chrome --pattern "$1.php"
 }
 
 #example: seleniumRunGroup GROUP ENV
 function seleniumRunGroup() {
-	c
-	./vendor/bin/steward run -v --group=$1 $2 chrome $3
+    c
+    ./vendor/bin/steward run -v --group=$1 $2 chrome $3
 }
 function seleniumRunGroupVV() {
-	c
-	./vendor/bin/steward run -vv --group=$1 $2 chrome $3
+    c
+    ./vendor/bin/steward run -vv --group=$1 $2 chrome $3
 }
 function seleniumRunGroupDebug() {
-	c
-	./vendor/bin/steward run -vvv --group=$1 $2 chrome $3
+    c
+    ./vendor/bin/steward run -vvv --group=$1 $2 chrome $3
 }
 
 #example: seleniumRunGroupLocal GROUP
 function seleniumRunGroupLocal() {
-	c
-	./vendor/bin/steward run -v --no-proxy --group=$1 local chrome
+    c
+    ./vendor/bin/steward run -v --no-proxy --group=$1 local chrome
 }
 function seleniumRunGroupLocalVV() {
-	c
-	./vendor/bin/steward run -vv --no-proxy --group=$1 local chrome
+    c
+    ./vendor/bin/steward run -vv --no-proxy --group=$1 local chrome
 }
 function seleniumRunGroupLocalDebug() {
-	c
-	./vendor/bin/steward run -vvv --no-proxy --group=$1 local chrome
+    c
+    ./vendor/bin/steward run -vvv --no-proxy --group=$1 local chrome
 }
 
 #
@@ -540,9 +502,9 @@ function seleniumRunGroupLocalDebug() {
 
 # importDB DBNAME DBFILE
 function importDB() {
-	# echo "SET FOREIGN_KEY_CHECKS=0" | mysql [user/pass/database] 
-	mysql -u root -p $1 < $2.sql
-	# { echo "SET FOREIGN_KEY_CHECKS=1;" ; } | mysql
+    # echo "SET FOREIGN_KEY_CHECKS=0" | mysql [user/pass/database]
+    mysql -u root -p "$1" < $2.sql
+    # { echo "SET FOREIGN_KEY_CHECKS=1;" ; } | mysql
 }
 
 #
@@ -557,31 +519,31 @@ alias cdDocker='cd. && cd docker'
 
 # dockerRun appName
 function dockerRun() {
-	# it - interactive terminal
-	# rm - remove after exit
-	docker conainer run -it --rm --name $1 $1
+    # it - interactive terminal
+    # rm - remove after exit
+    docker conainer run -it --rm --name "$1" "$1"
 }
 alias drit='docker container run -it '
 alias dritrm='docker container run -it --rm '
 
-# docker ps 	# running processes
+# docker ps     # running processes
 alias dps='docker container ls'
 alias dpsa='dps -a'
 alias dkillAll='docker stop $(dps -q)'
 
 # docker run -it --rm --name NAME IMAGE -p EXTERN_PORT:IMAGE_PORT
-# docker run -||- -d 	# -d pusti se na pozadi
-# docker exec -it hello-app bash 	# pripojeni se na bash beziciho dockeru "hello-app"
+# docker run -||- -d     # -d pusti se na pozadi
+# docker exec -it hello-app bash     # pripojeni se na bash beziciho dockeru "hello-app"
 
 #
 # push repository to docker hub
-# 
-# $ docker build -t {username}/{image-name} . 						# builds a docker image in cwd
-# $ docker images 							  						# shows all builded images (find a container id there)
-# $ docker tag {container-id} {username}/{image-name}:{tag-version}	# add tag to container
-# $ docker images 							  						# there should be tagged version of image with same container-id
-# $ docker login --username={username}								# login to dockerhub acc
-# $ docker push {username}/{image-name}:{tag-version}				# pushes the container to docker hub
+#
+# $ docker build -t {username}/{image-name} .                         # builds a docker image in cwd
+# $ docker images                                                       # shows all builded images (find a container id there)
+# $ docker tag {container-id} {username}/{image-name}:{tag-version}    # add tag to container
+# $ docker images                                                       # there should be tagged version of image with same container-id
+# $ docker login --username={username}                                # login to dockerhub acc
+# $ docker push {username}/{image-name}:{tag-version}                # pushes the container to docker hub
 
 #
 # cleanup space - https://lebkowski.name/docker-volumes/
@@ -599,7 +561,7 @@ alias scala='sbt console'
 #
 # F#
 #
-alias f='fake build target '	# use: fake run OR fake build ...
+alias f='fake build target '    # use: fake run OR fake build ...
 
 alias fsNewConsole='dotnet new console -lang f# --no-restore'
 alias fsNewSAFE='dotnet new SAFE -lang f#'
@@ -609,8 +571,8 @@ alias fsNewLib='dotnet new classlib -lang F#'
 
 alias fsRun='dotnet run'
 function fsRequire() {
-	dotnet add package $1
-	dotnet restore
+    dotnet add package "$1"
+    dotnet restore
 }
 
 alias dotnetTests='dotnet run -p tests/tests.fsproj'
@@ -619,26 +581,26 @@ alias fsRelease='dotnet publish -c Release -o ' # provide where to put the outpu
 
 # tag current commit, push tags and release to the current nuget
 function fsReleaseTag() {
-	version=$1
-	library=$2
+    version="$1"
+    library="$2"
 
-	if [ -z "${version}" ]; then echo "Version is unset"; return 1; fi
-	if [ -z "${library}" ]; then echo "Library is unset"; return 1; fi
+    if [ -z "${version}" ]; then echo "Version is not set"; return 1; fi
+    if [ -z "${library}" ]; then echo "Library is not set"; return 1; fi
 
-	echo "Building '$library:$version' ..."
+    echo "Building '$library:$version' ..."
 
-	f tests &&
-	gc "Version $1" &&
-	gu &&
-	gitTag $1 &&
-	f release &&
+    f tests &&
+    gc "Version $1" &&
+    gu &&
+    gitTag "$1" &&
+    f release &&
 
-	fs &&
-	cd nuget-server &&
-	f copyAll &&
-	ga . &&
-	gc "Add $2 in version $1" &&
-	ghist -1
+    fs &&
+    cd nuget-server &&
+    f copyAll &&
+    ga . &&
+    gc "Add $2 in version $1" &&
+    ghist -1
 }
 
 #
@@ -646,12 +608,12 @@ function fsReleaseTag() {
 #
 # profile PID ($1) for 30s to the sample.txt - example: `profileProcess 1234`
 function profileProcess() {
-	sample $1 30 -file ./sample.txt
+    sample "$1" 30 -file ./sample.txt
 }
 
 # profile container by ID - example: `profileDocker CONTAINER_ID`
 function profileDocker() {
-	docker stats $0
+    docker stats "$1"
 }
 
 #
@@ -659,11 +621,11 @@ function profileDocker() {
 #
 # zipFileWithPassword source
 function zipFileWithPassword() {
-	7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p -- $1.7z $1
+    7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p -- "$1.7z" "$1"
 }
 # zipFile source
 function zipFile() {
-	7z a -t7z -- $1.7z $1
+    7z a -t7z -- "$1.7z" "$1"
 }
 alias zipExtract='7z x '
 alias zipList='7z l '
@@ -695,8 +657,8 @@ alias ftpStop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.pli
 # include bash-completion
 # http://superuser.com/questions/819221/how-to-install-the-debian-bash-completion-using-homebrew
 #
-if [ -f `brew --prefix`/etc/bash_completion ]; then 
-    . `brew --prefix`/etc/bash_completion 
+if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+    . "$(brew --prefix)/etc/bash_completion"
 fi
 
 #
