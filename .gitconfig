@@ -6,6 +6,8 @@
   excludesfile = ~/.gitignore_global
   editor = sublime -n -w
   ignorecase = false
+[merge]
+    conflictstyle = diff3
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
