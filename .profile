@@ -384,7 +384,7 @@ function i() {
 
 function integrationList() {
     git fetch
-    git branch | grep integration | grep 2018
+    git branch | grep integration
 }
 
 #
