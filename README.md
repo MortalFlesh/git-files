@@ -10,6 +10,6 @@ A pack of files, configs and aliases to help with git
 ```
 git clone https://github.com/MortalFlesh/git-files.git ~/www/git-files
 cd ~/www/git-files
-./install.sh
+./install/install.sh
 ```
 
