@@ -77,6 +77,7 @@ module private DotnetCore =
         | { ExitCode = code } when code <> 0 -> runInRootOrFail (toolCommand "update")
         | _ -> ()
 
+module private Process =
     let execute command args (dir: string) =
         let cmd =
             sprintf "%s/%s"
@@ -104,7 +105,7 @@ module private DotnetCore =
 // 3. Targets for FAKE
 // --------------------------------------------------------------------------------------------------------
 
-Target.create "Info" (fun _ ->
+Target.create "Help" (fun _ ->
     [
         "BuildsInfo of Path<string>"
     ]
@@ -145,4 +146,4 @@ Target.create "BuildsInfo" (fun p ->
 // 4. FAKE targets hierarchy
 // --------------------------------------------------------------------------------------------------------
 
-Target.runOrDefaultWithArguments "Info"
+Target.runOrDefaultWithArguments "Help"

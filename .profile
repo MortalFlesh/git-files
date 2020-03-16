@@ -111,9 +111,12 @@ alias doctrineUpdate='bin/console doctrine:schema:update --dump-sql'
 #
 # https://help.github.com/en/articles/generating-a-new-gpg-key
 # https://stackoverflow.com/questions/39494631/gpg-failed-to-sign-the-data-fatal-failed-to-write-commit-object-git-2-10-0
+# https://stackoverflow.com/questions/41052538/git-error-gpg-failed-to-sign-data/41054093
 
 alias gpgList='gpg --list-secret-keys --keyid-format LONG'
 alias gpgExport='gpg --armor --export ' # key from gpgList
+
+export GPG_TTY=$(tty) #see https://github.com/keybase/keybase-issues/issues/2798
 
 #
 # git
@@ -396,6 +399,8 @@ alias fs='cd ~/fsharp/'
 #
 # php
 #
+alias composer="php -d memory_limit=-1 /usr/local/bin/composer"
+
 alias phpUnlimitedMemory='php -d memory_limit=-1 '
 alias phpUnlimitedMemoryComposer='php -d memory_limit=-1 /usr/local/bin/composer '
 alias phptest='www && sublime test.php'

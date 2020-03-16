@@ -7,7 +7,7 @@ title "Dependencies":
 brew update
 brew install wget bash-completion curl-openssl git gnupg gnutls gpgme hadolint htop kafkacat libmemcached librdkafka libssh2 \
     libusb libxml2 libyaml libzip markdown memcached midnight-commander mysql nuget openldap openssl p7zip \
-    php php@7.2 php@7.3 postgresql pure-ftpd python ruby shellcheck sqlite tree zlib curl
+    postgresql pure-ftpd python ruby shellcheck sqlite tree zlib curl pkg-config
 
 mkdir -p ~/bin
 
