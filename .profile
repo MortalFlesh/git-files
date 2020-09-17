@@ -45,8 +45,9 @@ alias ephp70='sublime /usr/local/etc/php/7.0/php.ini'    # LoadModule php7_modul
 alias ephp71='sublime /usr/local/etc/php/7.1/php.ini'    # LoadModule php7_module /usr/local/opt/php71/libexec/apache2/libphp71.so
 alias ephp72='sublime /usr/local/etc/php/7.2/php.ini'    # LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp72.so
 alias ephp73='sublime /usr/local/etc/php/7.3/php.ini'    # LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp73.so
+alias ephp74='sublime /usr/local/etc/php/7.4/php.ini'    # LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp73.so
 # sphp 56 | sphp 70 | sphp 71
-alias exdebug='sublime /usr/local/etc/php/7.3/conf.d/ext-xdebug.ini'
+alias exdebug='sublime /usr/local/etc/php/7.4/conf.d/ext-xdebug.ini'
 
 alias apache_check_sytnax='sudo /usr/sbin/httpd -t'
 alias apache_restart='sudo apachectl restart'
@@ -574,6 +575,8 @@ alias fsNewTests='dotnet new expecto -n tests -o tests/'
 alias fsNewFake='dotnet new fake'
 alias fsNewLib='dotnet new classlib -lang F#'
 
+alias fsList='dotnet tool list --global'
+
 alias fsRun='dotnet run'
 function fsRequire() {
     dotnet add package "$1"
@@ -605,7 +608,9 @@ function fsReleaseTag() {
     f copyAll &&
     ga . &&
     gc "Add $2 in version $1" &&
-    ghist -1
+    ghist -1 &&
+    gu &&
+    echo "Done -> exit now!"
 }
 
 #
