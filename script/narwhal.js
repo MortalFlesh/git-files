@@ -177,18 +177,29 @@ console.log('Narwhal scripts');
             $('.n-overview').remove()
 
             const example = [
-                { id: 923, configurationId: 953, alias: 'thor (router)' },
-                { id: 962, configurationId: 963, alias: 'rogue (person-filter)' },
-                { id: 924, configurationId: 952, alias: 'ant-man (aggregator)' },
-                { id: 965, configurationId: 966, alias: 'quicksilver (deriver)' },
-                { id: 958, configurationId: 959, alias: 'hulk (data_processing-filter)' },
-                { id: 960, configurationId: 961, alias: 'she-hulk (all-intent-filter)' },
-                { id: 904, configurationId: 968, alias: 'loki (stator)' },
+                {
+                    domain: "consents",
+                    list: [
+                        { id: 923, configurationId: 953, alias: 'thor (router)' },
+                        { id: 962, configurationId: 963, alias: 'rogue (person-filter)' },
+                        { id: 924, configurationId: 952, alias: 'ant-man (aggregator)' },
+                        { id: 965, configurationId: 966, alias: 'quicksilver (deriver)' },
+                        { id: 958, configurationId: 959, alias: 'hulk (data_processing-filter)' },
+                        { id: 960, configurationId: 961, alias: 'she-hulk (all-intent-filter)' },
+                        { id: 904, configurationId: 968, alias: 'loki (stator)' },
+                    ]
+                }
             ]
 
             const dashboardArtifactsOverview = localStorage.hasOwnProperty('dashboardArtifactsOverview')
                 ? JSON.parse(localStorage.getItem('dashboardArtifactsOverview'))
                 : []
+
+            const $createDomainTitle = (domain) => domain.length > 0
+                ? $('<h4></h4>')
+                    .text(domain)
+                    .css({ clear: 'both' })
+                : ''
 
             const $getArtifact = (id) => {
                 const $artifact = $(`${selector.artifactItemId.selector}${id}`)
@@ -225,14 +236,18 @@ console.log('Narwhal scripts');
 
             const $overview = $('<div class="n-overview"></div>').css({ paddingTop: 10, paddingBottom: 10 })
 
-            dashboardArtifactsOverview.forEach(({ id, configurationId = 0, alias = '' }) => {
-                $overview.append(
-                    $createOverviewItem(
-                        $getArtifact(id),
-                        $getArtifact(configurationId),
-                        alias
+            dashboardArtifactsOverview.forEach(({ domain, list }) => {
+                $overview.append($createDomainTitle(domain))
+
+                list.forEach(({ id, configurationId = 0, alias = '' }) => {
+                    $overview.append(
+                        $createOverviewItem(
+                            $getArtifact(id),
+                            $getArtifact(configurationId),
+                            alias
+                        )
                     )
-                )
+                })
             })
 
             $('h3:first').append(
