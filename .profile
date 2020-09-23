@@ -613,6 +613,39 @@ function fsReleaseTag() {
     echo "Done -> exit now!"
 }
 
+# https://dzone.com/articles/switching-between-net-core-sdk-versions
+function dotnetSwitchTo() {
+    dotnet new globaljson --sdk-version "$1" --force
+    dotnet --version
+}
+
+function dotnetSwitchToLatest() {
+    dotnet new globaljson
+    dotnet --version
+}
+
+function dotnetClearCommon() {
+    echo "- remove .paket"
+    rm -rf .paket
+
+    echo "- remove bin"
+    rm -rf bin/
+
+    echo "- remove obj"
+    rm -rf obj/
+
+    echo "- remove .fake"
+    rm -rf .fake
+
+    echo "- remove .ionide"
+    rm -rf .ionide
+
+    echo "- remove paket-files"
+    rm -rf paket-files
+
+    echo "done"
+}
+
 #
 # Profile
 #
