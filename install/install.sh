@@ -30,6 +30,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 command -v nvm
 
 title "Profile:"
+ln -s -f ~/www/git-files/.profile-common ~/.profile-common
 ln -s -f ~/www/git-files/.profile ~/.profile
 . ~/.profile
 
