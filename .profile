@@ -640,6 +640,9 @@ function dotnetClearCommon() {
     echo "- remove .ionide"
     rm -rf .ionide
 
+    echo "- remove packages"
+    rm -rf packages
+
     echo "- remove paket-files"
     rm -rf paket-files
 
