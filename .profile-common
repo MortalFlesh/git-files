@@ -87,6 +87,8 @@ alias ls='ls -FG'
 alias lsa='ls -a'
 alias ll='ls -lh'
 alias lla='ll -a'
+alias ll.='ll -d .*'
+alias llsize='ll -1FSsh'
 
 alias c='clear'
 alias e='exit'

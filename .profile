@@ -23,5 +23,8 @@ if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
     . "$(brew --prefix)/etc/bash_completion"
 fi
 
+# Load ssh config
+[[ ! -f ~/.profile-ssh ]] || source ~/.profile-ssh
+
 # Load common profiler
 [[ ! -f ~/.profile-common ]] || source ~/.profile-common

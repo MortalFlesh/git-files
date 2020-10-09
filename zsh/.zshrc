@@ -82,8 +82,45 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
+    # git
+    # git             # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
+    gitfast
+    #gpg-agent
+
+    # package managers
+    brew
+    composer
+    npm
+    yarn
+
+    # docker
+    docker            # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker
+    docker-compose    # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose
+
+    # task runners
+    gulp
+
+    # others
+    ssh-agent         # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ssh-agent
+    timer
+    z                 # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/z/README
+
+    # zsh-interactive-cd  # requires fzf
+    # zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
 )
+
+# ssh-agent
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+[[ ! -f ~/.profile_ssh ]] || source ~/.profile_ssh
+
+# docker
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
+# timer
+export TIMER_THRESHOLD=5
+export TIMER_PRECISION=2
+export TIMER_FORMAT='[%d]'
 
 source $ZSH/oh-my-zsh.sh
 
