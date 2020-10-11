@@ -51,14 +51,14 @@
     anaconda                # conda environment (https://conda.io/)
     pyenv                   # python environment (https://github.com/pyenv/pyenv)
     goenv                   # go environment (https://github.com/syndbg/goenv)
-    nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
-    nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
-    nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
+    #nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
+    #nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
+    #nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
     # node_version          # node.js version
     # go_version            # go version (https://golang.org)
     # rust_version          # rustc version (https://www.rust-lang.org)
-    # dotnet_version        # .NET version (https://dotnet.microsoft.com)
-    # php_version           # php version (https://www.php.net/)
+    dotnet_version        # .NET version (https://dotnet.microsoft.com)
+    php_version           # php version (https://www.php.net/)
     # laravel_version       # laravel php framework version (https://laravel.com/)
     # java_version          # java version (https://www.java.com/)
     # package               # name@version from package.json (https://docs.npmjs.com/files/package.json)
@@ -91,7 +91,7 @@
     # disk_usage            # disk usage
     # ram                   # free RAM
     # swap                  # used swap
-    todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
+    #todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
     timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     # time                  # current time
@@ -999,7 +999,7 @@
 
   ###############[ dotnet_version: .NET version (https://dotnet.microsoft.com) ]################
   # .NET version color.
-  typeset -g POWERLEVEL9K_DOTNET_VERSION_FOREGROUND=134
+  typeset -g POWERLEVEL9K_DOTNET_VERSION_FOREGROUND=39
   # Show .NET version only when in a .NET project subdirectory.
   typeset -g POWERLEVEL9K_DOTNET_VERSION_PROJECT_ONLY=true
   # Custom icon.
