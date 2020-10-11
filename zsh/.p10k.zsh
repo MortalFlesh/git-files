@@ -153,7 +153,7 @@
   fi
 
   # Default background color.
-  typeset -g POWERLEVEL9K_BACKGROUND=236
+  typeset -g POWERLEVEL9K_BACKGROUND=237
 
   # Separator between same-color segments on the left.
   typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='%242F\uE0B1'
@@ -1575,7 +1575,7 @@
   (( ! $+functions[p10k] )) || p10k reload
 }
 
-typeset -g POWERLEVEL9K_DIR_BACKGROUND=235
+typeset -g POWERLEVEL9K_DIR_BACKGROUND=236
 
 # Tell `p10k configure` which file it should overwrite.
 typeset -g POWERLEVEL9K_CONFIG_FILE=${${(%):-%x}:a}
