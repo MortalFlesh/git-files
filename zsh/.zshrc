@@ -102,7 +102,6 @@ plugins=(
 
     # others
     ssh-agent         # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ssh-agent
-    timer
     z                 # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/z/README
 
     # zsh-interactive-cd  # requires fzf
@@ -116,11 +115,6 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 # docker
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
-
-# timer
-export TIMER_THRESHOLD=5
-export TIMER_PRECISION=2
-export TIMER_FORMAT='[%d]'
 
 source $ZSH/oh-my-zsh.sh
 
