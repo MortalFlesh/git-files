@@ -360,7 +360,7 @@
       # Styling for up-to-date Git status.
       local       meta='%244F'  # grey foreground - default: %244F
       local      clean='%178F'  # green foreground - default: %76F
-      local      stash='%214F'  # custom
+      local      stash='%244F'  # custom
       local     staged='%40F'   # custom
       local   modified='%39F'   # yellow foreground - default: %178F
       local  untracked='%160F'  # blue foreground - default: %39F
@@ -668,7 +668,7 @@
   # typeset -g POWERLEVEL9K_ASDF_POSTGRES_SHOW_ON_UPGLOB='*.foo|*.bar'
 
   # PHP version from asdf.
-  typeset -g POWERLEVEL9K_ASDF_PHP_FOREGROUND=99
+  typeset -g POWERLEVEL9K_ASDF_PHP_FOREGROUND=111
   # typeset -g POWERLEVEL9K_ASDF_PHP_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_PHP_SHOW_ON_UPGLOB='*.foo|*.bar'
 
@@ -1007,7 +1007,7 @@
 
   #####################[ php_version: php version (https://www.php.net/) ]######################
   # PHP version color.
-  typeset -g POWERLEVEL9K_PHP_VERSION_FOREGROUND=99
+  typeset -g POWERLEVEL9K_PHP_VERSION_FOREGROUND=111
   # Show PHP version only when in a PHP project subdirectory.
   typeset -g POWERLEVEL9K_PHP_VERSION_PROJECT_ONLY=true
   # Custom icon.
