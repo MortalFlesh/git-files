@@ -70,6 +70,11 @@ function whatListenOn() {
     sudo lsof -nP -i:"$1" | grep LISTEN
 }
 
+# terminal
+function showColors() {
+    for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+}
+
 # nginx
 alias phpStart='sudo brew services start php'
 alias phpStop='sudo brew services stop php'
