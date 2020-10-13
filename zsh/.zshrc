@@ -83,7 +83,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     # git
-    # git             # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
+    # git             # I use git-autocomplete lower, because this plugin adds a lot of aliases, which confuses me, since I have my own - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
     gitfast
     #gpg-agent
 
@@ -158,6 +158,11 @@ alias ezsh='sublime ~/.zshrc'
 
 # This alias reloads this file
 alias rezsh='source ~/.zshrc'
+
+#git-autocomplete
+if [ -f ~/.git-completion.zsh ]; then
+    . ~/.git-completion.zsh
+fi
 
 # Load common profiler
 [[ ! -f ~/.profile-common ]] || source ~/.profile-common
