@@ -166,3 +166,9 @@ fi
 
 # Load common profiler
 [[ ! -f ~/.profile-common ]] || source ~/.profile-common
+
+# load shell integration - https://iterm2.com/documentation-shell-integration.html
+[[ ! -f ~/.iterm2_shell_integration.zsh ]] || source ~/.iterm2_shell_integration.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
