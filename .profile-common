@@ -210,7 +210,7 @@ alias gc='git commit -am'
 alias gcNoAdd='git commit -m'
 alias gcEmpty='git commit --allow-empty -m'
 alias mgp='m && gp && g'
-alias m='git checkout master'
+alias m='git checkout master || git checkout main'
 alias gst='git stash'
 alias gwip='gst'
 alias gstp='git stash pop'
@@ -614,7 +614,10 @@ function fsReleaseTag() {
     f tests &&
     gc "Version $1" &&
     gu &&
-    gitTag "$1" &&
+    gitTag "$1"
+
+    rm -f global.json
+
     f release &&
 
     fs &&
