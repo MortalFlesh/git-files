@@ -7,11 +7,11 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 # Output functions
 #
 function subTitle() {
-	# colors
-	YELLOW='\033[0;33m'
-	NC='\033[0m' # No Color
+    # colors
+    YELLOW='\033[0;33m'
+    NC='\033[0m' # No Color
 
-	echo -e "${YELLOW}${1}${NC}"
+    echo -e "${YELLOW}${1}${NC}"
 }
 
 #
@@ -52,6 +52,7 @@ alias ehttpdApache24='sublime /usr/local/etc/apache2/2.4/httpd.conf'
 alias evhosts='sublime /etc/apache2/extra/httpd-vhosts.conf'
 alias elmcenvxml='sublime /etc/lmcenv.xml'
 # php - https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions
+#     - https://getgrav.org/blog/macos-bigsur-apache-multiple-php-versions
 alias ephp56='sublime /usr/local/etc/php/5.6/php.ini'    # LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
 alias ephp70='sublime /usr/local/etc/php/7.0/php.ini'    # LoadModule php7_module /usr/local/opt/php70/libexec/apache2/libphp7.so
 alias ephp71='sublime /usr/local/etc/php/7.1/php.ini'    # LoadModule php7_module /usr/local/opt/php71/libexec/apache2/libphp71.so
@@ -68,7 +69,7 @@ alias apache='echo use nginx!'
 #alias apache='apache_restart && apache_check_sytnax'
 
 function whatListenOn() {
-    sudo lsof -nP -i:"$1" | grep LISTEN
+    sudo lsof -nP -i:"${1}" | grep LISTEN
 }
 
 # terminal
@@ -105,12 +106,12 @@ alias ta='t /var/log/apache2/access_log'
 # http://stackoverflow.com/questions/16956810/finding-all-files-containing-a-text-string-on-linux
 function findString() {
     # or: grep -lr "/.*Suave.*/" ./
-    grep -rnw . -e "$1"
+    grep -rnw . -e "${1}"
 }
 
 # findFile /etc/ hosts
 function findFile() {
-    find "$1" -type f -name "$2"
+    find "${1}" -type f -name "${2}"
 }
 
 alias today='date "+%Y-%m-%d%n"'
@@ -223,10 +224,10 @@ alias gclean='git clean'
 
 alias gcfixup='git commit -a --fixup=HEAD'
 function gcfixupCommit() {
-    git commit -a --fixup="$1"
+    git commit -a --fixup="${1}"
 }
 function gcfixupCommitNoAdd() {
-    git commit --fixup="$1"
+    git commit --fixup="${1}"
 }
 
 # diff
@@ -242,17 +243,17 @@ alias gdLock='gd *.lock | grep '
 
 # will show only added files in diff - usage: gda master
 function gda() {
-    gdFiles "$1" | grep ^A
+    gdFiles "${1}" | grep ^A
 }
 function gdaClass() {
-    gda "$1" | grep --color "/[A-Za-z ]*.php"
+    gda "${1}" | grep --color "/[A-Za-z ]*.php"
 }
 # will show only modified files in diff - usage: gdm master
 function gdm() {
-    gdFiles "$1" | grep ^M
+    gdFiles "${1}" | grep ^M
 }
 function gdmClass() {
-    gdm "$1" | grep --color "/[A-Za-z ]*.php"
+    gdm "${1}" | grep --color "/[A-Za-z ]*.php"
 }
 
 function gitListMergedBranches() {
@@ -283,100 +284,100 @@ function removeOriginBranches() {
 }
 
 function deleteBranch() {
-    deleteLocalBranch "$1"
-    deleteRemoteBranch "$1"
+    deleteLocalBranch "${1}"
+    deleteRemoteBranch "${1}"
 }
 
 function deleteLocalBranch() {
-    git branch -D "$1"
+    git branch -D "${1}"
 }
 
 function deleteRemoteBranch() {
-    git push origin --delete "$1"
+    git push origin --delete "${1}"
 }
 
 # create branch XYZ
 function branch() {
     gp
-    git checkout -b "$1"
-    git push -u origin "$1:$1"
+    git checkout -b "${1}"
+    git push -u origin "${1}:${1}"
     g
 }
 
 # create issue XYZ
 function issue_withoutmaster() {
     gp
-    git checkout -b "$1"
-    git push -u origin "$1:feature/$1"
+    git checkout -b "${1}"
+    git push -u origin "${1}:feature/${1}"
     g
 }
 
 # checkout master first
 function issue() {
     mgp
-    git checkout -b "$1"
-    git push -u origin "$1:feature/$1"
+    git checkout -b "${1}"
+    git push -u origin "${1}:feature/${1}"
     g
 }
 
 # create bugfix XYZ
 function bugfix_withoutmaster() {
     gp
-    git checkout -b "$1"
-    git push -u origin "$1:bugfix/$1"
+    git checkout -b "${1}"
+    git push -u origin "${1}:bugfix/${1}"
     g
 }
 
 # checkout master first
 function bugfix() {
     mgp
-    git checkout -b "$1"
-    git push -u origin "$1:bugfix/$1"
+    git checkout -b "${1}"
+    git push -u origin "${1}:bugfix/${1}"
     g
 }
 
 function gcountcommits() {
-    ghist -100 | grep -c "$1"
+    ghist -100 | grep -c "${1}"
 }
 
 # git squash commits: squash 5 (squashes 5 commits)
 function squash() {
-    git rebase --autosquash -i HEAD~"$1"
+    git rebase --autosquash -i HEAD~"${1}"
 }
 
 # gitTag 1.0.0
 function gitTag() {
     gu
-    git tag -a "$1" -m "$1"
+    git tag -a "${1}" -m "${1}"
     gu --tags
 }
 
 function deleteTag() {
-    git tag -d "$1"
-    git push origin :refs/tags/"$1"
+    git tag -d "${1}"
+    git push origin :refs/tags/"${1}"
 }
 
 # create release issue release/rc/___XYZ___/rc1
 # example: `release 14.11.40` creates `origin/release/rc/14.11.40/rc1`
 function release() {
     mgp
-    git checkout -b release/"$1"
-    git push -u origin HEAD:release/"$1"
+    git checkout -b release/"${1}"
+    git push -u origin HEAD:release/"${1}"
     g
 }
 
 function releaseNotFromMaster() {
     gp
-    git checkout -b release/"$1"
-    git push -u origin HEAD:release/"$1"
+    git checkout -b release/"${1}"
+    git push -u origin HEAD:release/"${1}"
     g
 }
 
 # example: `integration 07-31` creates `origin/integration/2018-07-31`
 function integration() {
     mgp
-    git checkout -b integration/"$(date "+%Y")-$1"
-    git push -u origin HEAD:integration/"$(date "+%Y")-$1"
+    git checkout -b integration/"$(date "+%Y")-${1}"
+    git push -u origin HEAD:integration/"$(date "+%Y")-${1}"
     g
 }
 
@@ -395,7 +396,7 @@ function int() {
 # write `i 2018-08-09` - it will checkout `integration/2018-08-09` and pull changes
 function i() {
     git fetch
-    git checkout integration/"$1"
+    git checkout integration/"${1}"
     gp
     g
 }
@@ -463,57 +464,57 @@ function seleniumDockerStop() {
 #example: seleniumRunTest ENV FILE
 function seleniumRunTest() {
     c
-    ./vendor/bin/steward run -v "$1" chrome --pattern "$2.php"
+    ./vendor/bin/steward run -v "${1}" chrome --pattern "${2}.php"
 }
 function seleniumRunTestVV() {
     c
-    ./vendor/bin/steward run -vv "$1" chrome --pattern "$2.php"
+    ./vendor/bin/steward run -vv "${1}" chrome --pattern "${2}.php"
 }
 function seleniumRunTestDebug() {
     c
-    ./vendor/bin/steward run -vvv "$1" chrome --pattern "$2.php"
+    ./vendor/bin/steward run -vvv "${1}" chrome --pattern "${2}.php"
 }
 
 #seleniumRunTestLocal FILE
 function seleniumRunTestLocal() {
     c
-    ./vendor/bin/steward run -v --no-proxy local chrome --pattern "$1.php"
+    ./vendor/bin/steward run -v --no-proxy local chrome --pattern "${1}.php"
 }
 function seleniumRunTestLocalVV() {
     c
-    ./vendor/bin/steward run -vv --no-proxy local chrome --pattern "$1.php"
+    ./vendor/bin/steward run -vv --no-proxy local chrome --pattern "${1}.php"
 }
 function seleniumRunTestLocalDebug() {
     c
-    ./vendor/bin/steward run -vvv --no-proxy local chrome --pattern "$1.php"
+    ./vendor/bin/steward run -vvv --no-proxy local chrome --pattern "${1}.php"
 }
 
 #example: seleniumRunGroup GROUP ENV
 function seleniumRunGroup() {
     c
-    ./vendor/bin/steward run -v --group=$1 $2 chrome $3
+    ./vendor/bin/steward run -v --group=${1} ${2} chrome ${3}
 }
 function seleniumRunGroupVV() {
     c
-    ./vendor/bin/steward run -vv --group=$1 $2 chrome $3
+    ./vendor/bin/steward run -vv --group=${1} ${2} chrome ${3}
 }
 function seleniumRunGroupDebug() {
     c
-    ./vendor/bin/steward run -vvv --group=$1 $2 chrome $3
+    ./vendor/bin/steward run -vvv --group=${1} ${2} chrome ${3}
 }
 
 #example: seleniumRunGroupLocal GROUP
 function seleniumRunGroupLocal() {
     c
-    ./vendor/bin/steward run -v --no-proxy --group=$1 local chrome
+    ./vendor/bin/steward run -v --no-proxy --group=${1} local chrome
 }
 function seleniumRunGroupLocalVV() {
     c
-    ./vendor/bin/steward run -vv --no-proxy --group=$1 local chrome
+    ./vendor/bin/steward run -vv --no-proxy --group=${1} local chrome
 }
 function seleniumRunGroupLocalDebug() {
     c
-    ./vendor/bin/steward run -vvv --no-proxy --group=$1 local chrome
+    ./vendor/bin/steward run -vvv --no-proxy --group=${1} local chrome
 }
 
 #
@@ -523,7 +524,7 @@ function seleniumRunGroupLocalDebug() {
 # importDB DBNAME DBFILE
 function importDB() {
     # echo "SET FOREIGN_KEY_CHECKS=0" | mysql [user/pass/database]
-    mysql -u root -p "$1" < $2.sql
+    mysql -u root -p "${1}" < ${2}.sql
     # { echo "SET FOREIGN_KEY_CHECKS=1;" ; } | mysql
 }
 
@@ -541,7 +542,7 @@ alias cdDocker='cd. && cd docker'
 function dockerRun() {
     # it - interactive terminal
     # rm - remove after exit
-    docker conainer run -it --rm --name "$1" "$1"
+    docker conainer run -it --rm --name "${1}" "${1}"
 }
 alias drit='docker container run -it '
 alias dritrm='docker container run -it --rm '
@@ -569,7 +570,7 @@ alias dkillAll='docker stop $(dps -q)'
 # cleanup space - https://lebkowski.name/docker-volumes/
 # docker system df
 #
-# docker image ls | grep '<none>' | awk '{ print $3 }' | xargs docker rmi
+# docker image ls | grep '<none>' | awk '{ print ${3} }' | xargs docker rmi
 # docker ps --filter status=dead --filter status=exited -aq | xargs docker rm -v
 
 
@@ -593,7 +594,7 @@ alias fsList='dotnet tool list --global'
 
 alias fsRun='dotnet run'
 function fsRequire() {
-    dotnet add package "$1"
+    dotnet add package "${1}"
     dotnet restore
 }
 
@@ -603,8 +604,8 @@ alias fsRelease='dotnet publish -c Release -o ' # provide where to put the outpu
 
 # tag current commit, push tags and release to the current nuget
 function fsReleaseTag() {
-    version="$1"
-    library="$2"
+    version="${1}"
+    library="${2}"
 
     if [ -z "${version}" ]; then echo "Version is not set"; return 1; fi
     if [ -z "${library}" ]; then echo "Library is not set"; return 1; fi
@@ -612,9 +613,9 @@ function fsReleaseTag() {
     echo "Building '$library:$version' ..."
 
     f tests &&
-    gc "Version $1" &&
+    gc "Version ${1}" &&
     gu &&
-    gitTag "$1"
+    gitTag "${1}"
 
     rm -f global.json
 
@@ -624,7 +625,7 @@ function fsReleaseTag() {
     cd nuget-server &&
     f copyAll &&
     ga . &&
-    gc "Add $2 in version $1" &&
+    gc "Add ${2} in version ${1}" &&
     ghist -1 &&
     gu &&
     echo "Done -> exit now!"
@@ -632,7 +633,7 @@ function fsReleaseTag() {
 
 # https://dzone.com/articles/switching-between-net-core-sdk-versions
 function dotnetSwitchTo() {
-    dotnet new globaljson --sdk-version "$1" --force
+    dotnet new globaljson --sdk-version "${1}" --force
     dotnet --version
 }
 
@@ -669,14 +670,14 @@ function dotnetClearCommon() {
 #
 # Profile
 #
-# profile PID ($1) for 30s to the sample.txt - example: `profileProcess 1234`
+# profile PID (${1}) for 30s to the sample.txt - example: `profileProcess 1234`
 function profileProcess() {
-    sample "$1" 30 -file ./sample.txt
+    sample "${1}" 30 -file ./sample.txt
 }
 
 # profile container by ID - example: `profileDocker CONTAINER_ID`
 function profileDocker() {
-    docker stats "$1"
+    docker stats "${1}"
 }
 
 #
@@ -684,11 +685,11 @@ function profileDocker() {
 #
 # zipFileWithPassword source
 function zipFileWithPassword() {
-    7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p -- "$1.7z" "$1"
+    7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on -mhe=on -p -- "${1}.7z" "${1}"
 }
 # zipFile source
 function zipFile() {
-    7z a -t7z -- "$1.7z" "$1"
+    7z a -t7z -- "${1}.7z" "${1}"
 }
 alias zipExtract='7z x '
 alias zipList='7z l '
