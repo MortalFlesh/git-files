@@ -32,8 +32,10 @@ command -v nvm
 title "Profile:"
 ln -s -f ~/www/git-files/.profile-common ~/.profile-common
 ln -s -f ~/www/git-files/.profile ~/.profile
-ln -s -f ~/www/git-files/.bashrc ~/.bashrc
 . ~/.profile
+
+title "Profile for bash:"
+ln -s -f ~/www/git-files/.bashrc ~/.bashrc
 
 title "Done!"
 echo "Now restart terminal and run other installations."
