@@ -26,12 +26,13 @@ mkdir -p ~/phive
 ln -s -f ~/www/git-files/phive/phive.xml ~/phive/phive.xml
 
 title "NVM:"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 command -v nvm
 
 title "Profile:"
 ln -s -f ~/www/git-files/.profile-common ~/.profile-common
 ln -s -f ~/www/git-files/.profile ~/.profile
+ln -s -f ~/www/git-files/.bashrc ~/.bashrc
 . ~/.profile
 
 title "Done!"

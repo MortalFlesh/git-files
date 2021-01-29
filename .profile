@@ -1,8 +1,10 @@
 #!/bin/bash
 
-##################################
-# This is profile for basic bash #
-##################################
+####################################
+# This is profile for default bash #
+####################################
+
+echo "Using default default profile"
 
 export PROFILE="$HOME/.profile"
 
