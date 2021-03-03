@@ -1,13 +1,20 @@
 #!/bin/bash
 
+set -e
+
 # include functions
 . ~/www/git-files/functions.sh
 
-title "Dependencies":
+title "Brew:"
+sudo chown -R $(whoami) /usr/local/var/homebrew
+sudo chown -R $(whoami) /usr/local/etc/bash_completion.d /usr/local/share/doc /usr/local/share/man /usr/local/share/man/man1 /usr/local/share/zsh /usr/local/share/zsh/site-functions
+
+title "Dependencies:"
 brew update
 brew install wget bash-completion curl-openssl git gnupg gnutls gpgme hadolint htop kafkacat libmemcached librdkafka libssh2 \
     libusb libxml2 libyaml libzip markdown memcached midnight-commander mysql nuget openldap openssl p7zip \
-    postgresql pure-ftpd python ruby shellcheck sqlite tree zlib curl pkg-config
+    postgresql pure-ftpd python ruby shellcheck sqlite tree zlib curl pkg-config \
+    certbot curl-openssl consul-template helm jq pinentry-mac
 
 mkdir -p ~/bin
 
