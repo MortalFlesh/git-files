@@ -1,4 +1,4 @@
-public function set${NAME}($${PARAM_NAME})
+public function set${NAME}($${PARAM_NAME}): self
 {
     $this->${FIELD_NAME} = $${PARAM_NAME};
 

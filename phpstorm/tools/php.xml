@@ -1,0 +1,16 @@
+<toolSet name="php">
+  <tool name="PHP sniffer" description="php coding standards" showInMainMenu="true" showInEditor="true" showInProject="true" showInSearchPopup="true" disabled="false" useConsole="false" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
+    <exec>
+      <option name="COMMAND" value="$USER_HOME$/.composer/vendor/friendsofphp/php-cs-fixer/php-cs-fixer" />
+      <option name="PARAMETERS" value="--level=psr2 --fixers=-phpdoc_params fix &quot;$FilePath$&quot;" />
+      <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
+    </exec>
+  </tool>
+  <tool name="ECS" description="Lmc/Coding-standards" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="false" showConsoleOnStdOut="false" showConsoleOnStdErr="true" synchronizeAfterRun="true">
+    <exec>
+      <option name="COMMAND" value="$USER_HOME$/.composer/vendor/symplify/easy-coding-standard/bin/ecs" />
+      <option name="PARAMETERS" value="check -q --fix -- &quot;$FilePath$&quot;" />
+      <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
+    </exec>
+  </tool>
+</toolSet>
