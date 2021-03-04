@@ -1,12 +1,16 @@
 #!/bin/bash
 
 # include functions
-. ./functions.sh
+. ~/www/git-files/functions.sh
 
 set -e  # fail on error
 
 title "PHP 7.3 - install extensions"
-echo "NOTE: keep in mind that php extensions need other libraries, which may be installed by `brew install ...`"
+echo ""
+echo "----"
+echo "NOTE: keep in mind that php extensions need other libraries, which may be installed by 'brew install ...'"
+echo "----"
+echo ""
 
 pecl install igbinary
 pecl install rdkafka
