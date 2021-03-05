@@ -21,26 +21,27 @@
       <option name="PHP" value="true" />
     </context>
   </template>
-  <template name="notImplementedYet" value="throw new \Exception(sprintf('Method %s is not implemented yet.', __METHOD__));" description="NotImplementedYet exception throw" toReformat="false" toShortenFQNames="true" deactivated="true">
+  <template name="notImplementedYet" value="throw new \Exception(sprintf('Method %s is not implemented yet.', __METHOD__));" description="NotImplementedYet exception throw" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="PHP" value="true" />
     </context>
   </template>
-  <template name="mock" value="$this-&gt;createMock($class$::class);&#10;" description="PHPUnit mock generator" toReformat="false" toShortenFQNames="true" deactivated="true">
+  <template name="mock" value="$this-&gt;createMock($class$::class);&#10;" description="PHPUnit mock generator" toReformat="false" toShortenFQNames="true">
     <variable name="class" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="PHP" value="true" />
     </context>
   </template>
-  <template name="expects" value="-&gt;expects($this-&gt;once())&#10;    -&gt;method('$method$')&#10;    -&gt;willReturn($return$);" description="PHP unit mock expect method" toReformat="false" toShortenFQNames="true" deactivated="true">
+  <template name="expects" value="-&gt;expects($this-&gt;once())&#10;    -&gt;method('$method$')&#10;    -&gt;willReturn($return$);" description="PHP unit mock expect method" toReformat="false" toShortenFQNames="true">
     <variable name="method" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="return" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="PHP" value="true" />
     </context>
   </template>
-  <template name="provider" value="public function $method$Provider()&#10;{&#10;    return [&#10;        '$case$' =&gt; [                &#10;        ],&#10;    ];&#10;}" description="PHPUnit Provider" toReformat="false" toShortenFQNames="true" deactivated="true">
+  <template name="provider" value="public function provide$method$(): array&#10;{&#10;    return [&#10;        // $parameters$&#10;        '$case$' =&gt; [$END$],&#10;    ];&#10;}" description="PHPUnit Provider" toReformat="false" toShortenFQNames="true">
     <variable name="method" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="parameters" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="case" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="PHP" value="true" />
@@ -54,7 +55,7 @@
       <option name="PHP" value="true" />
     </context>
   </template>
-  <template name="doctrineTable" value="@ORM\Table(name=&quot;$table$&quot;,indexes={&#10;*     @ORM\Index(name=&quot;$index$_idx&quot;, columns={&quot;$column$&quot;}),&#10;* })" description="table annotation for doctrine entity" toReformat="false" toShortenFQNames="true" deactivated="true">
+  <template name="doctrineTable" value="@ORM\Table(name=&quot;$table$&quot;,indexes={&#10;*     @ORM\Index(name=&quot;$index$_idx&quot;, columns={&quot;$column$&quot;}),&#10;* })" description="table annotation for doctrine entity" toReformat="false" toShortenFQNames="true">
     <variable name="table" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="index" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="column" expression="" defaultValue="" alwaysStopAt="true" />
@@ -62,7 +63,7 @@
       <option name="PHP Comment" value="true" />
     </context>
   </template>
-  <template name="col" value="@ORM\Column(type=&quot;$type$&quot;)" description="doctrine column annotation" toReformat="false" toShortenFQNames="true" deactivated="true">
+  <template name="col" value="@ORM\Column(type=&quot;$type$&quot;)" description="doctrine column annotation" toReformat="false" toShortenFQNames="true">
     <variable name="type" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="PHP Comment" value="true" />
@@ -74,8 +75,32 @@
       <option name="PHP" value="true" />
     </context>
   </template>
-  <template name="fun" value="function ($PARAMETERS$) {&#10;    $END$&#10;}" description="Lambda function" toReformat="false" toShortenFQNames="true" deactivated="true">
+  <template name="fun" value="function ($PARAMETERS$) {&#10;    $END$&#10;}" description="Lambda function" toReformat="false" toShortenFQNames="true">
     <variable name="PARAMETERS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="doctrineEntity" value="use Doctrine\ORM\Mapping as ORM;&#10;&#10;/**&#10; * @ORM\Entity&#10; */" description="Doctrine entity annotation with use" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="doctrineId" value="/**&#10; * @ORM\Id&#10; * @ORM\Column(type=&quot;integer&quot;)&#10; * @ORM\GeneratedValue(strategy=&quot;IDENTITY&quot;)&#10; * @var int|null&#10; */&#10;private $id;" description="Primary key for doctrine entity" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="pubc" value="public const $NAME$ = $VALUE$;" description="public constant" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalizeAndUnderscore(String)" defaultValue="" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="pric" value="private const $NAME$ = $VALUE$;" description="private consant" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="PHP" value="true" />
     </context>

@@ -8,7 +8,7 @@ Installation
 git clone https://github.com/MortalFlesh/git-files.git ~/www/git-files
 cd ~/www/git-files
 
-./install/prepare_usr_local_sh
+./install/prepare_usr_local.sh
 ./install/install.sh
 ```
 

@@ -1,0 +1,401 @@
+### Create interaction with intent
+
+POST http://{{host}}/v2/interactions/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: {{bucket}}
+
+{"schema":1,"id":"92734b63-db26-483e-9fc9-13125ef46312","correlation_id":"92734b63-db26-483e-9fc9-13125ef46312","timestamp":"2017-04-21T07:55:03.000Z","event":"person_confirmed_contract","domain":"consents","context":"consentor","purpose":"dev","version":"v1v0v0","zone":"all","bucket":"dev","meta_data":{"created_at":"2018-11-22T12:56:07.852Z"},"resource":{"name":"interactions","href":"http://consents-consentor-dev-v1v0v0.service.dev1.consul/v2/interactions/58f9bad741e02a11a2e9e119?spot=(all,dev)&intent=(data_processing,lmc_cz)"},"key_data":{"type":"confirmed","person_id":"58f9bad741e02a11a2e9e118","contract_id":"58f904a541e02a11a2e9e0fc","timestamp":"2017-04-21T07:55:03.000Z"},"domain_data":{"scope":"lmc_cz","purpose":"data_processing","email":"jobseeker-17-04-21-09-48-58_58f9b96a33687@lmc.eu","phone":null,"first_name":"Josef","last_name":"Novák","browser_info":"Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0","ip_address":"10.3.206.8","remark":null,"source":"jobs.cz"}}
+
+<> 2019-06-11T110708.500.json
+<> 2019-06-11T110620.201.json
+<> 2019-06-11T110522.201.json
+<> 2018-12-14T023014.201.json
+<> 2018-12-14T021713.500.html
+
+### Get active
+
+GET http://{{host}}/agreement/rest/v1/consent/active
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: {{bucket}}
+#LMC-Svm-Zone: {{zone}}
+
+<> 2019-05-30T023313.200.json
+<> 2019-03-12T025829.200.json
+<> 2019-01-07T013637.200.json
+<> 2019-01-07T013559.500.html
+
+### Get active with intent
+
+GET http://{{host}}/agreement/rest/v1/consent/active?purpose={{purpose}}&scope={{scope}}
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: {{bucket}}
+
+<> 2018-12-12T121722.200.json
+<> 2018-12-12T121710.200.json
+
+
+### Create contract
+
+POST http://{{host}}/agreement/rest/v1/consent
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+#LMC-Svm-Zone: {{zone}}
+#LMC-Svm-Bucket: {{bucket}}
+
+{"consentDto":{"texts":[{"text":"Souhlasím s LMC v migraci","languageIsoCode":"cs","languageId":19}]}}
+
+<> 2019-05-31T102238.500.html
+<> 2019-05-30T032707.200.html
+<> 2019-05-30T032636.200.html
+<> 2019-05-30T032618.200.html
+<> 2019-05-30T032041.500.html
+<> 2019-05-30T031959.200.html
+<> 2019-05-30T031935.200.html
+<> 2019-05-30T031837.200.html
+<> 2019-05-30T031232.500.html
+<> 2019-05-30T031208.500.html
+<> 2019-05-30T031148.200.html
+
+
+### Create contract with intent
+
+POST http://{{host}}/agreement/rest/v1/consent?purpose={{purpose}}&scope={{scope}}
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+#LMC-Svm-Bucket: {{bucket}}
+
+{"consentDto":{"texts":[
+    {"text":"Souhlasím s LMC podmínkami na demu","languageIsoCode":"cs","languageId":19},
+    {"text":"I agree with LMC terms on demu","languageIsoCode":"en","languageId":25}
+]}}
+
+<> 2018-11-07T123654.200.json
+<> 2018-11-06T110926.200.json
+<> 2018-11-06T110811.500.html
+<> 2018-10-08T044035.500.html
+<> 2018-10-08T043949.500.html
+<> 2018-10-08T043923.500.html
+<> 2018-10-08T043824.500.html
+<> 2018-09-26T010958.200.json
+<> 2018-09-26T010114.200.json
+
+### Create contract with intent (v2)
+
+POST http://{{host}}/agreement/rest/v1/consent?purpose=teaching_machine_learning_algorithms&scope=lmc_cz
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+#LMC-Svm-Bucket: {{bucket}}
+
+{"consentDto":{
+    "expireAfterDays": 3650,
+    "texts":[
+        {"text":"Souhlasím s LMC podmínkami na demu (s teaching machine learning algorithms)","languageIsoCode":"cs","languageId":19},
+        {"text":"I agree with LMC terms on demu (with teaching machine learning algorithms)","languageIsoCode":"en","languageId":25}
+    ]
+}}
+
+<> 2020-02-20T040000.200.json
+<> 2020-02-20T034644.422.json
+
+### Add intent to contract
+
+PUT http://{{host}}/agreement/rest/v1/consent/intent/{{consentId}}/dfd0e34e-b0a1-443a-be1c-ed8e9c068898
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-02-20T040656.404.html
+
+### Add intent to contract
+
+PUT http://{{host}}/agreement/rest/v1/consent/intent/{{consentId}}/ba005626-30a0-4f7d-bb12-bf6ad2572347?purpose=teaching_machine_learning_algorithms&scope=lmc_cz
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+#LMC-Svm-Bucket: {{bucket}}
+
+<> 2020-02-20T041253.404.html
+<> 2020-02-20T041247.404.html
+<> 2018-12-13T022553.500.html
+<> 2018-12-12T100250.200.html
+<> 2018-12-12T095702.200.html
+
+### Activate contract
+
+PUT http://{{host}}/agreement/rest/v1/consent/activate/{{consentId}}?purpose=teaching_machine_learning_algorithms&scope=lmc_cz
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-02-20T041217.200.json
+
+### Activate contract
+
+PUT http://{{host}}/agreement/rest/v1/consent/activate/{{consentId}}?purpose={{purpose}}&scope={{scope}}
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: {{bucket}}
+
+<> 2018-11-08T040231.404.html
+<> 2018-11-07T123728.200.json
+<> 2018-11-06T110941.200.json
+<> 2018-09-26T011123.200.json
+<> 2018-09-26T011014.404.json
+<> 2018-09-26T010204.200.json
+<> 2018-08-15T023031.200.json
+<> 2018-05-28T044909.200.json
+<> 2018-05-28T035741.200.json
+<> 2018-05-18T014206.200.json
+<> 2018-05-18T014200.404.html
+
+### Create confirm + intent
+
+POST http://{{host}}/agreement/rest/v1/ack/set?purpose={{purpose}}&scope={{scope}}
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: {{bucket}}
+
+{"setAckDto":{"consentId":"{{consentId}}","source":"unit-test","browserInfo":"chrome","ipAddress":"44.33.55.42","remark":"some remark ...","firstName":"Franta","lastName":"Fcela","email":"1541589131_hasactivemultiple@unit.test"}}
+
+<> 2018-12-12T045626.200.json
+<> 2018-11-07T030537.200.json
+<> 2018-11-07T022121.200.json
+<> 2018-11-07T021515.200.json
+<> 2018-11-07T021507.200.html
+<> 2018-11-07T021422.200.html
+<> 2018-11-07T021358.200.html
+<> 2018-11-07T020947.200.json
+<> 2018-11-07T123808.200.json
+<> 2018-11-07T123745.422.json
+<> 2018-11-07T123546.404.html
+<> 2018-11-07T123503.200.json
+<> 2018-11-07T123412.500.html
+<> 2018-11-06T112908.200.json
+
+### Create confirm
+
+POST http://{{host}}/agreement/rest/v1/ack/set
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: {{bucket}}
+
+{"setAckDto":{"consentId":"{{consentId}}","source":"unit-test","browserInfo":"chrome","ipAddress":"44.33.55.42","remark":"some remark ...","firstName":"Franta","lastName":"Check","email":"franta-check-01@unit.test"}}
+
+<> 2019-09-09T041146.200.json
+<> 2019-02-06T034213.200.json
+<> 2019-02-04T033638.200.json
+<> 2019-01-07T014509.200.html
+<> 2019-01-07T013800.200.html
+<> 2018-12-12T045727.200.html
+<> 2018-12-12T045440.200.json
+<> 2018-12-12T041811.500.html
+<> 2018-12-12T034016.500.html
+<> 2018-12-11T041433.200.html
+<> 2018-12-11T041420.200.json
+<> 2018-12-11T031349.200.html
+<> 2018-12-11T031226.200.json
+<> 2018-11-09T112647.200.json
+<> 2018-11-09T112642.200.json
+<> 2018-11-09T112629.200.json
+<> 2018-11-09T112510.200.json
+<> 2018-11-09T112503.200.json
+<> 2018-11-09T112454.200.json
+<> 2018-11-09T112450.200.json
+<> 2018-11-08T040400.200.json
+<> 2018-11-08T040308.200.json
+<> 2018-11-08T040240.200.json
+<> 2018-11-07T114116.200.json
+<> 2018-11-06T111812.200.json
+
+### Reject contract + intent
+
+POST http://{{host}}/agreement/rest/v1/ack/reject?purpose={{purpose}}&scope={{scope}}
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: {{bucket}}
+
+{"reject":{"consentId":"{{consentId}}","source":"unit-test","browserInfo":"chrome","ipAddress":"44.33.55.42","remark":"some remark ...","firstName":"Franta","lastName":"Fcela","email":"franta-NNNNNYNN-01@unit.test"}}
+
+<> 2018-11-06T111139.200.json
+<> 2018-10-22T035920.200.json
+
+### Reject contract - default
+
+POST http://{{host}}/agreement/rest/v1/ack/reject
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: devel
+#LMC-Svm-Bucket: {{bucket}}
+
+{"reject":{"consentId":"{{consentId}}","source":"devel","browserInfo":"chrome","ipAddress":"44.33.55.42","remark":"some remark ...","firstName":"Ondra","lastName":"Fcela","email":"ondra-fcela@not.ack"}}
+#{"reject":{"consentId":"{{consentId}}","source":"unit-test","browserInfo":"chrome","ipAddress":"44.33.55.42","remark":"some remark ...","firstName":"Franta","lastName":"Fcela","email":"franta-NNNNNYNN-01@unit.test"}}
+
+<> 2019-02-04T035045.200.json
+<> 2019-02-04T034704.500.html
+<> 2019-02-04T034617.404.html
+<> 2019-02-04T033831.500.html
+<> 2019-02-04T033702.500.json
+<> 2018-11-07T114106.200.json
+<> 2018-11-06T111631.200.json
+<> 2018-08-30T041032.200.json
+<> 2018-08-29T043701.500.html
+<> 2018-08-28T050647.200.html
+<> 2018-08-28T050531.200.html
+<> 2018-08-28T050346.500.html
+<> 2018-08-28T050232.404.html
+<> 2018-08-28T050218.404.html
+
+### Migrate confirm
+
+#POST http://{{host}}/agreement/rest/v1/migration/confirm
+#Accept: */*
+#Cache-Control: no-cache
+#Content-Type: application/json
+#LMC-Svm-Bucket: {{bucket}}
+#
+#{"setAckDto":{"consentId":"3b573711-e693-4589-9b27-7e55bed5fa51","source":"migration-test","browserInfo":"chrome","ipAddress":"44.33.55.66","remark":"some remark ...","firstName":"Pepa","lastName":"Ferdinand-m","email":"pepa-ferdinand@unit.test","createdDate":"10.05.2018 13:37:00"}}
+
+### Person has active
+
+#GET http://{{host}}/agreement/rest/v1/person/hasactive?email=jardaleon@gmail.com&phone=608314632
+GET http://{{host}}/agreement/rest/v1/person/hasactive?email=01levis@seznam.cz&intent=(employers_assessment,lmc_cz)
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: {{bucket}}
+
+<> 2019-05-30T033857.200.json
+<> 2019-05-30T033609.200.json
+<> 2019-04-18T011953.404.json
+<> 2019-04-18T011927.404.json
+<> 2019-03-28T033004.200.json
+<> 2019-03-28T032959.200.json
+<> 2019-03-28T032931.200.json
+<> 2019-03-26T105631.200.json
+<> 2019-03-19T112410.200.json
+<> 2019-02-06T034234.200.json
+<> 2019-01-07T042350.200.json
+<> 2019-01-07T040646.200.json
+<> 2019-01-07T040515.200.json
+<> 2019-01-07T040345.200.json
+<> 2019-01-07T040321.404.html
+<> 2019-01-07T040219.404.html
+<> 2019-01-07T040144.500.html
+<> 2019-01-07T040009.200.json
+<> 2019-01-07T040000.404.json
+<> 2018-10-25T042943.200.json
+
+### Search person - old
+
+GET http://{{host}}/agreement/rest/v1/person/search/mail/franta-302-42@unit.test
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: {{bucket}}
+
+<> 2019-02-07T111047.200.json
+<> 2019-02-06T034241.200.json
+<> 2018-08-24T024422.200.json
+<> 2018-08-17T024349.200.json
+<> 2018-05-31T121910.200.json
+<> 2018-05-31T120711.500.html
+<> 2018-05-31T120659.500.json
+
+### Search person
+
+GET http://{{host}}/agreement/rest/v1/person/search/strict?email=jardaleon@gmail.com&phone=608314632
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: {{bucket}}
+
+<> 2019-04-18T011855.404.json
+<> 2019-04-18T011848.404.json
+<> 2019-04-18T011834.404.json
+
+### Revoke all
+
+# 25c1c9e3-50e3-4908-a030-810a3028bf0f
+# 6c44dfe1-0bf3-461e-910d-74c4e9028c0b
+# 94657cf1-cc7b-4a9c-9ac5-66bc35a669ef
+# 86ed630f-a8ed-4544-b695-4f1bc1fdc9d6
+# fe020f27-4ed1-4acd-94ba-2eab9be7fb7e
+# 8ea6be97-f849-41fd-9a35-ac4ac1224432
+# 2ee77d33-3c42-4480-974b-8152acc96c58
+# 520a2478-7e8d-4730-9b89-00d770e5a85f
+# e186fec1-e968-4df9-bae7-b2c32156f4b9
+# 97298c3b-70c8-46e8-b259-48bdea7b0655
+# d3162748-3c19-417d-abca-51c9784dd695
+# 33081a4c-ba4d-4cc3-83f0-4bc70378988e
+# 92e03cb2-643f-4f2d-b02b-75d5b6cf718c
+# 75878daf-d76c-46c5-85e1-a7a16b5bacd5
+# 5ad46612bed0637aef5d7e93
+# 527f086e-fcaa-4954-ad92-0bb66b08a1ca
+# a8d2aadb-7c99-4c71-b21e-bd9c352a43d9
+# 49ad8b99-4e1d-472b-a68d-72fcbfc5a4ab
+# d7886327-599b-48e8-9969-6ed22a4ac6c1
+# a535cae1-7a43-43ec-bb88-975b22051973
+# 7f196d75-0a40-4f95-b921-874bf6bdd943
+# 1e2c0b20-6371-47ea-b5fb-4b2f1351f6e2
+
+
+DELETE http://{{host}}/agreement/rest/v1/ack/revokeAll/a076e4d5-fabc-468e-9ed9-5198e618474d
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: {{bucket}}
+
+<> 2020-08-20T021701.410.json
+<> 2020-08-05T010439.410.json
+<> 2020-08-05T010428.410.json
+<> 2020-08-05T010411.410.json
+<> 2020-08-05T010401.410.json
+<> 2020-08-05T010350.410.json
+<> 2020-08-05T010339.410.json
+<> 2020-08-05T010328.410.json
+<> 2020-07-16T023918.410.json
+<> 2020-07-16T023910.410.json
+<> 2020-07-16T023903.410.json
+<> 2020-07-16T023852.410.json
+<> 2020-06-09T010040.410.json
+<> 2019-04-18T034407.410.json
+<> 2019-04-18T034357.410.json
+<> 2019-04-18T034347.410.json
+<> 2019-04-18T034336.410.json
+<> 2019-04-18T034321.410.json
+
+### Consentor info
+
+GET http://{{host}}/agreement/rest/v1/consentor/info?dbg=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+LMC-Svm-Bucket: {{bucket}}
+
+<> 2018-08-29T043821.500.html
+<> 2018-08-28T022816.200.json
+<> 2018-08-17T031424.200.html
+<> 2018-08-17T030919.200.html
+<> 2018-08-17T024403.200.json
+<> 2018-06-14T102024.200.json
+<> 2018-06-12T044139.200.json
+<> 2018-06-12T044120.200.json
+<> 2018-05-28T032228.200.json
+<> 2018-05-24T024637.404.json
+<> 2018-05-24T024556.404.html
+
+###
