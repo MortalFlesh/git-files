@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "/bin/bash is $BASH_VERSION"

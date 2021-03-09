@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# see: https://itnext.io/upgrading-bash-on-macos-7138bd1066ba
+
+echo "Install current newest bash ..."
+brew install bash
+
+echo "Show info ..."
+which -a bash
+/usr/local/bin/bash
+
+echo "Whitelist new bash ..."
+echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
+echo "Move /usr/local/bin/bash to the first place ..."
+sudo vim /etc/shells
+
+echo "Set as default bash ..."
+chsh -s /usr/local/bin/bash         # for current user
+sudo chsh -s /usr/local/bin/bash    # for root
+
+echo ""
+echo "Current bash is: $BASH_VERSION"
+echo ""
+echo "Done"
+
+echo ""
+echo "---"
+echo "NOTE: run reprofile and then run bash/test??? to check, which bash is which."
+echo "---"
+echo ""
