@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Creator: Phil Cook
 # Modified: Andy Miller
 osx_major_version=$(sw_vers -productVersion | cut -d. -f1)

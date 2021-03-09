@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:$HOME/bin:$HOME/phive/tools:$HOME/.local/bin:$HOME/.cabal/bin:$HOME/.ghcup/bin"
 export PATH="$HOME/.dotnet/tools:$PATH"

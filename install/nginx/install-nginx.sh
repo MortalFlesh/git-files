@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b
 
 # include functions

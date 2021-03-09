@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # https://docs.docker.com/docker-for-mac/#install-shell-completion
 etc=/Applications/Docker.app/Contents/Resources/etc

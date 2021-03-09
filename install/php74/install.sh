@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # include functions
 . ~/www/git-files/functions.sh

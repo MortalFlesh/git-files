@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Linting via HTTP POST using curl
 # https://jenkins.io/doc/book/pipeline/development/
