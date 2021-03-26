@@ -5,7 +5,7 @@
 
 set -e  # fail on error
 
-title "[PHP@7.4] - install extensions"
+title "[PHP@8.0] - install extensions"
 echo ""
 echo "----"
 echo "NOTE: keep in mind that php extensions need other libraries, which may be installed by 'brew install ...'"
@@ -21,14 +21,14 @@ title "Update pecl"
 pecl channel-update pecl.php.net
 
 title "Install extensions"
-pecl install rdkafkap
+pecl install rdkafka
 pecl install igbinary
 
 pip3 install fastlz
 pecl install memcached
 
-title "[PHP@7.4] - installed extensions"
+title "[PHP@8.0] - installed extensions"
 pecl list
 
-title "[PHP@7.4] - Done!"
+title "[PHP@8.0] - Done!"
 php --version
