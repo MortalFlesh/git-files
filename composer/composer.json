@@ -1,6 +1,6 @@
 {
     "require": {
-        "lmc/coding-standard": "^2.0",
+        "lmc/coding-standard": "^3.0",
         "maglnet/composer-require-checker": "^2.1"
     }
 }

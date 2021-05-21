@@ -59,8 +59,16 @@ alias ephp71='sublime /usr/local/etc/php/7.1/php.ini'    # LoadModule php7_modul
 alias ephp72='sublime /usr/local/etc/php/7.2/php.ini'    # LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp72.so
 alias ephp73='sublime /usr/local/etc/php/7.3/php.ini'    # LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp73.so
 alias ephp74='sublime /usr/local/etc/php/7.4/php.ini'    # LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp73.so
+alias ephp80='sublime /usr/local/etc/php/8.0/php.ini'
 # sphp 56 | sphp 70 | sphp 71
 alias exdebug='sublime /usr/local/etc/php/7.4/conf.d/ext-xdebug.ini'
+
+function ecsConfigTransform() {
+    composer require symplify/config-transformer --dev \
+    && vendor/bin/config-transformer switch-format easy-coding-standard.yaml --input-format yaml --output-format php \
+    && mv easy-coding-standard.php ecs.php \
+    && composer remove symplify/config-transformer --dev
+}
 
 alias apache_check_sytnax='sudo /usr/sbin/httpd -t'
 alias apache_restart='sudo apachectl restart'
@@ -122,6 +130,9 @@ alias today='date "+%Y-%m-%d%n"'
 
 # composer global require bamarni/symfony-console-autocomplete
 #eval "$(symfony-autocomplete)"
+
+alias composer_v1='composer self-update --1 && composer --version'
+alias composer_v2='composer self-update --2 && composer --version'
 
 # doctrine
 
@@ -461,6 +472,25 @@ function seleniumDockerStop() {
     docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml rm -f
 }
 
+function seleniumRunTestEverywhere() {
+    c
+    ./vendor/bin/steward run -v --exclude-group=require-js local chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -v dev chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -v --group=prod-safe prod chrome --pattern "${1}.php"
+}
+function seleniumRunTestEverywhereVV() {
+    c
+    ./vendor/bin/steward run -vv --exclude-group=require-js local chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -vv dev chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -vv --group=prod-safe prod chrome --pattern "${1}.php"
+}
+function seleniumRunTestEverywhereDebug() {
+    c
+    ./vendor/bin/steward run -vvv --exclude-group=require-js local chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -vvv dev chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -vvv --group=prod-safe prod chrome --pattern "${1}.php"
+}
+
 #example: seleniumRunTest ENV FILE
 function seleniumRunTest() {
     c
@@ -478,15 +508,15 @@ function seleniumRunTestDebug() {
 #seleniumRunTestLocal FILE
 function seleniumRunTestLocal() {
     c
-    ./vendor/bin/steward run -v --no-proxy local chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -v local chrome --pattern "${1}.php"
 }
 function seleniumRunTestLocalVV() {
     c
-    ./vendor/bin/steward run -vv --no-proxy local chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -vv local chrome --pattern "${1}.php"
 }
 function seleniumRunTestLocalDebug() {
     c
-    ./vendor/bin/steward run -vvv --no-proxy local chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -vvv local chrome --pattern "${1}.php"
 }
 
 #example: seleniumRunGroup GROUP ENV
