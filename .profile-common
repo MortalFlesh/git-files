@@ -612,7 +612,7 @@ alias scala='sbt console'
 #
 # F#
 #
-alias f='fake build target '    # use: fake run OR fake build ...
+alias f='./build.sh -t '    # use: fake run OR fake build ...
 
 alias fsNewConsole='dotnet new console -lang f# --no-restore'
 alias fsNewSAFE='dotnet new SAFE -lang f#'
@@ -752,10 +752,15 @@ alias ftpStop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.pli
 #
 [[ ! -f ~/.private_profile ]] || source ~/.private_profile
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-nvm use node
+#
+# NVM (node)    // it is currently lazy-loaded by zsh
+#
+function loadNvm() {
+    subTitle "Loading nvm (node) ..."
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    [ -s "$M_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+    nvm use node
+}
 
 #
 # haskell

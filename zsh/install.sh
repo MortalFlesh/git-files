@@ -20,4 +20,7 @@ subTitle "Above result should be: zsh 5.4.2 (or higher)"
 title "Link Theme:"
 ln -s -f ~/www/git-files/zsh/.p10k.zsh ~/.p10k.zsh
 
+title "Install zsh-nvm"
+git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
+
 echo "done"
