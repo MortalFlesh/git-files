@@ -63,6 +63,11 @@ alias ephp80='sublime /usr/local/etc/php/8.0/php.ini'
 # sphp 56 | sphp 70 | sphp 71
 alias exdebug='sublime /usr/local/etc/php/7.4/conf.d/ext-xdebug.ini'
 
+function sphp() {
+    # currently using brew-php-switcher
+    brew-php-switcher "$1"
+}
+
 function ecsConfigTransform() {
     composer require symplify/config-transformer --dev \
     && vendor/bin/config-transformer switch-format easy-coding-standard.yaml --input-format yaml --output-format php \

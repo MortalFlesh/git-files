@@ -6,9 +6,6 @@ set -e
 . ~/www/git-files/functions.sh
 
 title "Brew:"
-brew install php
-
-title "Sphp"
-ln -s -f ~/www/git-files/install/php/sphp /usr/local/bin/sphp
+brew install php brew-php-switcher
 
 echo "Done"
