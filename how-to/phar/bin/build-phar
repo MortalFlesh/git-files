@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+composer install --optimize-autoloader --no-dev
+
+cd compile
+composer install
+vendor/bin/robo build:phar
+
+cd ..
+mkdir -p dist
+mv compile/coding-standards.phar dist/
+
+echo "Done"

@@ -1,0 +1,9 @@
+{
+    "name": "lmc/coding-standards-compile",
+    "description": "Meta package for compiling phars",
+    "type": "metapackage",
+    "require": {
+        "consolidation/robo": "^3.0"
+    },
+    "license": "MIT"
+}

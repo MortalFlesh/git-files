@@ -2,5 +2,11 @@
     "require": {
         "lmc/coding-standard": "^3.0",
         "maglnet/composer-require-checker": "^2.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }
