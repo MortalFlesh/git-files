@@ -3,7 +3,7 @@
 set -e
 
 DIR="$HOME/Documents/repo/git-files"
-DIR_RPI="$DIR/raspberry-pi"
+DIR_RPI="$DIR/install/raspberry-pi"
 
 # include functions
 . "$DIR/functions.sh"
@@ -21,8 +21,8 @@ subTitle "Add loading .profile-rpi to .profile"
 echo """
 
 # include .profile-rpi if it exists
-if [ -f \"$HOME/.profile-rpi\" ]; then
-    . \"$HOME/.profile-rpi\"
+if [ -f \"\$HOME/.profile-rpi\" ]; then
+    . \"\$HOME/.profile-rpi\"
 fi
 """ >> "$HOME/.profile"
 
