@@ -4,6 +4,7 @@ set -e
 
 REPO_DIR="$HOME/Documents/repo"
 GIT_DIR="$REPO_DIR/git-files"
+RPI_DIR="$GIT_DIR/install/raspberry-pi"
 
 # include functions
 . "$GIT_DIR/functions.sh"
@@ -18,12 +19,33 @@ sudo apt upgrade
 sudo apt install -y mosquitto mosquitto-clients
 echo " -> Done"
 
-echo "Enable auto-start"
+subTitle "Enable auto-start"
 sudo systemctl enable mosquitto.service
 echo " -> Done"
 
-echo "Check MQTT"
+subTitle "Check MQTT"
+sudo systemctl status mosquitto
+echo ""
 mosquitto -v
+echo " -> Done"
+
+subTitle "Create a user"
+sudo mosquitto_passwd -c /etc/mosquitto/passwd ant-man
+echo " -> Done"
+
+subTitle "Link configuration"
+ln -s -f "$RPI_DIR/mosquitto.conf" /etc/mosquitto/mosquitto.conf
+echo " -> Done"
+
+subTitle "Restart Mosquitto"
+sudo systemctl restart mosquitto
+echo " -> Done"
+
+subTitle "Check MQTT"
+sudo systemctl status mosquitto
+echo ""
+mosquitto -v
+echo " -> Done"
 
 echo ""
 echo "Done"

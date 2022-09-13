@@ -25,6 +25,10 @@ alias t='tail -f'
 
 alias today='date "+%Y-%m-%d%n"'
 
+function whatListenOn() {
+    sudo lsof -nP -i:"${1}" | grep LISTEN
+}
+
 #
 # git
 #
