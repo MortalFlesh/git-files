@@ -769,6 +769,10 @@ function loadNvm() {
     nvm use node
 }
 
+# Keyboard
+alias keyboardBackup='cd ~/www/git-files && sudo mv /Library/Preferences/com.apple.keyboardtype.plist ./'
+alias keyboardRestore='cd ~/www/git-files && sudo mv com.apple.keyboardtype.plist /Library/Preferences/com.apple.keyboardtype.plist'
+
 #
 # haskell
 #
