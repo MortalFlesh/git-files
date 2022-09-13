@@ -31,7 +31,14 @@ subTitle "Symlink settings"
 ln -s -f "$RPI_DIR/sensors-settings.yaml" "$SENSORS_DIR/src/settings_example.yaml"
 echo " -> Done"
 
-# todo ...
+subTitle "Set up MQTT user password"
+echo -n "Password: "
+read -sr password
+echo
+
+echo " -> replace password in config"
+sed -i "s/<PASS>/$password/" "$SENSORS_DIR/src/settings_example.yaml"
+echo " -> Done"
 
 echo "Done"
 echo ""
