@@ -4,8 +4,7 @@ Raspberry Pi (OS)
 ## Install
 ```sh
 # Install dependencies
-sudo apt-get update
-sudo apt-get install -y vim git tree
+sudo apt-get update && apt-get install -y vim git tree
 
 mkdir -p ~/Documents/repo
 cd ~/Documents/repo
@@ -20,5 +19,5 @@ git clone https://github.com/MortalFlesh/git-files.git
 
 Install dependencies
 ```sh
-sudo apt-get install -y python3-apt
+sudo apt-get update && apt-get install -y python3-apt
 ```

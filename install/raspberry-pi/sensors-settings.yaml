@@ -1,0 +1,34 @@
+mqtt:
+  hostname: 127.0.0.1
+  port: 1883 #defaults to 1883
+  user: test
+  password: test
+deviceName: test
+client_id: test
+timezone: Europe/Prague
+update_interval: 60 #Defaults to 60
+sensors:
+  temperature: true
+  clock_speed: true
+  disk_use: true
+  memory_use: true
+  cpu_usage: true
+  load_1m: false
+  load_5m: false
+  load_15m: false
+  net_tx: false
+  net_rx: false
+  swap_usage: false
+  power_status: true
+  last_boot: true
+  hostname: true
+  host_ip: true
+  host_os: true
+  host_arch: true
+  last_message: false
+  updates: true
+  wifi_strength: false
+  wifi_ssid: false
+  external_drives:
+    # Only add mounted drives here, e.g.:
+    # Drive1: /media/storage

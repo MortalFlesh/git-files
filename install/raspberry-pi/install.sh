@@ -2,20 +2,21 @@
 
 set -e
 
-DIR="$HOME/Documents/repo/git-files"
-DIR_RPI="$DIR/install/raspberry-pi"
+REPO_DIR="$HOME/Documents/repo"
+GIT_DIR="$REPO_DIR/git-files"
+RPI_DIR="$GIT_DIR/install/raspberry-pi"
 
 # include functions
-. "$DIR/functions.sh"
+. "$GIT_DIR/functions.sh"
 
 title "Symlinks:"
 # - use ln -s -f ... will override files in your home
-ln -s -f "$DIR_RPI/.gitconfig" "$HOME/.gitconfig"
+ln -s -f "$RPI_DIR/.gitconfig" "$HOME/.gitconfig"
 ln -s -f "$DIR/.git-completion.bash" "$HOME/.git-completion.bash"
-ln -s -f "$DIR_RPI/.gitignore_global" "$HOME/.gitignore_global"
+ln -s -f "$RPI_DIR/.gitignore_global" "$HOME/.gitignore_global"
 
 title "Profile:"
-ln -s -f "$DIR_RPI/.profile-rpi" "$HOME/.profile-rpi"
+ln -s -f "$RPI_DIR/.profile-rpi" "$HOME/.profile-rpi"
 
 subTitle "Add loading .profile-rpi to .profile"
 echo """
