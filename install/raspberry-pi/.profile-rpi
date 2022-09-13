@@ -132,7 +132,7 @@ function deleteTag() {
 # Customize prompt
 # https://gist.github.com/scmx/242caa249b0ea343e2588adea14479e6
 # https://ezprompt.net/ -> generator
-export PS1='🍓 \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\]'
+export PS1='🍓 \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '
 
 echo "Custom RPi 🍓 profile loaded!"
 echo ""
