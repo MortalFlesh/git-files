@@ -28,7 +28,7 @@ pip3 install -r requirements.txt
 echo " -> Done"
 
 subTitle "Symlink settings"
-ln -s -f "$RPI_DIR/sensors-settings.yaml" "$SENSORS_DIR/src/settings_example.yaml"
+ln -s -f "$RPI_DIR/sensors-settings.yaml" "$SENSORS_DIR/src/settings.yaml"
 echo " -> Done"
 
 subTitle "Set up MQTT user password"
@@ -37,8 +37,17 @@ read -sr password
 echo
 
 echo " -> replace password in config"
-sed -i "s/<PASS>/$password/" "$SENSORS_DIR/src/settings_example.yaml"
+sed -i "s/<PASS>/$password/" "$SENSORS_DIR/src/settings.yaml"
 echo " -> Done"
+
+subTitle "Set up autostart"
+sudo cp "$RPI_DIR/sensors-service.service" /etc/systemd/system/system_sensors.service
+sudo systemctl enable system_sensors.service
+sudo systemctl start system_sensors.service
+echo " -> Done"
+
+subTitle "Show status"
+sudo systemctl status system_sensors.service
 
 echo "Done"
 echo ""
