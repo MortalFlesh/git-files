@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+
+# This alias reloads this file
+alias reprofile='. ~/.profile-rpi'
+
+#
+# Development configuration files
+#
+alias eprofile='vim ~/.profile-rpi'
+
+#
+# Shortcuts
+#
+alias cd..="cd .."
+alias cd.="cd ~"
+
+alias ls='ls -FG'
+alias lsa='ls -a'
+alias ll='ls -lh'
+alias lla='ll -a'
+
+alias c='clear'
+alias e='exit'
+alias t='tail -f'
+
+alias today='date "+%Y-%m-%d%n"'
+
+#
+# git
+#
+
+alias egit="git config --global --edit"
+
+# git log history
+alias gl='git log --oneline'
+alias ghist='git log --color --graph --pretty=format:"%C(auto)%h %ad | %C(white)%s%Creset%C(auto)%d%Creset %C(dim cyan)<%an>%Creset" --date=short'
+
+alias ga='git add'
+alias g='git status'
+alias cg='c && g'
+alias gc='git commit -am'
+alias gcNoAdd='git commit -m'
+alias gcEmpty='git commit --allow-empty -m'
+alias mgp='m && gp && g'
+alias m='git checkout master || git checkout main'
+alias gst='git stash'
+alias gwip='gst'
+alias gstp='git stash pop'
+alias gwippop='gstp'
+alias gp='git up'    #git pull ff-only atd (alias in .git-config)
+alias gu='git push'
+alias guForce='gu --force-with-lease'
+alias gres='git reset HEAD --hard'
+alias gclean='git clean'
+
+alias gcfixup='git commit -a --fixup=HEAD'
+function gcfixupCommit() {
+    git commit -a --fixup="${1}"
+}
+function gcfixupCommitNoAdd() {
+    git commit --fixup="${1}"
+}
+
+# diff
+alias gd='git diff'
+alias gdLast='gd HEAD~1'
+
+alias gdCount='gd --stat'
+alias gdFiles='gd --name-status'
+alias gdLastFiles='gdFiles HEAD~1'
+alias gdLastCount='gdLast --stat'
+
+alias gdLock='gd *.lock | grep '
+
+# will show only added files in diff - usage: gda master
+function gda() {
+    gdFiles "${1}" | grep ^A
+}
+function gdaClass() {
+    gda "${1}" | grep --color "/[A-Za-z ]*.php"
+}
+# will show only modified files in diff - usage: gdm master
+function gdm() {
+    gdFiles "${1}" | grep ^M
+}
+function gdmClass() {
+    gdm "${1}" | grep --color "/[A-Za-z ]*.php"
+}
+
+function deleteBranch() {
+    deleteLocalBranch "${1}"
+    deleteRemoteBranch "${1}"
+}
+
+function deleteLocalBranch() {
+    git branch -D "${1}"
+}
+
+function deleteRemoteBranch() {
+    git push origin --delete "${1}"
+}
+
+# create branch XYZ
+function branch() {
+    gp
+    git checkout -b "${1}"
+    git push -u origin "${1}:${1}"
+    g
+}
+
+function gcountcommits() {
+    ghist -100 | grep -c "${1}"
+}
+
+# git squash commits: squash 5 (squashes 5 commits)
+function squash() {
+    git rebase --autosquash -i HEAD~"${1}"
+}
+
+# gitTag 1.0.0
+function gitTag() {
+    gu
+    git tag -a "${1}" -m "${1}"
+    gu --tags
+}
+
+function deleteTag() {
+    git tag -d "${1}"
+    git push origin :refs/tags/"${1}"
+}
+
+# Customize prompt
+# https://gist.github.com/scmx/242caa249b0ea343e2588adea14479e6
+# https://ezprompt.net/ -> generator
+export PS1='🍓 \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\]'
+
+echo "Custom RPi 🍓 profile loaded!"
+echo ""
