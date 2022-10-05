@@ -1,6 +1,8 @@
 Raspberry Pi (OS)
 =================
 
+> Before anything else - make sure that your RPi has an static IP address from your router, it is required for most of other installs and allow SSH access.
+
 ## Install
 ```sh
 # Install dependencies
@@ -35,3 +37,15 @@ For example, if I want to change the password for the sara user and taking into 
 > https://github.com/Sennevds/system_sensors
 
 Install by `install-sensors.sh`
+
+## Cups and printing server
+> see `install-print-server.sh`
+
+Additionally for a HP printer, use
+```sh
+sudo hp-setup -i
+
+sudo hp-plugin -i
+```
+
+**NOTE**: If plugin fails to download a plugin files, download it yourself from https://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/ (you need both `run` and `run.asc` file)
