@@ -57,6 +57,7 @@ alias elmcenvxml='sublime /etc/lmcenv.xml'
 alias ephp74='sublime /usr/local/etc/php/7.4/php.ini'    # LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp73.so
 alias ephp80='sublime /usr/local/etc/php/8.0/php.ini'
 alias ephp81='sublime /usr/local/etc/php/8.1/php.ini'
+alias ephp82='sublime /usr/local/etc/php/8.2/php.ini'
 # sphp 56 | sphp 70 | sphp 71
 alias exdebug='sublime /usr/local/etc/php/7.4/conf.d/ext-xdebug.ini'
 alias exdebug81='sublime /usr/local/etc/php/8.1/conf.d/ext-xdebug.ini'
@@ -85,7 +86,7 @@ function whatListenOn() {
 
 # terminal
 function showColors() {
-    for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+    for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)bvc}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
 
 # nginx
@@ -785,3 +786,36 @@ alias keyboardRestore='cd ~/www/git-files && sudo mv com.apple.keyboardtype.plis
 # http://geekocephale.com/blog/2018/09/28/Haskell-setup
 alias haskellGhcid='ghcid "--command=ghci"'
 alias haskellGhciRepl='ghci'
+
+#
+# kubernetess (k8s)
+#
+
+function kDeleteResourceBySubstring() {
+    NAMESPACE="$1"  # domain
+    NAME_SUBSTRING="$2"
+    ACTION="$3"
+
+    if [ -z "${NAMESPACE}" ]; then echo "Namespace (domain) is not set"; return 1; fi
+    if [ -z "${NAME_SUBSTRING}" ]; then echo "Substring is not set"; return 1; fi
+
+    echo "[Remove resource] *$NAME_SUBSTRING* in $NAMESPACE | Action: $ACTION"
+
+    if [ "$ACTION" != "force" ];
+    then
+        echo "[Remove resource] Dry run ..."
+        echo ""
+        kubectl api-resources --verbs=list --namespaced -o name | grep -v events | xargs -n 1 kubectl get --show-kind --ignore-not-found -n "${NAMESPACE}" 2>/dev/null -o name  | grep "${NAME_SUBSTRING}"
+    else
+        echo "[Remove resource] remove in 10s ..."
+        echo ""
+        sleep 10
+        kubectl api-resources --verbs=list --namespaced -o name | grep -v events | xargs -n 1 kubectl get --show-kind --ignore-not-found -n "${NAMESPACE}" 2>/dev/null -o name  | grep "${NAME_SUBSTRING}" | xargs kubectl -n "${NAMESPACE}" delete
+    fi
+}
+
+# https://hub.docker.com/r/alpine/helm
+alias helmAlpine='docker run -e KUBECONFIG="/root/.kube/config:/root/.kube/some-other-context.yaml" -ti --rm -v $(pwd):/apps -w /apps \
+    -v ~/.kube:/root/.kube -v ~/.helm:/root/.helm -v ~/.config/helm:/root/.config/helm \
+    -v ~/.cache/helm:/root/.cache/helm \
+    alpine/helm'
