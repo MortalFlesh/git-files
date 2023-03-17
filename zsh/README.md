@@ -3,6 +3,7 @@ ZSH
 
 ## Installation
 1. Install [iTerm2](https://www.iterm2.com/index.html)
+    - import profiles from terminal/iTerm-Profiles.json
 2. Install [Oh-My-Zsh](https://ohmyz.sh/#install)
     - details https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH
 3. Link `~/.zshrc` profile by `zsh/install.sh`
