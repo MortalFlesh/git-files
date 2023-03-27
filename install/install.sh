@@ -16,9 +16,9 @@ sudo chown -R $(whoami) /usr/local/etc/bash_completion.d /usr/local/share/doc /u
 
 title "Dependencies:"
 brew update
-brew install wget bash-completion curl-openssl git gnupg gnutls gpgme hadolint htop kafkacat libmemcached librdkafka libssh2 \
+brew install wget bash-completion git gnupg gnutls gpgme hadolint htop libmemcached librdkafka libssh2 \
     libusb libxml2 libyaml libzip markdown memcached midnight-commander mysql nuget openldap openssl p7zip \
-    postgresql pure-ftpd python ruby shellcheck sqlite tree zlib curl pkg-config \
+    postgresql@14 pure-ftpd python ruby shellcheck sqlite tree zlib curl pkg-config \
     certbot consul-template helm jq pinentry-mac imagemagick kubectx kubernetes-cli
 
 mkdir -p ~/bin
