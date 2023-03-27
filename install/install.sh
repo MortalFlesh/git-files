@@ -33,7 +33,7 @@ mkdir -p ~/phive
 ln -s -f ~/www/git-files/phive/phive.xml ~/phive/phive.xml
 
 title "NVM:"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 command -v nvm
 
 title "Profile:"

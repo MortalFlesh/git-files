@@ -778,8 +778,8 @@ alias keyboardRestore='cd ~/www/git-files && sudo mv com.apple.keyboardtype.plis
 # haskell
 #
 # Config file path source is default config file.
-# Config file /Users/chromecp/.cabal/config not found.
-# Writing default configuration to /Users/chromecp/.cabal/config
+# Config file ~/.cabal/config not found.
+# Writing default configuration to ~/.cabal/config
 
 # ~/.ghcup/env
 
