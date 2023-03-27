@@ -6,12 +6,12 @@ set -e
 . ~/www/git-files/functions.sh
 
 title "Brew:"
-mkdir -p /usr/local/var/homebrew
+sudo mkdir -p /usr/local/var/homebrew
 sudo chown -R $(whoami) /usr/local/var/homebrew
-mkdir -p /usr/local/etc
-mkdir -p /usr/local/share/doc
-mkdir -p /usr/local/share/man/man1
-mkdir -p /usr/local/share/zsh/site-functions
+sudo mkdir -p /usr/local/etc
+sudo mkdir -p /usr/local/share/doc
+sudo mkdir -p /usr/local/share/man/man1
+sudo mkdir -p /usr/local/share/zsh/site-functions
 sudo chown -R $(whoami) /usr/local/etc/bash_completion.d /usr/local/share/doc /usr/local/share/man /usr/local/share/man/man1 /usr/local/share/zsh /usr/local/share/zsh/site-functions
 
 title "Dependencies:"
