@@ -8,7 +8,7 @@ set -e
 title "Brew:"
 sudo mkdir -p /usr/local/var/homebrew
 sudo chown -R $(whoami) /usr/local/var/homebrew
-sudo mkdir -p /usr/local/etc
+sudo mkdir -p /usr/local/etc/bash_completion.d
 sudo mkdir -p /usr/local/share/doc
 sudo mkdir -p /usr/local/share/man/man1
 sudo mkdir -p /usr/local/share/zsh/site-functions
