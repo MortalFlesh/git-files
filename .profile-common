@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:$HOME/bin:$HOME/phive/tools:$HOME/.local/bin:$HOME/.cabal/bin:$HOME/.ghcup/bin"
-export PATH="$HOME/.dotnet/tools:$PATH"
+export PATH="$HOME/.dotnet/tools:/usr/local/share/dotnet/x64:$PATH"
 
 #
 # Output functions
@@ -772,6 +772,7 @@ function loadNvm() {
 
 # Keyboard
 alias keyboardBackup='cd ~/www/git-files && sudo mv /Library/Preferences/com.apple.keyboardtype.plist ./'
+alias keyboardBackupCopy='cd ~/www/git-files && cp /Library/Preferences/com.apple.keyboardtype.plist ./'
 alias keyboardRestore='cd ~/www/git-files && sudo mv com.apple.keyboardtype.plist /Library/Preferences/com.apple.keyboardtype.plist'
 
 #
