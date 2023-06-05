@@ -820,3 +820,10 @@ alias helmAlpine='docker run -e KUBECONFIG="/root/.kube/config:/root/.kube/some-
     -v ~/.kube:/root/.kube -v ~/.helm:/root/.helm -v ~/.config/helm:/root/.config/helm \
     -v ~/.cache/helm:/root/.cache/helm \
     alpine/helm'
+
+#
+# AWS
+#
+
+# silence NODE.js version warning for a CDK cli tool (https://docs.aws.amazon.com/cdk/v2/guide/cli.html)
+export JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION='20.2.0'

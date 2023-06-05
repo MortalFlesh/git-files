@@ -2,7 +2,7 @@
 
 set -e
 
-PHPSTORM="PhpStorm2021.1"
+PHPSTORM="PhpStorm2023.1"
 
 echo "Restore $PHPSTORM"
 echo "==================="
