@@ -12,6 +12,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 title "Link Profile:"
 ln -s -f ~/www/git-files/zsh/.zshrc ~/.zshrc
+ln -s -f ~/www/git-files/.fzf.bash ~/.fzf.bash
+ln -s -f ~/www/git-files/.fzf.zsh ~/.fzf.zsh
 
 title "Check zsh"
 $SHELL --version
