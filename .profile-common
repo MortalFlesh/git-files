@@ -3,6 +3,9 @@
 export PATH="$HOME/.node/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH:$HOME/bin:$HOME/phive/tools:$HOME/.local/bin:$HOME/.cabal/bin:$HOME/.ghcup/bin"
 export PATH="$HOME/.dotnet/tools:/usr/local/share/dotnet/x64:$PATH"
 
+# bash history file config
+export HISTCONTROL=ignoredups
+
 #
 # Output functions
 #
