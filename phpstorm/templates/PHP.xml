@@ -39,7 +39,7 @@
       <option name="PHP" value="true" />
     </context>
   </template>
-  <template name="provider" value="public function provide$method$(): array&#10;{&#10;    return [&#10;        // $parameters$&#10;        '$case$' =&gt; [$END$],&#10;    ];&#10;}" description="PHPUnit Provider" toReformat="false" toShortenFQNames="true">
+  <template name="provider" value="public static function provide$method$(): array&#10;{&#10;    return [&#10;        // $parameters$&#10;        '$case$' =&gt; [$END$],&#10;    ];&#10;}" description="PHPUnit Provider" toReformat="false" toShortenFQNames="true">
     <variable name="method" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="parameters" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="case" expression="" defaultValue="" alwaysStopAt="true" />
@@ -103,6 +103,15 @@
     <variable name="VALUE" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="fn" value="fn ($PARAMETERS$) =&gt; $END$" description="Lambda function - Arrow" toReformat="false" toShortenFQNames="true">
+    <variable name="PARAMETERS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+      <option name="PHP Comment" value="false" />
+      <option name="PHP Interface Member" value="false" />
+      <option name="PHP Trait Member" value="false" />
     </context>
   </template>
 </templateSet>
