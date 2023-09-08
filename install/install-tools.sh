@@ -22,3 +22,6 @@ ln -s -f ~/www/git-files/phive/phive.xml ~/phive/phive.xml
 title "NVM:"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 command -v nvm
+
+title "Hammerspoon"
+ln -sf ~/www/git-files/hammerspoon/ ~/.hammerspoon
