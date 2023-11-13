@@ -102,8 +102,9 @@ alias ngStart='phpStart && sudo brew services start nginx'
 alias ngStop='sudo brew services stop nginx'
 alias ngRestart='phpStart && sudo brew services restart nginx'
 
-alias cd..="cd .."
 alias cd.="cd ~"
+alias cd..="cd .."
+alias cd...="cd .. && cd .."
 
 alias ls='ls -FG'
 alias lsa='ls -a'
@@ -370,6 +371,15 @@ function gitTag() {
     gu --tags
 }
 
+function gitVersion() {
+    version="$1"
+    
+    if [ -z "${version}" ]; then echo "Version is not set"; return 1; fi
+
+    gc "Version $version"
+    gitTag $version
+}
+
 function deleteTag() {
     git tag -d "${1}"
     git push origin :refs/tags/"${1}"
@@ -485,77 +495,77 @@ function seleniumDockerStop() {
 
 function seleniumRunTestEverywhere() {
     c
-    ./vendor/bin/steward run -v --exclude-group=require-js local chrome --pattern "${1}.php"
-    ./vendor/bin/steward run -v dev chrome --pattern "${1}.php"
-    ./vendor/bin/steward run -v --group=prod-safe prod chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -i -v --exclude-group=require-js local chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -i -v dev chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -i -v --group=prod-safe prod chrome --pattern "${1}.php"
 }
 function seleniumRunTestEverywhereVV() {
     c
-    ./vendor/bin/steward run -vv --exclude-group=require-js local chrome --pattern "${1}.php"
-    ./vendor/bin/steward run -vv dev chrome --pattern "${1}.php"
-    ./vendor/bin/steward run -vv --group=prod-safe prod chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -i -vv --exclude-group=require-js local chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -i -vv dev chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -i -vv --group=prod-safe prod chrome --pattern "${1}.php"
 }
 function seleniumRunTestEverywhereDebug() {
     c
-    ./vendor/bin/steward run -vvv --exclude-group=require-js local chrome --pattern "${1}.php"
-    ./vendor/bin/steward run -vvv dev chrome --pattern "${1}.php"
-    ./vendor/bin/steward run -vvv --group=prod-safe prod chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -i -vvv --exclude-group=require-js local chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -i -vvv dev chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -i -vvv --group=prod-safe prod chrome --pattern "${1}.php"
 }
 
 #example: seleniumRunTest ENV FILE
 function seleniumRunTest() {
     c
-    ./vendor/bin/steward run -v "${1}" chrome --pattern "${2}.php"
+    ./vendor/bin/steward run -i -v "${1}" chrome --pattern "${2}.php"
 }
 function seleniumRunTestVV() {
     c
-    ./vendor/bin/steward run -vv "${1}" chrome --pattern "${2}.php"
+    ./vendor/bin/steward run -i -vv "${1}" chrome --pattern "${2}.php"
 }
 function seleniumRunTestDebug() {
     c
-    ./vendor/bin/steward run -vvv "${1}" chrome --pattern "${2}.php"
+    ./vendor/bin/steward run -i -vvv "${1}" chrome --pattern "${2}.php"
 }
 
 #seleniumRunTestLocal FILE
 function seleniumRunTestLocal() {
     c
-    ./vendor/bin/steward run -v local chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -i -v local chrome --pattern "${1}.php"
 }
 function seleniumRunTestLocalVV() {
     c
-    ./vendor/bin/steward run -vv local chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -i -vv local chrome --pattern "${1}.php"
 }
 function seleniumRunTestLocalDebug() {
     c
-    ./vendor/bin/steward run -vvv local chrome --pattern "${1}.php"
+    ./vendor/bin/steward run -i -vvv local chrome --pattern "${1}.php"
 }
 
 #example: seleniumRunGroup GROUP ENV
 function seleniumRunGroup() {
     c
-    ./vendor/bin/steward run -v --group=${1} ${2} chrome ${3}
+    ./vendor/bin/steward run -i -v --group=${1} ${2} chrome ${3}
 }
 function seleniumRunGroupVV() {
     c
-    ./vendor/bin/steward run -vv --group=${1} ${2} chrome ${3}
+    ./vendor/bin/steward run -i -vv --group=${1} ${2} chrome ${3}
 }
 function seleniumRunGroupDebug() {
     c
-    ./vendor/bin/steward run -vvv --group=${1} ${2} chrome ${3}
+    ./vendor/bin/steward run -i -vvv --group=${1} ${2} chrome ${3}
 }
 
 #example: seleniumRunGroupLocal GROUP
 function seleniumRunGroupLocal() {
     c
-    ./vendor/bin/steward run -v --no-proxy --group=${1} local chrome
+    ./vendor/bin/steward run -i -v --no-proxy --group=${1} local chrome
 }
 function seleniumRunGroupLocalVV() {
     c
-    ./vendor/bin/steward run -vv --no-proxy --group=${1} local chrome
+    ./vendor/bin/steward run -i -vv --no-proxy --group=${1} local chrome
 }
 function seleniumRunGroupLocalDebug() {
     c
-    ./vendor/bin/steward run -vvv --no-proxy --group=${1} local chrome
+    ./vendor/bin/steward run -i -vvv --no-proxy --group=${1} local chrome
 }
 
 #
