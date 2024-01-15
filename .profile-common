@@ -420,6 +420,12 @@ function integrationNew() {
     g
 }
 
+function integrationNewFromCurrentBranch() {
+    git checkout -b integration/"$(date "+%Y-%m-%d%n")"
+    git push -u origin integration/"$(date "+%Y-%m-%d%n")"
+    g
+}
+
 function int() {
     i "$(date "+%Y-%m-%d%n")"
 }
