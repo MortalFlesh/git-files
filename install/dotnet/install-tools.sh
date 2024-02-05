@@ -2,8 +2,8 @@
 
 dotnet tool install --global amazon.lambda.tools
 dotnet tool install --global dotnet-fsharplint --version 0.21.2
-dotnet tool install --global fake-cli --version 6.0.0-alpha004
-dotnet tool install --global paket --version 7.2.0
+dotnet tool install --global fake-cli --version 6.0.0
+dotnet tool install --global paket --version 8.0.0
 #dotnet tool install --global dotnet-sonarscanner
 
 dotnet tool list --global
