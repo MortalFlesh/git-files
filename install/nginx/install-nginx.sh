@@ -63,7 +63,7 @@ if [ -f ~/www/nginx-vhosts/link.sh ]; then
 fi
 
 title "[Nginx] - autostart"
-sudo cp /usr/local/opt/nginx/*.plist /Library/LaunchDaemons/
+sudo cp $(brew --prefix)/opt/nginx/*.plist /Library/LaunchDaemons/
 sudo chown root:wheel /Library/LaunchDaemons/homebrew.mxcl.nginx.plist
 
 
