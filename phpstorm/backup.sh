@@ -2,7 +2,7 @@
 
 set -e
 
-PHPSTORM="PhpStorm2023.1"
+PHPSTORM="PhpStorm2023.2"
 
 echo "Backup $PHPSTORM"
 echo "==================="
