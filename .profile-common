@@ -361,6 +361,10 @@ function gcountcommits() {
 
 # git squash commits: squash 5 (squashes 5 commits)
 function squash() {
+    git rebase --autosquash HEAD~"${1}"
+}
+# interactive git squash commits: squash 5 (squashes 5 commits)
+function isquash() {
     git rebase --autosquash -i HEAD~"${1}"
 }
 
