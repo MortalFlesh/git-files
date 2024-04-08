@@ -20,7 +20,7 @@ brew install wget bash-completion git gnupg gnutls gpgme hadolint htop libmemcac
     libusb libxml2 libyaml libzip markdown memcached midnight-commander mysql nuget openldap openssl p7zip \
     postgresql@14 pure-ftpd python ruby shellcheck sqlite tree zlib curl pkg-config \
     certbot consul-template helm jq pinentry-mac imagemagick kubectx kubernetes-cli kcat fzf thefuck \
-    1password-cli ykman
+    1password-cli ykman yq bat
 
 # orbstack - is installed from pkg/dmg
 
