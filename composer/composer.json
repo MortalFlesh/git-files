@@ -1,7 +1,7 @@
 {
     "require": {
-        "lmc/coding-standard": "^3.0",
-        "maglnet/composer-require-checker": "^4.5"
+        "maglnet/composer-require-checker": "^4.5",
+        "lmc/coding-standard": "^4.1"
     },
     "config": {
         "allow-plugins": {
