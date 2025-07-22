@@ -492,16 +492,16 @@ alias seleniumServerNode='java -jar ./vendor/bin/selenium-server-standalone-2.53
 #
 # will start 4 chromes in docker
 function seleniumDockerStart() {
-    docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml up -d chrome
-    docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml scale chrome=4
+    docker compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml up -d chrome
+    docker compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml scale chrome=4
 }
 # example: seleniumDockerDebug (will start 1 chrome in docker and allows debug mode - vnc server etc.)
 function seleniumDockerDebug() {
-    docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml up -d chrome-debug
+    docker compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml up -d chrome-debug
 }
 function seleniumDockerStop() {
-    docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml stop
-    docker-compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml rm -f
+    docker compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml stop
+    docker compose -f ./vendor/lmc/steward-lmc/bin/selenium-docker.yml rm -f
 }
 
 function seleniumRunTestEverywhere() {
