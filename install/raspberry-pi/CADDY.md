@@ -30,3 +30,25 @@ sudo tar -C /usr/local -xzf go1.25.3.linux-arm64.tar.gz
 ```
 
 go version go1.25.3 linux/arm64
+
+```sh
+# Add Go to PATH (already configured in .profile-rpi)
+# Reload profile
+. ~/.profile-rpi
+
+# Verify Go is in PATH
+go version
+```
+
+#### Caddyfile Configuration
+
+```sh
+# Create symlink to Caddyfile from this repo
+sudo ln -sf ~/Documents/repo/git-files/install/raspberry-pi/Caddyfile /etc/caddy/Caddyfile
+
+# Verify the symlink
+ls -la /etc/caddy/Caddyfile
+
+# Reload Caddy configuration (if Caddy is already running)
+sudo systemctl reload caddy
+```

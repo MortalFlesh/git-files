@@ -1,0 +1,24 @@
+# Caddy L4 Configuration for Raspberry Pi
+# To use this file, create a symlink:
+# sudo ln -sf ~/Documents/repo/git-files/install/raspberry-pi/Caddyfile /etc/caddy/Caddyfile
+
+{
+    # Global options
+    # admin off  # Uncomment to disable the admin API
+}
+
+# Example HTTP server
+# :80 {
+#     respond "Hello from Caddy on RPi!"
+# }
+
+# Example reverse proxy
+# example.local {
+#     reverse_proxy localhost:8080
+# }
+
+# Example file server
+# files.local {
+#     root * /var/www
+#     file_server
+# }
