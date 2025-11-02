@@ -187,3 +187,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval $(thefuck --alias)
+
+# bun completions
+[ -s "/Users/petr.chromec/.bun/_bun" ] && source "/Users/petr.chromec/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# autoload for az (https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest)
+autoload bashcompinit && bashcompinit
+source $(brew --prefix)/etc/bash_completion.d/az
