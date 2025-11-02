@@ -44,12 +44,16 @@ go version
 
 ```sh
 # Check your architecture
-uname -m  # Should show aarch64
-go env GOARCH  # Should show arm64
+uname -m  # Shows: aarch64 (64-bit kernel)
+dpkg --print-architecture  # Shows: armhf (32-bit userland)
 
-# If GOARCH doesn't match, set it explicitly
-export GOARCH=arm64
-export GOOS=linux
+# This is a hybrid setup - we need to build for 32-bit ARM
+go env GOARCH  # Should show arm (already set in .profile-rpi)
+
+# If not set, configure it:
+# export GOARCH=arm
+# export GOARM=7
+# export GOOS=linux
 
 # Install xcaddy (Caddy build tool)
 go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
@@ -58,8 +62,7 @@ go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 xcaddy version
 ```
 
-**Note**: If you get a pointer size error (`_check_for_64_bit_pointer_matching_GoInt`), 
-it means there's an architecture mismatch. Ensure `GOARCH=arm64` is set.
+**Note**: RPi with aarch64 kernel + armhf userland needs `GOARCH=arm` (32-bit), not `arm64`.
 
 #### Build Caddy with L4 support
 
