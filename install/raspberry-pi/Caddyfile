@@ -5,6 +5,16 @@
 {
     # Global options
     # admin off  # Uncomment to disable the admin API
+    
+    layer4 {
+        :30687 {
+            route {
+                proxy {
+                    upstream 192.168.1.30:30687
+                }
+            }
+        }
+    }
 }
 
 # Example HTTP server

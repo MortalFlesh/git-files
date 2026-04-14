@@ -14,22 +14,26 @@ armhf
 ### Caddy L4
 
 #### Go
+**Important**: Your system has aarch64 kernel but armhf userland (32-bit), so you need 32-bit ARM Go!
+
 ```sh
 # Remove old Go installation
 sudo rm -rf /usr/local/go
 
-# Download Go 1.25.3 for ARM64
+# Download Go 1.25.3 for 32-bit ARM (armv6l)
 cd /tmp
-wget https://go.dev/dl/go1.25.3.linux-arm64.tar.gz
+wget https://go.dev/dl/go1.25.3.linux-armv6l.tar.gz
 
 # Extract to /usr/local
-sudo tar -C /usr/local -xzf go1.25.3.linux-arm64.tar.gz
+sudo tar -C /usr/local -xzf go1.25.3.linux-armv6l.tar.gz
 
 # Verify installation
 /usr/local/go/bin/go version
 ```
 
-go version go1.25.3 linux/arm64
+Expected output: `go version go1.25.3 linux/arm`
+
+**Note**: Use `armv6l` (32-bit) not `arm64` because `dpkg --print-architecture` shows `armhf`.
 
 ```sh
 # Add Go to PATH (already configured in .profile-rpi)
@@ -58,7 +62,51 @@ go env GOARCH  # Should show arm (already set in .profile-rpi)
 # Install xcaddy (Caddy build tool)
 go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 
+# If go install doesn't show any output, verify:
+echo $GOPATH  # Should show: /home/pi/go (or similar)
+ls -la $GOPATH/bin  # Check if xcaddy binary exists
+
 # Verify xcaddy installation
+xcaddy version
+
+# If xcaddy is not found, check:
+which xcaddy
+echo $PATH | grep go
+```
+
+**Troubleshooting go install**:
+- `go install` is silent on success - no output is normal
+- Binary is installed to `$GOPATH/bin/xcaddy`
+- If you get errors, try with verbose flag: `go install -v github.com/caddyserver/xcaddy/cmd/xcaddy@latest`
+- Check Go module mode: `go env GO111MODULE` (should be empty or "on")
+
+**Cross-compilation issue**:
+If you get "cannot install cross-compiled binaries", it's because GOARCH/GOOS are set 
+for building Caddy later. For installing xcaddy itself, temporarily unset them:
+
+```sh
+# Unset cross-compilation flags temporarily
+unset GOARCH GOARM GOOS
+
+# Install xcaddy
+go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
+
+# Verify installation
+xcaddy version
+
+# Re-export the flags for building Caddy with L4
+export GOARCH=arm
+export GOARM=7
+export GOOS=linux
+```
+
+**Alternative: Build xcaddy from source**:
+```sh
+cd /tmp
+git clone https://github.com/caddyserver/xcaddy.git
+cd xcaddy/cmd/xcaddy
+go build -v -o xcaddy
+sudo mv xcaddy /usr/local/bin/
 xcaddy version
 ```
 
@@ -78,7 +126,7 @@ xcaddy build \
 # This will create a 'caddy' binary in the current directory
 # Verify the build
 ./caddy version
-./caddy list-modules | grep l4
+./caddy list-modules | grep layer4
 
 # Install the custom Caddy binary
 sudo mv caddy /usr/bin/caddy
