@@ -710,9 +710,15 @@ function dotnetClearCommon() {
 
     echo "- remove bin"
     rm -rf bin/
+    rm -rf build/bin/
+    rm -rf src/bin/
+    rm -rf tests/bin/
 
     echo "- remove obj"
     rm -rf obj/
+    rm -rf build/obj/
+    rm -rf src/obj/
+    rm -rf tests/obj/
 
     echo "- remove .fake"
     rm -rf .fake

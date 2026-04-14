@@ -8,12 +8,6 @@
   ignorecase = false
 [merge]
     conflictstyle = diff3
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [alias]
 	up = "!git remote update -p; git merge --ff-only @{u}"
   cif = =
