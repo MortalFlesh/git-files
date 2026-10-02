@@ -12,5 +12,8 @@ TODO.md
 # TMP
 etc/narwhal
 etc/solr/academy*
+etc/*--k8s
 
 __*
+
+**/.claude/settings.local.json

@@ -17,12 +17,14 @@ sudo chown -R $(whoami) /usr/local/etc/bash_completion.d /usr/local/share/doc /u
 title "Dependencies:"
 brew update
 brew install wget bash-completion git gnupg gnutls gpgme hadolint htop libmemcached librdkafka libssh2 \
-    libusb libxml2 libyaml libzip markdown memcached midnight-commander mysql nuget openldap openssl p7zip \
-    postgresql@14 pure-ftpd python ruby shellcheck sqlite tree zlib curl pkg-config \
-    certbot consul-template helm jq pinentry-mac imagemagick kubectx kubernetes-cli kcat fzf thefuck \
+    libusb libxml2 libyaml libzip markdown memcached mysql nuget openldap openssl p7zip \
+    postgresql pure-ftpd python ruby shellcheck sqlite tree zlib curl pkg-config \
+    certbot helm jq pinentry-mac kubectx kubernetes-cli kcat fzf thefuck \
     1password-cli ykman yq bat clowdhaus/taps/eksup
 
-# orbstack - is installed from pkg/dmg
+# optional: 
+# - midnight-commander // conflicts with `mc` - minio-console
+# - orbstack - is installed from pkg/dmg
 
 mkdir -p ~/bin
 
